@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+
+<div id="app">
+	<h1>Hello World</h1>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<p>JavaScript <span style="font-weight: bold;">programming</span> is fun!</p>
+</div>
+
+<script>
+	function walk(node) {
+		console.log("node", node);
+		const nodeList = node.childNodes;
+		for (let n of nodeList)
+			walk(n);
+	}
+	walk(document);
+</script>
+
+</body>
+</html>
