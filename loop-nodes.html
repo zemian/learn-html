@@ -16,13 +16,33 @@
 </div>
 
 <script>
+	function printNode(node) {
+		console.log("{nodeName:" + node.nodeName + 
+			", nodeType:" + node.nodeType + 
+			", nodeValue:" + node.nodeValue + 
+			"}", node);
+	}
+
 	function walk(node) {
-		console.log("node", node);
+		printNode(node);
+
 		const nodeList = node.childNodes;
 		for (let n of nodeList)
 			walk(n);
 	}
-	walk(document);
+	// walk(document);
+
+	function walk2(node, name) {
+		//printNode(node);
+
+		if (node.nodeName === name)
+			printNode(node);
+
+		const nodeList = node.childNodes;
+		for (let i = 0; i < nodeList.length; i++)
+			walk2(nodeList.item(i), name);
+	}
+	walk2(document, 'li'.toUpperCase());
 </script>
 
 </body>
