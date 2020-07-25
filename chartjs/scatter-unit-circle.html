@@ -15,7 +15,8 @@
         data: {
             datasets: [{
                 label: 'Unit Circle Scatter Plot',
-                data: []
+                data: [],
+                pointBackgroundColor: []
             }]
         },
         options: {
@@ -25,11 +26,14 @@
 
     // Generate data
     const max = 2 * Math.PI;
-    const step = max / 100;
+    const step = max / 600;
+    let color = 0;
     for (let i = 0; i <= max; i+= step) {
         let x = Math.cos(i), y = Math.sin(i);
-        //console.log(i, x, y);
+        color = (color + 1) % 256;
+        // console.log(i, x, y, `rgb(${color},${color},${color})`);
         scatterChart.data.datasets[0].data.push({x, y});
+        scatterChart.data.datasets[0].pointBackgroundColor.push(`rgb(${color},${color},${color})`);
     }
     scatterChart.update();
 </script>
