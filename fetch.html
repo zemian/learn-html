@@ -1,0 +1,19 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<pre id="data">
+	Fetching data
+</pre>
+
+<script>
+	fetch("https://api.github.com/").then(resp => resp.json().then(data => {
+		//console.log(data);
+		document.querySelector("#data").textContent = JSON.stringify(data, null, 2);
+	}));
+</script>
+
+</body>
+</html>
