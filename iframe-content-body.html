@@ -1,0 +1,39 @@
+<div>
+    <h1>IFrame Test</h1>
+    <button id="updateFromIFrame">Update from IFrame</button>
+</div>
+
+<!--<script>-->
+<!--    $.noConflict();-->
+<!--</script>-->
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>-->
+
+<script>
+    // console.log("IFrame: document", document); // This is still the parent document!
+    // // console.log("IFrame: document.body.iframe", document.body.iframe); // undefined
+    console.log("IFrame: $(\"iframe\")[0].contentWindow.document", $("iframe")[0].contentWindow.document);
+
+    // console.log("IFrame doc is ready. jQuery version=" + $.fn.jquery);
+    // console.log("IFrame parent jQuery version=" + parent.$.fn.jquery);
+
+    // This "$" is defined by mainPage.
+    // TODO How do we re-load different version of jquery here?
+    //$(function () {
+    $($("iframe")[0].contentWindow.document).ready(function () {
+        // console.log("IFrame: doc is ready. jQuery version=" + $.fn.jquery);
+        // console.log("IFrame: parent jQuery version=" + parent.$.fn.jquery);
+        //
+        // // Note we have full direct access to global main page variable access
+        // console.log("IFrame: mainPageVar1=" + mainPageVar1);
+        // console.log("IFrame: parent.mainPageVar1=" + parent.mainPageVar1);
+
+        let $iframeDoc = $($("iframe")[0].contentWindow.document);
+        $iframeDoc.find("#updateFromIFrame").on('click', function (event) {
+            console.log("IFrame: Clicked from iframe: event, jquery.version", event, $.fn.jquery);
+            console.log("IFrame:Triggering parent click...");
+            parent.$("#updateFromMain").trigger('click');
+            console.trace("IFrame: Tracing #updateFromIFrame");
+        });
+
+    });
+</script>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script>
+        var mainPageVar1 = 123;
+
+        console.log("Main: document", document);
+
+        $(function () {
+            console.log("Main: doc is ready. jQuery version=" + $.fn.jquery);
+
+            $("#updateFromMain").on('click', function (event) {
+                console.log("Main: Clicked from main page: event, $.fn.jquery", event, $.fn.jquery);
+                console.trace("Main: Tracing #updateFromMain");
+            });
+
+            // // Unbind "$"
+            // $.noConflict();
+
+            // These will not make a difference.
+            let frame = jQuery("iframe").contents();
+            frame.find("head").append(jQuery("<script />", { src: "https://code.jquery.com/jquery-1.12.4.js"}));
+
+            fetch("iframe-content-body.html").then(response => response.text()).then(html => {
+                console.log("Main: Got iframe-content.html via ajax.");
+                jQuery("iframe").contents().find("body").append(html);
+
+                // TODO: The jquery loaded by body is not used but it's referencing from parent here instead?
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div>
+    <iframe width="100%" height="600">
+    </iframe>
+</div>
+<div>
+    <button id="updateFromMain">Update from Main Page</button>
+</div>
+
+</body>
+</html>

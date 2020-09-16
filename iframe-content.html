@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>I am a IFrame Content</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            console.log("IFrame doc is ready. jQuery version=" + $.fn.jquery);
+            console.log("IFrame parent jQuery version=" + parent.$.fn.jquery);
+
+            $("#updateFromIFrame").on('click', function (event) {
+                console.log("Clicked from iframe: event, jquery.version", event, $.fn.jquery);
+                console.log("Triggering parent click...");
+                parent.$("#updateFromMain").trigger('click');
+                console.trace("Tracing #updateFromIFrame");
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h1>IFrame Test</h1>
+<button id="updateFromIFrame">Update from IFrame</button>
+
+</body>
+</html>
