@@ -13,3 +13,11 @@ readme to give credit where is due.
 ## Learning References
 
 https://developer.mozilla.org/en-US/docs/Web
+
+## GoogleAPI ajax JS cdn
+
+https://developers.google.com/speed/libraries
+
+## IFrame Related Articles
+
+* https://stackoverflow.com/questions/56195634/create-new-iframe-and-load-content-synchronously

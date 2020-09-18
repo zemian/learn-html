@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		// https://stackoverflow.com/questions/205087/jquery-ready-in-a-dynamically-inserted-iframe
+		$(function () {
+			let iframeDoc = $("#myiframe")[0].contentWindow.document;
+			$(iframeDoc).ready(function () {
+				console.log("iframe: document is ready", $(iframeDoc));
+				console.log("iframe: document.body=", $(iframeDoc).find("body").html());
+
+				// Changing p color
+				// $("p").css("color", "red"); // This will not work!
+				$(iframeDoc).find("p").css("color", "red");
+			});
+
+			console.log("main: document is ready", $(document));
+			console.log("main: document.body=", $(document).find("body").html());
+			$("#myiframe").contents().find("body").append('<p>You are in iframe!</p>');
+		});
+	</script>
+</head>
+<body>
+	<h1>Testing Document Ready With IFrame</h1>
+
+    <iframe id="myiframe" width="100%" height="600"></iframe>
+</body>
+</html>

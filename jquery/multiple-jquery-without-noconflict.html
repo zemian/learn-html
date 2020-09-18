@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<!-- https://www.tutorialspoint.com/How-to-use-multiple-versions-of-jQuery-on-the-same-page#:~:text=Yes%2C%20you%20can%20use%20multiple,jQuery. -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		console.log("after 3.2.1 line jQuery Version: $=" + $.fn.jquery);
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		// NOTE "$" will get overwritten!
+		console.log("after 1.9.1 line jQuery Version: $=" + $.fn.jquery);
+	</script>
+
+</head>
+<body>
+
+	<h1>Testing Multiple Instances of jQuery</h1>
+
+</body>
+</html>

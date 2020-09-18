@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+	<script>
+
+		define('jq3', ['https://unpkg.com/jquery@3.5.1/dist/jquery'], function() {
+			return jQuery.noConflict(true);
+		});
+		define('jq1', ['https://unpkg.com/jquery@1.12.4/dist/jquery'], function() {
+			return jQuery.noConflict(true);
+		});
+
+		require(['jq3', 'jq1'], function(jq3, jq1) {
+			jq3(function () {
+				let iframeDoc = jq3("#myiframe")[0].contentWindow.document;
+				jq3(iframeDoc).ready(function () {
+					// NOTE: The "$" is not overwritten in iframe by separate jquery. It is still using the parent "$"
+					console.log("iframe: Hello from main page.");
+					console.log("iframe: jQuery version=", jq1.fn.jquery);
+					console.log("iframe: document is ready", jq1(iframeDoc));
+					console.log("iframe: document.body=", jq1(iframeDoc).find("body").html())
+					// Changing p color
+					jq1(iframeDoc).find("p").css("color", "red");
+				});
+
+				console.log("main: jQuery version=", jq3.fn.jquery);
+				console.log("main: document is ready", jq3(document))
+				jq3("#myiframe").contents().find("body").append('<p>You are in iframe!</p>')
+				let scriptBody;
+				scriptBody = jq3("<script />", {html: `
+					console.log("iframe injected: Hello from injected script!");
+					console.log("iframe injected: document: ", document);
+
+					// NOTE: "jq3" is not defined in this injected script!
+					console.log("iframe injected: jq3: ", jq3);
+					`});
+				jq3("#myiframe").contents().find("body").append(scriptBody);
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Testing Document Ready With IFrame</h1>
+
+    <iframe id="myiframe" width="100%" height="600"></iframe>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+	<script>
+
+		define('jq3', ['https://unpkg.com/jquery@3.5.1/dist/jquery'], function() {
+			return jQuery.noConflict(true);
+		});
+		define('jq1', ['https://unpkg.com/jquery@1.12.4/dist/jquery'], function() {
+			return jQuery.noConflict(true);
+		});
+
+
+		require(['jq3', 'jq1'], function(jq3, jq1) {
+			console.log("jquery loaded: jq3=", jq3.fn.jquery);
+			console.log("jquery loaded: jq1=", jq1.fn.jquery);
+		});
+	</script>
+</head>
+<body>
+	<h1>Testing Multiple Instances of jQuery</h1>
+</body>
+</html>

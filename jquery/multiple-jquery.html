@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<!-- https://www.tutorialspoint.com/How-to-use-multiple-versions-of-jQuery-on-the-same-page#:~:text=Yes%2C%20you%20can%20use%20multiple,jQuery. -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		var $x = jQuery.noConflict();
+		console.log("$x jQuery Version: " + $x.fn.jquery);
+
+		$x(function () {
+			$x("#mybutton").on("click", function (event) {
+				console.log("mybutton clicked by $x jQuery instance. event=", event);
+				console.log("$x jQuery document object: ", $x(document));
+			});
+		});
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var $y = jQuery.noConflict();
+		console.log("$y jQuery Version: " + $y.fn.jquery);
+
+		$y(function () {
+			$y("#mybutton").on("click", function (event) {
+				console.log("mybutton clicked by $y jQuery instance. event=", event);
+				console.log("$y jQuery document object: ", $y(document));
+			});
+
+			$y("#triggerXbutton").on("click", function (event) {
+				console.log("Triggering $x button click from $y instance.");
+				$x("#mybutton").trigger('click');
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+	<h1>Testing Multiple Instances of jQuery</h1>
+
+	<button id="mybutton">MyButton Test</button>
+	<button id="triggerXbutton">Trigger $x button</button>
+
+</body>
+</html>

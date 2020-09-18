@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.js"></script>
+	<script>
+		$(function () {
+			let iframeDoc = $("#myiframe")[0].contentWindow.document;
+			$(iframeDoc).ready(function () {
+				// NOTE: The "$" is not overwritten in iframe by separate jquery. It is still using the parent "$"
+				console.log("iframe: Hello from main page.");
+				console.log("iframe: jQuery version=", $.fn.jquery);
+				console.log("iframe: document is ready", $(iframeDoc));
+				//console.log("iframe: document.body=", $(iframeDoc).find("body").html());
+
+				// Changing p color
+				$(iframeDoc).find("p").css("color", "red");
+			});
+
+			console.log("main: jQuery version=", $.fn.jquery);
+			console.log("main: document is ready", $(document));
+
+
+			//console.log("main document.body=", $(document).find("body").html());
+
+			let scriptHead = $("<script />", {src: "https://unpkg.com/jquery@1.12.4/dist/jquery.js"});
+			$("#myiframe").contents().find("head").append(scriptHead);
+
+			$("#myiframe").contents().find("body").append('<p>You are in iframe!</p>');
+
+			let scriptBody;
+			scriptBody = $("<script />", {html: `
+				console.log("iframe injected: Hello from injected script!");
+				console.log("iframe injected: document: ", document);
+				console.log("iframe injected: jQuery version=", $.fn.jquery);
+				`});
+			$("#myiframe").contents().find("body").append(scriptBody);
+		});
+	</script>
+</head>
+<body>
+	<h1>Testing Document Ready With IFrame</h1>
+
+    <iframe id="myiframe" width="100%" height="600"></iframe>
+</body>
+</html>
