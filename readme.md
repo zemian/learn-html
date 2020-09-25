@@ -1,23 +1,12 @@
-## Learning HTML/CSS/JS (WebAPI)  
+# Learning HTML/CSS/JavaScript(JS)
 
-This repo is for exploring mostly HTML and CSS. If 
-there is JS in there, they are mostly dealing with WebAPI for DOM.
-If you want to see more JS example and learnings, see "learn-js" repo
-instead.
+This repository is for exploring HTML, CSS and JavaScript. Some popular libraries are
+in its own foler for exploration as well.
 
-## Credits
-
-I created most of the learning files in this repo, but I also added some interested demos from other people as well. I usually add comments or separate
-readme to give credit where is due.
+NOTE: To explore JS and TypeScript in NodeJS env, see [learn-js](https://github.com/zemian/learn-js) repository instead.
 
 ## Learning References
 
-https://developer.mozilla.org/en-US/docs/Web
-
-## GoogleAPI ajax JS cdn
-
-https://developers.google.com/speed/libraries
-
-## IFrame Related Articles
-
-* https://stackoverflow.com/questions/56195634/create-new-iframe-and-load-content-synchronously
+* https://developer.mozilla.org/en-US/docs/Web - HTML/JS/CSS API
+* https://developers.google.com/speed/libraries - GoogleAPI ajax JS cdn
+* https://stackoverflow.com/questions/56195634/create-new-iframe-and-load-content-synchronously - IFrame Related Articles
