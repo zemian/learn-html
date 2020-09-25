@@ -1,0 +1,87 @@
+<div id="app">
+    <div>
+        <label>Enter Locale Name: (eg: ko, fr, es, or zh-cn etc)
+        <input name="locale" value=""> <button>Update</button>
+    </div>
+    <div>
+        Moment: <span id="time"></span>
+    </div>
+</div>
+
+<script src="js/require.js"></script>
+<script>
+    /*
+    Can we load module at runtime without specifying in the require() declaration?
+    Use case: load momentjs + one locale should be loaded dynamically.
+    */
+    // requirejs.config({
+    //     paths: {
+    //         'moment': 'https://unpkg.com/moment@2.29.0/moment',
+    //         '../moment': 'https://unpkg.com/moment@2.29.0/moment',
+    //         'moment_es': 'https://unpkg.com/moment@2.29.0/locale/es',
+    //         'moment_fr': 'https://unpkg.com/moment@2.29.0/locale/fr',
+    //         'moment_ar': 'https://unpkg.com/moment@2.29.0/locale/ar',
+    //         'moment_ko': 'https://unpkg.com/moment@2.29.0/locale/ko',
+    //         'moment_zh-cn': 'https://unpkg.com/moment@2.29.0/locale/zh-cn',
+    //     }
+    // });
+
+    // Loading files based on a package location
+    requirejs.config({
+        packages: [{
+            name: 'moment',
+            location: 'https://unpkg.com/moment@2.29.0',
+            main: 'moment'
+        }]
+    });
+
+    // // Case1: Default English
+    // require(['moment'], function(moment) {
+    //     document.querySelector("#time").innerText = moment([1977, 0, 31]).fromNow();
+    // });
+
+    // // Case2: Spanish
+    // require(['moment', 'moment/locale/es'], function(moment) {
+    //     document.querySelector("#time").innerText = moment([1977, 0, 31]).fromNow();
+    // });
+
+    // // Case3: Dynamic loading base on a variable
+    // // FAILED: This is not going to work. Error:
+    // //         Uncaught Error: Module name "moment/locale/es" has not been loaded yet for context: _
+    // require(['require', 'moment'], function(require, moment) {
+    //     let localeName = 'es';
+    //     require('moment/locale/' + localeName);
+    //     document.querySelector("#time").innerText = moment([1977, 0, 31]).fromNow();
+    // });
+
+    // Case4: Dynamic loading base on a variable - by custom module
+    define('mymoment', function(require) {
+        return function (localeName, callback) {
+            if (!localeName || localeName === "en") {
+                // Default moment is for English. Note that there is no external file for it!
+                require(['moment'], function (moment) {
+                    moment.locale('en');
+                    callback(moment);
+                });
+            } else {
+                require(['moment', 'moment/locale/' + localeName], function (moment) {
+                    moment.locale(localeName);
+                    callback(moment);
+                });
+            }
+        }
+    });
+    require(['mymoment'], function(mymoment) {
+        function loadMoment(localeName) {
+            console.log("Loading moment with localeName: " + localeName);
+            mymoment(localeName, function (moment) {
+                document.querySelector("#time").innerText = moment([1977, 0, 31]).fromNow();
+            });
+        }
+        document.querySelector("#app button").addEventListener('click', function() {
+            let localeName = document.querySelector("#app input[name=locale]").value;
+            loadMoment(localeName);
+        });
+        loadMoment('');
+    });
+</script>
