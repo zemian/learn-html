@@ -1,19 +1,16 @@
 <div id="app">
-    Hi
+    <p data-bind="text: msg">Hi</p>
 </div>
 
 <script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
 <script>
-    define('mymodule', [], function() {
-        return {
-            uniqueId() {
-                return Math.random().toString(16).substring(2);
-            }
+    requirejs.config({
+        paths: {
+            'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest'
         }
     });
-    require(['mymodule'], function(my) {
-        console.log("Generating a uniqueId=" + my.uniqueId());
-        let output = document.querySelector("#app");
-        output.innerHTML = `Hello RequireJS - ${requirejs.version}`;
+
+    require(['knockout'], function(ko) {
+        ko.applyBindings({msg: "Hello"});
     });
 </script>
