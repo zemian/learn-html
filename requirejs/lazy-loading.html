@@ -8,6 +8,9 @@
     Despite we configure many libraries in config paths, RequireJS only loads 
     what's used in require() to the browser in runtime. In this example, we should
     see only knockout, require-css and bulma files download into browser.
+
+    NOTE: The Chrome browser will defined '$' variable, it's not the 'jquery' module 
+    being loaded!
     */
     requirejs.config({
         paths: {

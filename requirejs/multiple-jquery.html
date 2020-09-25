@@ -1,0 +1,28 @@
+<div id="app">
+    See Console output
+</div>
+
+<script src="js/require.js"></script>
+<script>
+    /*
+    Can we load module at runtime without specifying in the require() declaration?
+    */
+    requirejs.config({
+        paths: {
+            'jquery': 'https://unpkg.com/jquery@3.5.1/dist/jquery',
+            'jquery1': 'https://unpkg.com/jquery@1.12.4/dist/jquery',
+        }
+    });
+
+    define('jq3', ['https://unpkg.com/jquery@3.5.1/dist/jquery'], function() {
+        return jQuery.noConflict(true);
+    });
+    define('jq1', ['https://unpkg.com/jquery@1.12.4/dist/jquery'], function() {
+        return jQuery.noConflict(true);
+    });
+
+    require(['jq3', 'jq1'], function(jq3, jq1) {
+        console.log("jquery loaded: jq3=", jq3.fn.jquery);
+        console.log("jquery loaded: jq1=", jq1.fn.jquery);
+    });
+</script>

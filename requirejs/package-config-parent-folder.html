@@ -1,0 +1,18 @@
+<div id="app">
+    Test
+</div>
+
+<script src="js/require.js"></script>
+<script>
+    // Loading files based on a parent folder of a package
+    requirejs.config({
+        paths: {
+            'moment': 'https://unpkg.com/moment@2.29.0'
+        }
+    });
+
+    require(['moment/moment', 'moment/locale/es'], function(moment) {
+        moment.locale('es');
+        document.querySelector("#app").innerText = moment([2007, 0, 29]).fromNow();
+    });
+</script>
