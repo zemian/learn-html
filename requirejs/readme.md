@@ -40,3 +40,12 @@ requirejs(['require', 'module'], function (require, module){
     // ...
 });
 ```
+
+## Difference between `mod = require('mod')` and `require(['mod'], function('mod'))`
+
+The `mod = require('mod')` statement will load the `mod` module only if it's already in the requirejs context. It also a synchronous and blocking call. If it's not exist, it will error out with error such as:
+
+	```Uncaught Error: Module name "mod" has not been loaded yet```
+
+While the `require(['mod'], function('mod'))` is a asynchronous call with a callback when module is loaded. The `mod` does not need to be already loaded in requirejs context yet. If it's not exists, it will load it.
+
