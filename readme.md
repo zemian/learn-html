@@ -3,7 +3,7 @@
 This repository is for exploring HTML, CSS and JavaScript. Some popular libraries are
 in its own foler for exploration as well.
 
-NOTE: To explore JS and TypeScript in NodeJS env, see [learn-js](https://github.com/zemian/learn-js) repository instead.
+NOTE: To explore JS and TypeScript in NodeJS env, see [learn-nodejs](https://github.com/zemian/learn-nodejs) repository instead.
 
 ## Learning References
 
