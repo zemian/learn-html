@@ -1,7 +1,0 @@
-node_modules/
-package-lock.json
-
-# We do not want ignore all "build" because we want to add application code there.
-#build/
-/*/dist/*.js
-/*/dist/*.jpg
