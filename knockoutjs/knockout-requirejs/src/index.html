@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="../node_modules/requirejs/require.js"></script>
+    <script>
+        requirejs.config({
+            paths: {
+                "knockout": "../node_modules/knockout/build/output/knockout-latest"
+            }
+        });
+        window.addEventListener('DOMContentLoaded', function () {
+            require(['knockout', 'HelloViewModel'], function (ko, HelloViewModel) {
+                ko.applyBindings(new HelloViewModel());
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div>
+    Name: <span data-bind="text: name"></span>
+</div>
+<div>
+    CapName: <span data-bind="text: capName"></span>
+</div>
+<div>
+    Greeting: <span data-bind="text: greeting()"></span>
+</div>
+<div>
+    <ul data-bind="foreach: numbers">
+        <li data-bind="text: $data"></li>
+    </ul>
+</div>
+
+<div>
+    <p>Action: <button data-bind="click: onClick">Test</button></p>
+    <p>ServerTime: <span data-bind="text: serverTime"></span></p>
+</div>
+</body>
+</html>

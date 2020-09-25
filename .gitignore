@@ -13,4 +13,4 @@ temp.*
 temp-*.*
 
 nohup.out
-/test/karma-learn/karma_html/
+/test-frameworkds/karma-learn/karma_html/
