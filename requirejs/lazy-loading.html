@@ -1,0 +1,28 @@
+<div id="app">
+    <p data-bind="text: msg">Hi</p>
+</div>
+
+<script src="js/require.js"></script>
+<script>
+    /*
+    Despite we configure many libraries in config paths, RequireJS only loads 
+    what's used in require() to the browser in runtime. In this example, we should
+    see only knockout, require-css and bulma files download into browser.
+    */
+    requirejs.config({
+        paths: {
+            'text': 'https://unpkg.com/requirejs-text@2.0.15/text',
+            'css': 'https://unpkg.com/require-css@0.1.10/css',
+            'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest',
+            'lodash': 'https://unpkg.com/lodash@4.17.20/lodash',
+            'jquery': 'https://unpkg.com/jquery@3.5.1/dist/jquery',
+            'fontawesome': 'https://unpkg.com/fontawesome@5.6.3/index',
+            'moment': 'https://unpkg.com/moment@2.29.0/moment',
+            'bulma': 'https://unpkg.com/bulma@0.9.0/css/bulma',
+        }
+    });
+
+    require(['knockout', 'css!bulma'], function(ko) {
+        ko.applyBindings({msg: "Hello"});
+    });
+</script>
