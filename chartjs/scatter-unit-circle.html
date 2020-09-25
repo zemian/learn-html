@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chartjs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+
+<canvas id="myChart"></canvas>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var scatterChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Unit Circle Scatter Plot',
+                data: [],
+                pointBackgroundColor: []
+            }]
+        },
+        options: {
+            aspectRatio: 1
+        }
+    });
+
+    // Generate data
+    const max = 2 * Math.PI;
+    const step = max / 600;
+    let color = 0;
+    for (let i = 0; i <= max; i+= step) {
+        let x = Math.cos(i), y = Math.sin(i);
+        color = (color + 1) % 256;
+        // console.log(i, x, y, `rgb(${color},${color},${color})`);
+        scatterChart.data.datasets[0].data.push({x, y});
+        scatterChart.data.datasets[0].pointBackgroundColor.push(`rgb(${color},${color},${color})`);
+    }
+    scatterChart.update();
+</script>
+
+</body>
+</html>
