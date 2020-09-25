@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<style>
+    .profitWarning {
+        color: red;
+    }
+    .profitPositive {
+        color: green;
+    }
+</style>
+<p>Text will turn red after 2 seconds.</p>
+<div data-bind="class: profitStatus">
+    Profit Information: <span data-bind="text: currentProfit"></span>
+</div>
+
+<script type="text/javascript">
+    var viewModel = {
+        currentProfit: ko.observable(150000)
+    };
+
+    // Evalutes to a positive value, so initially we apply the "profitPositive" class
+    viewModel.profitStatus = ko.pureComputed(function() {
+        return this.currentProfit() < 0 ? "profitWarning" : "profitPositive";
+    }, viewModel);
+
+    // // Causes the "profitPositive" class to be removed and "profitWarning" class to be added
+    // viewModel.currentProfit(-50);
+
+    setTimeout(() => viewModel.currentProfit(-50), 2000); // Causes the DIV's contents to go red
+    ko.applyBindings(viewModel);
+
+    /*
+    There is also the 'css' binding that will accept a JS object. The key is the
+    class name, and value is boolean to either add or remove it.
+     */
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+{
+  "name": "min-web-requirejs-optimized",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "requirejs": "2.3.6",
+    "jquery": "3.4.1",
+    "knockout": "3.5.0"
+  },
+  "devDependencies": {
+    "grunt": "1.0.4",
+    "grunt-contrib-requirejs": "^1.0.0"
+  }
+}

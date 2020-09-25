@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+
+<!--
+The is-offset-one-quarter modifier will create a margin-left property to push
+the column to right as offset.
+-->
+<hr/>
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <div class="box">Hello</div>
+    </div>
+</div>
+
+<!-- If you use filler and shrink the screen, the filler
+will take up space vertically. Compare above is clean and empty.
+-->
+<hr/>
+<div class="columns">
+    <div class="column"></div>
+    <div class="column is-half">
+        <div class="box">Hello</div>
+    </div>
+    <div class="column"></div>
+</div>

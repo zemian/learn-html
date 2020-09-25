@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button data-bind="click: toggleShow">Toggle Show Component</button>
+    <div data-bind="if: show">
+        <hello></hello>
+    </div>
+</div>
+
+<script>
+    /*
+    You do not have 'afterRender' callback as with 'template' binding with component, however
+    we can subscribe the 'descendantsComplete' event that can serve the same purpose.
+
+    See more on
+    https://knockoutjs.com/documentation/binding-lifecycle-events.html
+     */
+    ko.components.register('hello', {
+        viewModel: {
+            createViewModel: function(params, componentInfo) {
+                let descendantsCompleteSubscription = ko.bindingEvent.subscribe(componentInfo.element, 'descendantsComplete', function (node) {
+                    // You can add custom post-processing logic here as for 'afterRender' would do.
+                    console.log("Component afterRender is ready.");
+                });
+
+                function ViewModel() {
+                    this.dispose = function () {
+                        console.log("Clean up component events");
+                        descendantsCompleteSubscription.dispose();
+                    };
+                }
+
+                return new ViewModel();
+            }
+        },
+        template: 'Hello <span data-bind="text: name"></span>'
+    });
+
+    function ViewModel() {
+        this.show = ko.observable(true);
+        this.toggleShow = function () {
+            this.show(!this.show());
+        };
+    }
+    ko.applyBindings(new ViewModel());
+</script>
+
+</body>
+</html>
+

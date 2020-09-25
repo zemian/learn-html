@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+
+    <style>
+        .demo {
+            margin: 35px;
+        }
+        .table {
+            border-spacing: 0px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .table td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="demo" id="large-table">
+    <table class="table">
+    </table>
+</div>
+
+<script>
+    let table = document.querySelector("#large-table table");
+    let numRows = 1000, numCols = 50;
+    for (let r = 1; r <= numRows; r++) {
+        let row = document.createElement("tr");
+        for (let c = 1; c <= numCols; c++) {
+            let td = document.createElement("td");
+            td.innerText = r + "," + c;
+            row.appendChild(td);
+        }
+        table.appendChild(row);
+    }
+</script>
+
+</body>
+</html>

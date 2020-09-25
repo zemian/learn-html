@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KnockoutJS Todo List</title>
+    <script src="https://unpkg.com/knockout@3.5.0/build/output/knockout-latest.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => main());
+        function main() {
+            var vm = {
+                newTodo: ko.observable(),
+                todoList: ko.observableArray([
+                    { text: "Write A Todo List", done: ko.observable(true) },
+                    { text: "Play a match of Table Tennis", done: ko.observable(false) }
+                ])
+            };
+            vm.addItem = function() {
+                var todoText = vm.newTodo();
+                console.log("Adding item: ", todoText);
+                vm.todoList.push({text: todoText, done: ko.observable(false)});
+            };
+            vm.deleteItem = function(todoItem) {
+                // NOTE: When you are inside foreach, the click handler will
+                // receive the loop item as argument
+                console.log("Removing item: ", todoItem);
+                vm.todoList.remove(todoItem);
+            };
+            
+            console.log("Initialing App: ", vm);
+            ko.applyBindings(vm, document.getElementById("app"));
+        }
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <div>
+        <input data-bind="textInput: newTodo">
+        <button data-bind="click: addItem">Add</button>
+    </div>
+    <ol data-bind="foreach: todoList">
+        <li>
+            <input data-bind="checked: done" type="checkbox">
+            <span data-bind="text: text, style: {'text-decoration': done() ? 'line-through' : 'initial'}"></span>
+            <button data-bind="click: $parent.deleteItem">Delete</button>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
+

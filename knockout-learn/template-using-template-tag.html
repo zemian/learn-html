@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<div id="app">
+    <h2>Participants</h2>
+    Here are the participants:
+    <div data-bind="template: { name: 'person-template', foreach: people }"></div>
+</div>
+
+<template id="person-template">
+    <h3 data-bind="text: name"></h3>
+    <p>Credits: <span data-bind="text: credits"></span></p>
+</template>
+
+<script>
+    /*
+    See more on:
+    https://knockoutjs.com/documentation/template-binding.html
+
+    Besides binding: template {foreach}, you can also use {data} that does not loop
+    the template.
+     */
+    function MyViewModel() {
+        this.people = [
+            { name: 'Franklin', credits: 250 },
+            { name: 'Mario', credits: 5800 },
+            { name: 'Zemian', credits: 9999.99 }
+        ];
+    }
+    ko.applyBindings(new MyViewModel());
+</script>
+
+</body>
+</html>

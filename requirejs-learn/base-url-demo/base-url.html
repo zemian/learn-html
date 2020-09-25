@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/requirejs/require.js"></script>
+    <script>
+
+        //
+        // NOTE that the default "baseUrl" is set to relative to where this .html file is,
+        // and not where any .js files are from.
+        //
+
+        function getAbsPath(path) {
+            var link = document.createElement("a");
+            link.href = path;
+            return link.protocol+"//"+link.host+link.pathname+link.search+link.hash;
+        }
+
+        function getBaseUrl() {
+            return requirejs.s.contexts._.config.baseUrl;
+        }
+
+        // Test
+        console.log(`Default baseUrl='${getBaseUrl()}', path=${getAbsPath(require.toUrl(''))}`);
+
+        // Test
+        requirejs.config({
+            baseUrl: "js"
+        });
+        console.log(`Explicitly set baseUrl='${getBaseUrl()}', path=${getAbsPath(require.toUrl(''))}`);
+
+        // Test
+        requirejs.config({
+            baseUrl: "/"
+        });
+        console.log(`Explicitly set baseUrl='${getBaseUrl()}', path=${getAbsPath(require.toUrl(''))}`);
+
+        // Test
+        requirejs.config({
+            baseUrl: "../js"
+        });
+        console.log(`Explicitly set baseUrl='${getBaseUrl()}', path=${getAbsPath(require.toUrl(''))}`);
+    </script>
+</head>
+<body>
+    <h1>RequireJS Demo</h1>
+    <p>Check console output</p>
+
+    <script src="nested-foo/requirejs-config.js"></script>
+    <script>
+        // Test - Set baseUrl from a .js that's out side fo current directory.
+        // Note this proves that RequireJS baseUrl is based on relative to where the HTML is loaded, not
+        // the JS file that contains the config!
+        console.log(`Explicitly set baseUrl from nested-foo/requirejs-config.js, path=${getAbsPath(require.toUrl(''))}`);
+    </script>
+</body>
+</html>

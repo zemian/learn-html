@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p><button data-bind="click: onClick">Click Me</button></p>
+    <div data-bind="if: employee">
+    <p>Employee Name: <span data-bind="text: employee().name"></span></p>
+    <p>Employee Role: <span data-bind="text: employee().role"></span></p>
+    <p>Employee Manager: <span data-bind="text: employee().manager.name"></span></p>
+    </div>
+</div>
+
+<script>
+    /**
+     * NOTE: This test case is testing nested object access with "employee().manager.name"
+     *
+     * Lets purposely initialize the "employee" observable with empty object.
+     * Notice the if binding is not able to guard the view(html) properly.
+     * (You will see error on browser console!)
+     * And if employee property were to have nested object hierarchy then
+     * it will throw error: "Cannot read property 'xxx' of undefined"
+     */
+    function ViewModel() {
+        let self = this;
+        self.employee = ko.observable({});
+        self.onClick = function() {
+            self.employee({
+                "name": "Zemian",
+                "role": "Developer",
+                "manager": {
+                    "name": "Sam",
+                    "role": "Manager"
+                }
+            });
+        };
+    }
+    ko.applyBindings(new ViewModel(), document.getElementById("app"));
+</script>
+
+</body>
+</html>

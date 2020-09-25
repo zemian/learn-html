@@ -1,0 +1,36 @@
+<!--
+Lodash and Underscore are two commonly used JS libraries. They are like
+jQuery, but little lower level and not specific to browser.
+
+As of 08-05-2019, Lodash is more popular than Underscore.
+
+Note: Both libraries expose "_" as global variable, so you may want
+to use "noConflict()" to use another name.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lodash vs Underscore</title>
+</head>
+<body>
+
+<script src="https://unpkg.com/lodash@4.17.15/lodash.js"></script>
+<script>
+    var lodash = _.noConflict();
+</script>
+<script src="https://unpkg.com/underscore@1.9.1/underscore.js"></script>
+<script>
+    var underscore = _.noConflict();
+</script>
+
+<script>
+console.log("lodash: ", lodash);
+lodash.times(3, () => { console.log(lodash.random(1, 100))});
+
+console.log("underscore: ", underscore);
+underscore.times(3, () => { console.log(underscore.random(1, 100))});
+</script>
+
+</body>
+</html>

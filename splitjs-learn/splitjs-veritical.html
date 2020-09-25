@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SplitJS Demo</title>
+    <style>
+        .gutter.gutter-vertical {
+            cursor: ns-resize;
+            background-color: black;
+        }
+        #demo {
+            border: 1px solid black;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo">
+    <div class="split" id="one">
+        <div class="content">ONE</div>
+    </div>
+    <div class="split" id="two">
+        <div class="content">TWO</div>
+    </div>
+</div>
+
+<script src="../resources/splitjs/split.min.js"></script>
+<script>
+    Split(['#one', '#two'], {
+        sizes: [50, 50],
+        gutterSize: 1,
+        direction: 'vertical'
+    });
+</script>
+
+</body>
+</html>

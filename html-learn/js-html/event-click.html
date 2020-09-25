@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+<style>
+    .box {
+        width: 100px; height: 100px; border: 1px solid black;
+        display: inline-block;
+    }
+</style>
+<div id="demo">
+    <h1>Click the Box</h1>
+    <div id="box1" class="box">1</div>
+</div>
+
+<script>
+    document.getElementById("box1").addEventListener('click', function(event) {
+        console.log("click event received: event", event);
+    });
+</script>
+
+</body>
+</html>

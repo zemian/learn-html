@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+    <h3 v-if="flag">Welcome</h3>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            flag: true
+        }
+    });
+</script>
+
+</body>
+</html>

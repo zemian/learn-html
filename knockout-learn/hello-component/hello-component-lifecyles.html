@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button data-bind="click: toggleShowComponent">Toggle Component Display</button>
+    <div data-bind="if: showComponent">
+        <hello-component></hello-component>
+    </div>
+</div>
+
+<template id="hello-component">
+    <div data-bind="text: message"></div>
+</template>
+
+<script>
+    function HelloComponent() {
+        this.message = ko.observable("Hello World Component");
+    }
+    HelloComponent.prototype.koDescendantsComplete = function () {
+        console.log("HelloComponent is connected!");
+    };
+    HelloComponent.prototype.dispose = function () {
+        console.log("HelloComponent is disconnected!");
+    };
+    ko.components.register('hello-component', {
+        viewModel: HelloComponent,
+        template: {element: document.getElementById("hello-component")}
+    });
+
+    function AppViewModel() {
+        this.showComponent = ko.observable(false);
+        this.toggleShowComponent = () => {
+            this.showComponent(!this.showComponent());
+            console.log("Toggle showComponent: " + this.showComponent());
+        };
+    }
+    let app = new AppViewModel();
+    ko.applyBindings(app, document.getElementById("app"));
+</script>
+
+</body>
+</html>

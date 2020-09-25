@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <h1>RequireJS + Knockout Demo</h1>
+    <p data-bind="text: message"></p>
+</div>
+
+<script src="https://unpkg.com/requirejs@2.3.6/bin/r.js"></script>
+<script>
+    requirejs.config({
+        paths: {
+            'jquery': 'https://unpkg.com/jquery@3.4.1/dist/jquery',
+            'knockout': 'https://unpkg.com/knockout@3.5.0/build/output/knockout-latest'
+        }
+    });
+    require(['jquery', 'knockout'], function($, ko){
+        $(function(){
+            let viewModel = {
+                message: ko.observable("Hello World.")
+            };
+            ko.applyBindings(viewModel, $('#demo').get(0));
+        });
+    });
+</script>
+
+</body>
+</html>

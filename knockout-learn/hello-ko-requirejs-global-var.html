@@ -1,0 +1,25 @@
+<div>
+    <span data-bind="text: message"></span>
+</div>
+
+<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+<script>
+    requirejs.config({
+        paths: {
+            'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest'
+        }
+    });
+
+    /*
+    Exposing "app" as global var allow you to modify the model in the Console.
+    */
+    let app;
+    require(['knockout'], function(ko) {
+        app = new function () {
+            this.message = ko.observable("Hello");
+        };
+        ko.applyBindings(app);
+    });
+</script>
+
+

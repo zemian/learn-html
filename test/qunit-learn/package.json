@@ -1,0 +1,11 @@
+{
+  "name": "qunit-learn",
+  "version": "1.0.0",
+  "description": "Exploring qunit testing.",
+  "scripts": {
+    "test": "qunit"
+  },
+  "devDependencies": {
+    "qunit": "^2.9.2"
+  }
+}

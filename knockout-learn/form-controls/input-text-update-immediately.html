@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <table>
+        <tr>
+            <td class="label">Text value (updates immdiately with textInput binding):</td>
+            <td><input data-bind='textInput: stringValue' /></td>
+            <td>Value: <span data-bind="text: stringValue"></span></td>
+        </tr>
+        <tr>
+            <td class="label">Text value (updates on keystroke with value biding):</td>
+            <td><input data-bind='value: stringValue2, valueUpdate: "afterkeydown"' /></td>
+            <td>Value: <span data-bind="text: stringValue2"></span></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    /**
+     * NOTE: The 'textInput' binding has better browser support and update immediately compare to 'value' binding.
+     *
+     * https://knockoutjs.com/documentation/textinput-binding.html
+     */
+    var viewModel = {
+        stringValue : ko.observable("Hello"),
+        stringValue2 : ko.observable("Hello2")
+    };
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<ul data-bind="foreach: mylist">
+    <li><a href="#" data-bind="click: $parent.onClick, text: 'ClickMe' + $data.n"></a></li>
+</ul>
+
+<script>
+    /*
+     * Notice the 'this' is implicitly passed into a foreach click callback contains the $data
+     * item element! Compare this to plain click 'this' which is the viewModel itself.
+     */
+    function ViewModel() {
+        var self = this;
+        self.mylist = [
+            {foo: "bar", n: 1},
+            {foo: "bar", n: 2},
+            {foo: "bar", n: 3}
+        ];
+        self.onClick = function(...params) {
+            console.log("click: params:", params);
+            console.log("click: this:", this);
+        }
+    }
+    ko.applyBindings(new ViewModel);
+</script>
+
+</body>
+</html>
+

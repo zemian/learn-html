@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+    <h3>Welcome</h3>
+    <ul>
+        <li v-for="item in list">
+            {{item.name}} {{item.power}}
+        </li>
+    </ul>
+    <div>
+        Large list
+        <ul>
+            <li v-for="item in largeList">
+                {{item.name}} {{item.power}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            list: [
+                { name: 'Chuck Norris', power: Infinity },
+                { name: 'Bruce Lee', power: 9000 },
+                { name: 'Jackie Chan', power: 7000 },
+                { name: 'Jet Li', power: 8000 }
+            ]
+        },
+        computed: {
+            largeList() {
+                return this.list.filter(item => item.power > 8000);
+            }
+        }
+    });
+
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue' },
+                { text: 'Build something awesome' }
+            ]
+        }
+    })
+</script>
+
+</body>
+</html>

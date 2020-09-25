@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+    <h3>Welcome</h3>
+    <p data-bind="text: message"></p>
+</div>
+<script src="https://unpkg.com/knockout"></script>
+<script>
+    function App () {
+        this.message = ko.observable("Hello World!");
+    }
+    let app = new App();
+    ko.applyBindings(app);
+</script>
+
+</body>
+</html>

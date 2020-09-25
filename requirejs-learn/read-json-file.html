@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script>
+        /*
+        We will use RequireJS to load JS script file. And we will use the
+        RequireJS text plugin to load json file and use it to render a
+        example list. The "examples.json" file can be generated.
+
+        See "generate-examples.js".
+         */
+        require.config({
+            baseUrl: 'js',
+            paths: {
+                'jquery': '../../resources/node_modules/jquery/dist/jquery',
+                'text': '../../resources/node_modules/requirejs-text/text'
+            }
+        });
+        require(['require', 'jquery', 'text!read-json-file-examples.json'], function(require, $, examplesText) {
+            $(function() {
+                var examples = JSON.parse(examplesText);
+                var exampleList = $("#examples");
+                for (var name of examples) {
+                    exampleList.append(`<li><a href="web-html/${name}">web-html/${name}</a></li>`);
+                }
+                exampleList.append(`<li><a href="about.html">about.html</a></li>`);
+                exampleList.append(`<li><a href="readme.md">readme.md</a></li>`);
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Hello HTML/CSS/JavaScript</h1>
+<ul id="examples">
+</ul>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="app.css">
+<div id="app">
+    <div class="app-content">
+        <!--
+        The align-items is for align items in relative to each other in the container!
+
+        You can also do "align-self" on the flex item itself, but you can't do that same for "justify-self".
+        There is no such thing in flexbox. Instead you need to use thing like "margin-left: auto;" instead.
+        -->
+        <div class="app-columns app-bg-1" style="height: 350px; align-items: center;">
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-h1">A1</div>
+            </div>
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-h2">A2</div>
+            </div>
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-v1">A3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content">
+        <p>Without align-items</p>
+        <div class="app-columns app-bg-1" style="height: 350px;">
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-h1">A1</div>
+            </div>
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-h2">A2</div>
+            </div>
+            <div class="app-column-no-grow app-has-border-2">
+                <div class="app-t-box-v1">A3</div>
+            </div>
+        </div>
+    </div>
+</div>

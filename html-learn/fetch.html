@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="app.css">
+<div id="app">
+    <h1>Fetch Text Demo</h1>
+    <pre id="text"></pre>
+
+    <h1>Fetch JSON Demo</h1>
+    <pre id="json"></pre>
+</div>
+
+<script>
+    fetch('').then(resp => resp.text()
+        .then(data=> {
+            console.log("text data", data);
+            document.getElementById("text").innerText = data;
+        }));
+
+    // https://gist.github.com/jasonrudolph/6065289#file-01-trending-repos-md
+    // Query trending github repositories in last 7 days
+    const dt = new Date();
+    dt.setDate(dt.getDate() - 7);
+    const qdt = dt.toISOString().substring(0, 10);
+    // Fetch today's most star projects in GitHub
+    fetch('https://api.github.com/search/repositories?sort=stars&order=desc&q=created:>' + qdt)
+        .then(resp => resp.json().then(data=> {
+            console.log("json data", data);
+            document.getElementById("json").innerText = JSON.stringify(data, null, 2);
+        }));
+
+</script>

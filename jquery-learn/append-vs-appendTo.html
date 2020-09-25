@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<div id="demo">
+</div>
+
+<div id="demo2">
+</div>
+
+<script>
+    // Add to inside of DOM element by select first, then append.
+    $("#demo").append("<p>Hello</p>");
+
+    // Add to inside of DOM element by create the element first, then select.
+    // So note that eg: $("<div></div>") will create new element!
+    $(`<p style="color: tomato;">Hello Again</p>`).appendTo("#demo2");
+</script>
+
+</body>
+</html>

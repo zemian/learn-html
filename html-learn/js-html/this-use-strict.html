@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<script>
+    console.log(this); //returns Window object.
+
+    //or
+
+    (function(){
+        console.log(this); //returns Window object
+    })();
+
+    (function(){
+        "use strict";
+        console.log(this); //will return *undefined*
+    })();
+</script>
+
+</body>
+</html>

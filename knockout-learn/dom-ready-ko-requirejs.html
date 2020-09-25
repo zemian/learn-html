@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+</head>
+<body>
+
+<p data-bind="text: message">HI</p>
+
+<script>
+
+    // == KO should use applyBinding() only after the DOM is ready.
+    window.addEventListener('DOMContentLoaded', function () {
+        require(['knockout', 'hello'], function (ko, app) {
+            ko.applyBindings(app);
+        });
+    });
+
+    // Option1: Here we can use jquery DOM ready method.
+    // NOTE: Due to jquery handle DOM ready in more friendly way, you can use it inside
+    // the require()!
+    /*
+    require(['jquery', 'knockout', 'hello'], function ($, ko, app) {
+        $(function () {
+            ko.applyBindings(app);
+        });
+    });
+    */
+
+    // NOTE: Alternative to NOT use jquery is like this:
+    //       Notice that require() needs to be nested inside onload()!
+    /*
+     window.onload = function () {
+         require(['knockout', 'hello'], function (ko, app) {
+            ko.applyBindings(app);
+         });
+     };
+     */
+
+    // NOTE: You can not place "window.onload" inside require()!
+    // This will not work!
+    /*
+    require(['knockout', 'hello'], function (ko, app) {
+        window.onload = function () {
+           ko.applyBindings(app);
+        };
+    });
+    */
+
+    /*
+    // NOTE: This will also NOT work: use DOMContentLoaded event inside requireJS
+    require(['knockout', 'hello'], function ($, ko, app) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            ko.applyBindings(app);
+        });
+    });
+    */
+
+    // Another method we can activate KO is to use RequireJS 'domReady' plugin.
+    /*
+     require(['knockout', 'domReady'], function (ko) {
+        var viewModel = {
+            helloMessage: ko.observable("Hello World")
+        };
+        ko.applyBindings(viewModel);
+     });
+     */
+
+    /*
+    Another way to activate KO is simply place <script> tag at the end of the
+    document here:
+
+    require(['knockout', 'hello'], function (ko, app) {
+       ko.applyBindings(app);
+    });
+    */
+</script>
+</body>
+</html>
+

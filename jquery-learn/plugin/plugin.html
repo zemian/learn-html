@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="../../resources/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<a href="https://jquery.com/">JQuery</a><br/>
+<a href="https://learn.jquery.com/">Learn JQuery</a><br/>
+<a href="https://learn.jquery.com/plugins/basic-plugin-creation/">Learn JQuery Plugin</a><br/>
+
+<script>
+    /*
+     https://learn.jquery.com/plugins/basic-plugin-creation/
+ 
+     The jQuery object gets methods from the "jQuery.prototype" or "$.fn". This object
+     contains all of the jQuery object methods, and if we want to write our own methods,
+     it will need to contain those as well. So we need to extend "$.fn".
+     */
+    
+    // == Use IIFE to avoid name crash
+    (function( $ ) {
+
+        // $.fn.showLinkLocation = function() {
+        //
+        //     this.filter( "a" ).each(function() {
+        //         var link = $( this );
+        //         link.append( " (" + link.attr( "href" ) + ")" );
+        //     });
+        //
+        //     return this;
+        //
+        // };
+    
+        // This is an optimized version compare to above
+        // == Define a new method to jQuery.fn object.
+        $.fn.showLinkLocation = function() {
+            // "this" is the jQuery of selected object
+            this.filter( "a" ).append(function() {
+                return " (" + this.href + ")";
+            });
+            // We need to return jQuery object for chaining
+            return this;
+        };
+
+    }( jQuery ));
+
+    // Usage example:
+    $( "a" ).showLinkLocation();
+</script>
+
+</body>
+</html>

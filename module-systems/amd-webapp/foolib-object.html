@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/requirejs@latest/require.js"></script>
+    <script>
+        require(['foolib-object'], function (foo){
+            console.log("foo", foo);
+        });
+    </script>
+    <script>
+        // Import many named object, but you need to access it using a module name prefix
+        require(['foolib-objects'], function (foolib){
+            console.log("randomId, foo, Person",
+                foolib.randomId, foolib.foo, foolib.Person);
+        });
+    </script>
+</head>
+<body>
+<h1>See Console Output</h1>
+</body>
+</html>

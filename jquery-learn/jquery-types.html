@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<script>
+    /*
+     https://api.jquery.com/Types/
+     
+     Some jQuery types:
+    
+     jQuery or $
+     A jQuery object contains a collection of Document Object Model (DOM)
+     elements that have been created from an HTML string or selected from a
+     document. Since jQuery methods often use CSS selectors to match elements
+     from a document, the set of elements in a jQuery object is often called a
+     set of "matched elements" or "selected elements".
+ 
+     The jQuery object itself behaves much like an array; it has a length property
+     and the elements in the object can be accessed by their numeric indices [0]
+     to [length-1]. Note that a jQuery object is not actually a Javascript
+     Array object, so it does not have all the methods of a true Array object
+     such as join().
+ 
+     Most frequently, you will use the jQuery() function to create a jQuery object.
+     jQuery() can also be accessed by its familiar single-character alias of $(),
+     unless you have called jQuery.noConflict() to disable this option. Many jQuery
+     methods return the jQuery object itself, so that method calls can be chained:
+ 
+     In API calls that return jQuery, the value returned will be the original
+     jQuery object unless otherwise documented by that API. API methods such as
+     .filter() or .not() modify their incoming set and thus return a new jQuery object.
+     
+     XMLHttpRequest
+     Some of jQuery's Ajax functions return the native XMLHttpRequest (XHR) object,
+     or pass it as an argument to success/error/complete handlers, so that you can
+     do additional processing or monitoring on the request. Note that Ajax functions
+     only return or pass an XHR object when an XHR object is actually used in the
+     request. For example, JSONP requests and cross-domain GET requests use a script
+     element rather than an XHR object.
+ 
+     Although the XHR object is a standard, there are variations in its behavior
+     on different browsers. Refer to the WHATWG site and Mozilla Developer
+     Network for more information.
+     
+     jqXHR
+     As of jQuery 1.5, the $.ajax() method returns the jqXHR object, which is a superset
+     of the XMLHTTPRequest object. For more information, see the jqXHR section
+     of the $.ajax entry
+ 
+     Thenable
+     Any object that has a then method.
+ 
+     Deferred Object
+     As of jQuery 1.5, the Deferred object provides a way to register multiple
+     callbacks into self-managed callback queues, invoke callback queues as
+     appropriate, and relay the success or failure state of any synchronous or
+     asynchronous function.
+ 
+     Promise Object
+     This object provides a subset of the methods of the Deferred object
+     (then, done, fail, always, pipe, progress, state and promise) to prevent
+     users from changing the state of the Deferred.
+ 
+     Callbacks Object
+     A multi-purpose object that provides a powerful way to manage callback
+     lists. It supports adding, removing, firing, and disabling callbacks.
+     The Callbacks object is created and returned by the $.Callbacks function
+     and subsequently returned by most of that function's methods.
+     
+     */
+</script>
+
+</body>
+</html>

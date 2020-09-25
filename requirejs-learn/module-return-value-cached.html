@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+    <script>
+        /**
+         * NOTICED that object returned from module is cached. This means we
+         * can use that as singleton object!
+         */
+        define('myModule', [], () => {
+            console.log("Module is initialized: " + new Date());
+
+            // NOTE: The name of the class is not even matter to user!
+            function SingletonContainer(msg) {
+                console.log("SingletonContainer constructor.");
+                this.message = msg;
+            }
+            return new SingletonContainer("Hello World");
+        });
+
+        // Use it 10 times, and we expect module only initialize once.
+        for (let i = 0; i < 10; i++) {
+            require(['myModule'], function (myModule) {
+                console.log("myModule.message: " + myModule.message);
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>RequireJS Demo</h1>
+<div id="output">OUTPUT</div>
+</body>
+</html>

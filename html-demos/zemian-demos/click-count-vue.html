@@ -1,0 +1,24 @@
+<link href="https://unpkg.com/bulma@0.8.2/css/bulma.css" rel="stylesheet">
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+
+<div id="app" class="container">
+    <div class="tags are-large has-addons">
+        <span class="tag">Count</span>
+        <span class="tag is-primary" v-text="count"></span>
+    </div>
+    <button class="button" @click="onClick">Click</button>
+</div>
+
+<script>
+    let app = new Vue({
+        data: {
+            count: 0
+        },
+        methods: {
+            onClick() {
+                this.count++;
+            }
+        }
+    });
+    app.$mount('#app');
+</script>

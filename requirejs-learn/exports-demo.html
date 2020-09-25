@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+    <script>
+        /**
+         * NOTE: When importing module that uses "exports", you must access the
+         * objects in that namespace with module prefix (eg: 'demo' in this example).
+         * You can't use the objects without prefix qualifier.
+         */
+        require(['exports-demo'], function(demo){
+            console.log("module demo: ", demo);
+            console.log("new demo.ExportsDemoHello:", new demo.ExportsDemoHello("Hi from HTML"));
+            console.log("demo.exportsDemoHello1.getMessage():", demo.exportsDemoHello1.getMessage());
+            console.log("demo.exportsDemoHello2.getMessage():", demo.exportsDemoHello2.getMessage());
+            console.log("demo.hello.message:", demo.hello.message);
+        });
+    </script>
+</head>
+<body>
+<h1>RequireJS Demo</h1>
+<div id="output">OUTPUT</div>
+</body>
+</html>

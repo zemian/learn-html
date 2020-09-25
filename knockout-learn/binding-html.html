@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<div data-bind="html: details"></div>
+
+<script type="text/javascript">
+    var viewModel = {
+        details: ko.observable() // Initially blank
+    };
+    viewModel.details("<em>For further details, view the report <a href='report.html'>here</a>.</em>"); // HTML content appears
+
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
+

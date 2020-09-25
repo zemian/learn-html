@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<h1>The display property</h1>
+
+<div id="demo1">
+    <style>
+        /* Covert block to inline */
+        #demo1 li { display: inline }
+    </style>
+    <h2>display: inline</h2>
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+</div>
+
+<div id="demo2">
+    <style>
+        /* This is default for div anyway */
+        #demo2 > div { display: block }
+    </style>
+    <h2>display: block</h2>
+    <div>
+        Hello
+    </div>
+</div>
+
+<div id="demo3">
+    <style>
+        /* This will render the div element as though it does not exist!
+        If you want hiding only, use "visibility: hidden" instead.
+        */
+        #demo3 > div { display: none }
+    </style>
+    <h2>display: none</h2>
+    <div>
+        Hello Again
+    </div>
+</div>
+
+<div>The End</div>
+
+</body>
+</html>

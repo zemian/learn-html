@@ -1,0 +1,37 @@
+<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+
+<div id="app">
+    <!--
+        https://knockoutjs.com/documentation/selectedOptions-binding.html
+
+        The options is for single select control with following parameters:
+
+        If options is array of string, then both option's label and value are the same.
+            - optionsCaption The default select display label such as "Please Choose One" with value = undefined.
+            - valueAllowUnset Boolean if set to true, allow model value can not be represented in the select.
+                              it will display blank!
+        If options is array of objects, you need the following additional parameters:
+            - optionsText: Object's property to display as option label.
+            - optionsValue: Object's property to use as option value.
+
+        For single select, the selected value is accessed using "value" binding.
+
+        For multi select, the selected value is accessed using "selectedOptions" binding.
+        For multi select, see select-many-options.html
+    -->
+    <p>
+        Select a country:
+        <select data-bind="options: countries,
+                       optionsCaption: 'Choose one...',
+                       value: selectedCountry"></select>
+    </p>
+    <p>Selected value: <span data-bind="text: selectedCountry"></span></p>
+</div>
+
+<script>
+    var viewModel = {
+        countries: ['Japan', 'Bolivia', 'New Zealand', 'Latvia'],
+        selectedCountry: ko.observable('Latvia')
+    };
+    ko.applyBindings(viewModel);
+</script>

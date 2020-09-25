@@ -1,0 +1,17 @@
+{
+  "name": "file-upload-server",
+  "version": "1.0.0",
+  "description": "This is based on https://github.com/richardgirges/express-fileupload/tree/master/example",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-fileupload": "^1.1.4",
+    "serve-index": "^1.9.1"
+  }
+}

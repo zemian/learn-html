@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <hello id="demo1" params="{name: 'World'}"></hello>
+
+    <div id="demo2" data-bind="component: {name: 'hello', params: {name: 'Zemian'}}"></div>
+
+    <!-- demo3 -->
+    <!-- ko component: {name: 'hello', params: {name: 'World2'}} -->
+    <!-- /ko -->
+</div>
+
+<script>
+    ko.components.register('hello', {
+        viewModel: function (params) {
+            console.log("hello: params", params);
+            this.name = params.name;
+        },
+        template: 'Hello <span data-bind="text: name"></span>'
+    });
+    ko.applyBindings({});
+</script>
+
+</body>
+</html>
+

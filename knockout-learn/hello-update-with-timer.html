@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p>INSTRUCTION: Use console to change the <code>viewModel</code>.</p>
+    <pre>Examples: viewModel.message("Hi again");</pre>
+    <p>Message: <span data-bind="text: message">Hi</span></p>
+</div>
+
+<script>
+    function ViewModel() {
+        let self = this;
+        self.message = ko.observable("Hello World");
+    }
+    let viewModel = new ViewModel();
+    window.onload = function() {
+        ko.applyBindings(viewModel, document.getElementById("app"));
+    };
+</script>
+
+</body>
+</html>
+

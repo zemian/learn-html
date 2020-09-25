@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<!--
+This demo will update VM from UI side after an observable is populated.
+-->
+<div id="app">
+    <p data-bind="hidden: myListReady">Will update list in a moment...</p>
+    <div data-bind="if: myListReady">
+        <ul data-bind="foreach: myList">
+            <li data-bind="text: $data, attr: {id: 'item' + $index()}"></li>
+        </ul>
+        <!-- ko using: checkItem('After ul list is rendered') -->
+        <!-- /ko -->
+    </div>
+</div>
+
+<script>
+    var vm = {
+        myList: ko.observableArray(),
+        myListReady: ko.observable(false),
+        checkItem: function(msg) {
+            console.log("checkItem: " + msg);
+            // Get the li item from UI to see if it exists.
+            var item19 = document.getElementById("item19");
+            console.log("checkItem result: item19 = ", item19);
+
+            // Ensure UI will not update anything.
+            return undefined;
+        }
+    };
+
+    // First check
+    vm.checkItem("After vm is ready.");
+
+    ko.applyBindings(vm, document.getElementById("app"));
+
+    vm.checkItem("After binding.");
+
+    // Update myList after a moment
+    setTimeout(() => {
+        for (var i = 0; i < 1000; i++)
+            vm.myList.push("item" + i);
+        vm.myListReady(true);
+    }, 1000);
+</script>
+
+</body>
+</html>
+

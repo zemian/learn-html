@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML/CSS/JavaScript Starter</title>
+    </head>
+    <style>
+        /*
+        In order to make "absolute" position to work, you must becareful to setup
+        the proper parent position div (wrapper container)!
+         */
+        div.relative {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            border: 3px solid #73AD21;
+        }
+
+        div.absolute {
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            height: 100px;
+            border: 3px solid #73AD21;
+        }
+
+        div.absolute2 {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            border: 3px solid tomato;
+        }
+
+        div.static {
+            position: static;
+            width: 400px;
+            height: 200px;
+            border: 3px solid #73AD21;
+        }
+    </style>
+</head>
+<body>
+
+<h2>DEMO absolute position</h2>
+<p>An element with position: absolute; is positioned relative to the nearest
+    positioned ancestor (instead of positioned relative to the viewport, like fixed):</p>
+
+<div class="relative">This div element has position: relative;
+    <div class="absolute">This div element has position: absolute;</div>
+    <div class="absolute2">This div element has position: absolute; without top,right</div>
+</div>
+
+
+<h2>DEMO absolute position: without specifying top,right</h2>
+<p>An element with position: absolute; is positioned relative to the nearest
+    positioned ancestor (instead of positioned relative to the viewport, like fixed):</p>
+
+<div class="relative">
+    <div class="absolute2">This div element has position: absolute; without top,right</div>
+</div>
+
+<!-- Notice this DEMO2 will place the absolute div under the text paragraph, not from
+ the start parent 0,0 position! -->
+<h2>DEMO absolute position: without specifying top,right + TEXT</h2>
+<div class="relative">DEMO2
+    <div class="absolute2">This div element has position: absolute; without top,right</div>
+</div>
+
+
+<!--
+NOTE: The inner <div class="absolute"> will not work if parent is using "position: relative"!
+This is because "absolute" position requires a nearest parent position!
+-->
+<!--<h2>DEMO absolute position: set parent to static.</h2>-->
+<!--<div class="static">-->
+<!--    <div class="absolute">This div element has position: absolute;</div>-->
+<!--</div>-->
+
+</body>
+</html>

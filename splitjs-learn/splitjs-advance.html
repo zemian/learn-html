@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SplitJS Demo</title>
+    <style>
+        .flex {
+            display: flex;
+            flex-direction: row;
+        }
+        .gutter.gutter-horizontal {
+            cursor: ew-resize;
+            background-color: black;
+        }
+        .content {
+            margin: 1em;
+        }
+        #demo {
+            border: 1px solid black;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo" class="flex">
+    <div id="one">
+        <div class="content">ONE</div>
+    </div>
+    <div id="two">
+        <div class="content">TWO</div>
+    </div>
+</div>
+
+<script src="../resources/splitjs/split.min.js"></script>
+<script>
+    Split(['#one', '#two'], {
+        elementStyle: (dimension, size, gutterSize) => ({
+            'flex-basis': `calc(${size}% - ${gutterSize}px)`,
+        }),
+        gutterStyle: (dimension, gutterSize) => ({
+            'flex-basis':  `${gutterSize}px`,
+        }),
+    });
+</script>
+
+</body>
+</html>

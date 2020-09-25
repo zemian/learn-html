@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<p>See console for details</p>
+
+<div id="demo">
+    Hi
+</div>
+<div id="demo2">
+    Hi
+</div>
+
+<script>
+    /*
+     https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText
+
+     innerText - Text as appeared on element. Ignore visual elements.
+     textContent - Actual text inside element. Includes visual elements.
+     */
+    console.log("Replacing demo text.");
+    document.querySelector("#demo").innerText = "Hello World";
+    document.querySelector("#demo2").textContent = "Hello World2";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<ol id="jquery-methods">
+</ol>
+
+<script>
+    // Get a list of jQuery methods, sort it, and then display a link to its API doc.
+    var baseUrl = "https://api.jquery.com/";
+    var list = $("#jquery-methods");
+    Object.keys(jQuery).sort().forEach((name) => {
+        var item = `<li><a href='${baseUrl + name}'>${name}</a></li>`;
+        list.append(item);
+    });
+</script>
+
+</body>
+</html>

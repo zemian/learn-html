@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        /* Each demo space */
+        #demo > div {
+            position: relative;
+            margin: 30px;
+            border: black 1px solid;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo">
+    <div id="demo1">
+        <style>
+            #demo1 .box {
+                width: 180px;
+                height: 180px;
+                font-size: 3em;
+                margin: 10px;
+
+                display: inline-block;
+                background: red;
+                text-align: center; /* center horizontally */
+                line-height: 180px; /* center vertically */
+            }
+        </style>
+        <div class="box">ONE</div>
+        <div class="box">TWO</div>
+        <div class="box">THREE</div>
+    </div>
+
+    <div id="demo2">
+        <!-- https://stackoverflow.com/questions/8865458/how-do-i-vertically-center-text-with-css -->
+        <style>
+            #demo2 div {
+                height: 200px;
+                line-height: 200px;
+                text-align: center;
+                border: 2px dashed #f69c55;
+            }
+            #demo2 span {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: normal;
+            }
+        </style>
+        <div>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Haec et tu ita posuisti, et verba vestra sunt. Non enim iam stirpis bonum quaeret, sed animalis. </span>
+        </div>
+    </div>
+
+    <div id="demo3">
+        <style>
+            #demo3 .container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+        </style>
+        <div class="container">
+            <span>I'm vertically/horizontally centered!</span>
+        </div>
+    </div>
+
+    <div id="demo4">
+        <!-- https://stackoverflow.com/questions/19461521/how-to-center-an-element-horizontally-and-vertically -->
+        <style>
+            #demo4 .container {
+                height: 100%;
+            }
+            #demo4 .container {
+                display: -webkit-flexbox;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+        <div class="container">
+            <span>I'm vertically/horizontally centered!</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

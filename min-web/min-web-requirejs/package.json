@@ -1,0 +1,16 @@
+{
+  "name": "min-web-requirejs",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "grunt copydeps:buildweb"
+  },
+  "dependencies": {
+    "requirejs": "2.3.6",
+    "jquery": "3.4.1",
+    "knockout": "3.5.0"
+  },
+  "devDependencies": {
+    "grunt": "1.0.4",
+    "grunt-contrib-copy": "^1.0.0"
+  }
+}

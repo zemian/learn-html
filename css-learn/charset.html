@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div>
+    <h2>Range: Decimal 0-127. Hex 0000-007F.</h2>
+    <p>Hello</p>
+    <ul>
+        <li>&#x0048;</li>
+        <li>&#x0065;</li>
+        <li>&#x006C;</li>
+        <li>&#x006C;</li>
+        <li>&#x006F;</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Range: Decimal 8592-8703. Hex 2190-21FF.</h2>
+    <p>I will display &larr;</p>
+    <p>I will display &#8592;</p>
+    <p>I will display &#x2190;</p>
+</div>
+
+<div>
+    <h2>Range: Decimal 8704-8959. Hex 2200-22FF.</h2>
+    <p>I will display &sum;</p>
+    <p>I will display &#8721;</p>
+    <p>I will display &#x2211;</p>
+</div>
+
+<div>
+    <h2>Range: Decimal 9472-9599. Hex 2500-257F.</h2>
+    <p>I will display &#9487;</p>
+    <p>I will display &#x250F;</p>
+</div>
+
+<div>
+    <h2>Range: Decimal 9632-9727. Hex 25A0-25FF.</h2>
+    <p>I will display &#9658;</p>
+    <p>I will display &#x25BA;</p>
+</div>
+
+<div>
+    <h2>Range: Decimal 9728-9983. Hex 2600-26FF.</h2>
+    <p>I will display &spades;</p>
+    <p>I will display &#9824;</p>
+    <p>I will display &#x2660;</p>
+</div>
+
+<div>
+    <h2>Range: Decimal 9984-10175. Hex 2700-27BF.</h2>
+    <p>I will display &#9986;</p>
+    <p>I will display &#x2702;</p>
+</div>
+
+<div>
+    <h2>https://home.unicode.org/</h2>
+    <p>&#x1F49B;</p>
+    <p>&#x1F3B2;</p>
+    <p>&#x1F9F8;</p>
+    <p>&#x1F605;</p>
+</div>
+
+<script>
+    /*
+
+    The Difference Between Unicode and UTF-8
+    Unicode is a character set. UTF-8 is encoding.
+    - Unicode is a list of characters with unique decimal numbers (code points). A = 65, B = 66, C = 67, ....
+    - This list of decimal numbers represent the string "hello": 104 101 108 108 111
+    - Encoding is how these numbers are translated into binary numbers to be stored in a computer:
+    - UTF-8 encoding will store "hello" like this (binary): 01101000 01100101 01101100 01101100  01101111
+
+    What is Unicode
+    The Unicode Consortium develops the Unicode Standard. Their goal is to replace the existing
+    character sets with its standard Unicode Transformation Format (UTF).
+
+    Unicode can be implemented by different character sets.
+    The most commonly used encodings are UTF-8 and UTF-16.
+
+    The first 128 characters of Unicode (which correspond one-to-one with ASCII) are encoded using
+    a single octet with the same binary value as ASCII, making valid ASCII text valid UTF-8-encoded
+    Unicode as well.
+
+    The default character encoding in HTML-5 is UTF-8.
+
+    https://www.w3schools.com/charsets/ref_html_utf8.asp
+
+    https://home.unicode.org/
+     */
+    console.log("document.characterSet", document.characterSet);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<input id="check1" type="checkbox" checked="checked">
+<label for="check1">Check me</label>
+<p></p>
+
+<script>
+    /*
+    NOTE: The change event is sent to an element when its value changes. This event
+    is limited to <input> elements, <textarea> boxes and <select> elements. For select
+    boxes, checkboxes, and radio buttons, the event is fired immediately when the user
+    makes a selection with the mouse, but for the other element types the event is
+    deferred until the element loses focus.
+
+    See
+    - https://api.jquery.com/attr/
+    - https://api.jquery.com/prop/
+     */
+    $( "input" )
+        .change(function() {
+            var $input = $( this );
+            $( "p" ).html( ".attr( 'checked' ): <b>" + $input.attr( "checked" ) + "</b><br>" +
+                ".prop( 'checked' ): <b>" + $input.prop( "checked" ) + "</b><br>" +
+                ".is( ':checked' ): <b>" + $input.is( ":checked" ) + "</b>" );
+        })
+        .change();
+</script>
+
+</body>
+</html>

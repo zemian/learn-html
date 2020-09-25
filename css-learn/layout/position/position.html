@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
+https://learnlayout.com/position.html
+
+Setting "position: static" is same as NOT setting anything. It also means then
+is "element not positioned". Any other "position" values will be "positioned element"
+
+Recommended learning order:
+    position: static;
+    position: relative;
+    position: absolute;
+    position: fixed;
+    position: sticky;
+
+NOTE: In order for a element to work with these position, it's often that it
+need another parent element with position set as well. These parents usually
+called "wrapper" containers.
+-->
+<html>
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML/CSS/JavaScript Starter</title>
+    </head>
+    <style>
+        .wrapper {
+            border: 1px solid tomato;
+            width: 300px;
+            height: 100px;
+        }
+        .demo {
+            border: 1px solid green;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body style="margin: 50px;">
+
+<h1>position: static;</h1>
+
+<p>An element with "position: static;" is not positioned in any special way; it is
+    always positioned according to the normal flow of the page:</p>
+
+<h2>Demo1: static position</h2>
+<div id="demo1">
+    <div class="wrapper">
+        <!-- position static will not use left, top, right and bottom properties! -->
+        <div class="demo demo1" style="position: static;">
+            This div element has "position: static;"
+        </div>
+    </div>
+</div>
+
+<h2>Demo2: without explicit set static position</h2>
+<div id="demo2">
+    <div class="wrapper">
+        <div class="demo demo1" style="border: 1px solid darkgreen;">
+            This div element has "position: static;" implicitly
+        </div>
+    </div>
+</div>
+
+<h2>Demo3: static position within static</h2>
+<div id="demo3">
+    <div class="wrapper">
+        <div class="demo demo3" style="border: 1px solid blue; position: static;">
+            outter static position.
+            <div class="demo demo3" style="border: 1px solid darkblue; position: static;">
+                This div element has "position: static;" and it's inside another div  with
+                "position: static;".
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Demo4: static position without set width/height</h2>
+<div id="demo4">
+    <div class="demo4" style="border: 1px solid maroon; position: static;">
+        No width or height is set.
+    </div>
+</div>
+
+</body>
+</html>

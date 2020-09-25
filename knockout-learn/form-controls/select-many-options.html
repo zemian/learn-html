@@ -1,0 +1,33 @@
+<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+
+<form data-bind="submit: addItem">
+    New item:
+    <input data-bind='value: itemToAdd, valueUpdate: "afterkeydown"' />
+    <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+    <p>Your items:</p>
+    <select multiple
+            width="50" size="10" style="width: 300px;"
+            data-bind="options: items, selectedOptions: selectedItems"></select>
+
+    <h1>Selected Values</h1>
+    <ul data-bind="foreach: selectedItems">
+        <li data-bind="text: $data"></li>
+    </ul>
+</form>
+
+<script>
+    // https://knockoutjs.com/examples/simpleList.html
+    var SimpleListModel = function(items) {
+        this.items = ko.observableArray(items);
+        this.selectedItems = ko.observableArray();
+        this.itemToAdd = ko.observable("");
+        this.addItem = function() {
+            if (this.itemToAdd() != "") {
+                this.items.push(this.itemToAdd()); // Adds the item. Writing to the "items" observableArray causes any associated UI to update.
+                this.itemToAdd(""); // Clears the text box, because it's bound to the "itemToAdd" observable
+            }
+        }.bind(this);  // Ensure that "this" is always this view model
+    };
+
+    ko.applyBindings(new SimpleListModel(["Alpha", "Beta", "Gamma"]));
+</script>

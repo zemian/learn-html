@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <hello-nested-content>
+        <h2>Nested Content DEMO</h2>
+        <p>Hello</p>
+    </hello-nested-content>
+</div>
+
+<script>
+    ko.components.register('hello-nested-content', {
+        viewModel: {
+            createViewModel: function (params, componentInfo) {
+                console.log("hello-nested-content: params, componentInfo", params, componentInfo);
+                return {
+                    // componentInfo.templateNodes is the nested content DOM Nodes!
+                    templateNodes: componentInfo.templateNodes
+                };
+            }
+        },
+        template: '<div data-bind="template: {nodes: templateNodes}"></div>'
+    });
+    ko.applyBindings({});
+</script>
+
+</body>
+</html>
+

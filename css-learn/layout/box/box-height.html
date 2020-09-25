@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+<!--
+The height property sets the height of an element.
+
+The height of an element does not include padding, borders, or margins!
+
+If height: auto; the element will automatically adjust its height to allow its content to be displayed correctly.
+-->
+<!-- Default height is just height of the content, while
+ default width is 100% -->
+<h1>Default width and height</h1>
+<div style="width: 300px; height: 300px; border: 1px solid green;">
+    <div style="border: 1px solid black;">
+        Hello
+    </div>
+</div>
+
+<h1>height: 100%;</h1>
+<div style="width: 300px; height: 300px; border: 1px solid green;">
+    <div style="height: 100%; border: 1px solid black;">
+        Hello
+    </div>
+</div>
+
+<h1>min-height: 100%;</h1>
+<div style="width: 300px; height: 300px; border: 1px solid green;">
+    <div style="min-height: 100%; border: 1px solid black;">
+        Hello
+    </div>
+</div>
+
+<h1>min-height: 100%; No wrapper</h1>
+<div style="min-height: 100%; border: 1px solid black;">
+    Hello
+</div>
+
+</body>
+</html>

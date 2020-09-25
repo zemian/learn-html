@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ES5",
+    "module": "ES6", /* ES6 is needed when target is ES5 or lower. */
+    "sourceMap": false,
+    "paths": {
+      "*" : ["*"]
+    }
+  },
+  "include": [
+    "**/*"
+  ]
+}

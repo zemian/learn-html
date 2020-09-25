@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<script>
+    /*
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+
+    A function's this keyword behaves a little differently in JavaScript compared to other
+    languages. It also has some differences between strict mode and non-strict mode.
+
+    In most cases, the value of this is determined by how a function is called (runtime binding).
+    It can't be set by assignment during execution, and it may be different each time the function
+    is called. ES5 introduced the bind() method to set the value of a function's this regardless
+    of how it's called, and ES2015 introduced arrow functions which don't provide their own this
+    binding (it retains the this value of the enclosing lexical context).
+
+    'this' - A property of an execution context (global, function or eval) that, in non–strict mode,
+    is always a reference to an object and in strict mode can be any value.
+     */
+
+    // == Global context
+    this.objId = Math.random().toString(16);
+    console.log("Global this.objId", this.objId);
+    console.log("Global window.objId", window.objId);
+
+    // == Inside a function, the value of this depends on how the function is called.
+
+    // Example1:
+    //   Since the following code is not in strict mode, and because the value of this is not
+    //   set by the call, this will default to the global object, which is window in a browser.
+    function f1() {
+        return this;
+    }
+
+    // In a browser:
+    console.log("f1() === window", f1() === window); // true
+    console.log("f1() === globalThis", f1() === globalThis); // true
+
+    // In Node:
+    //f1() === global; // true
+
+    // Example2:
+    // In strict mode, however, if the value of this is not set when entering an execution context,
+    // it remains as undefined, as shown in the following example:
+    function f2() {
+        'use strict'; // see strict mode
+        return this;
+    }
+    console.log("f2() === undefined", f2() === undefined); // true
+
+    // Example3:
+    //  To set the value of this to a particular value when calling a function,
+    //  use call(), or apply() as in the following examples.
+
+    // An object can be passed as the first argument to call or apply and this will be bound to it.
+    let obj = {a: 'Custom'};
+
+    // This property is set on the global object
+    let a = 'Global';
+
+    function whatsThis() {
+        return this.a;  // The value of this is dependent on how the function is called
+    }
+
+    console.log("whatsThis()", whatsThis());          // 'Global'
+    console.log("whatsThis.call(obj)", whatsThis.call(obj));  // 'Custom'
+    console.log("whatsThis.apply(obj)", whatsThis.apply(obj)); // 'Custom'
+
+    // NOTE: The difference between call() vs apply() is that the later will take arguments
+    // as single array parameter.
+
+    // Example4:
+    //   ECMAScript 5 introduced Function.prototype.bind(). Calling f.bind(someObject) creates a
+    //   new function with the same body and scope as f, but where this occurs in the original
+    //   function, in the new function it is permanently bound to the first argument of bind,
+    //   regardless of how the function is being used.
+    function f() {
+        return this.a;
+    }
+
+    let g = f.bind({a: 'azerty'});
+    console.log(g()); // azerty
+
+    let h = g.bind({a: 'yoo'}); // bind only works once!
+    console.log(h()); // azerty
+
+    let o = {a: 37, f: f, g: g, h: h};
+    console.log(o.a, o.f(), o.g(), o.h()); // 37,37, azerty, azerty
+
+    // == Arrow Function
+    // In arrow functions, this retains the value of the enclosing lexical context's this.
+    // In global code, it will be set to the global object:
+    let globalObject = this;
+    let foo = (() => this);
+    console.log("foo() === globalObject", foo() === globalObject); // true
+
+    // Arrow functions created inside other functions: their this remains that of the
+    // enclosing lexical context.
+    function outfun () {
+        this.objId = Math.random().toString(16);
+        console.log("outfun: this.objId", this.objId);
+        this.innerfunc = () => {
+            console.log("innerfunc: this.objId", this.objId);
+        };
+        innerfunc();
+    }
+    outfun();
+
+    // == Object Function
+    // When a function is called as a method of an object, its this is set to the object the
+    // method is called on.
+    let o = {
+        prop: 37,
+        f: function() {
+            return this.prop;
+        }
+    };
+
+    console.log("o.f()", o.f()); // 37
+
+    // Same if we attach function later
+    let o = {prop: 37};
+
+    function independent() {
+        return this.prop;
+    }
+
+    o.f = independent;
+
+    console.log("attach function later: o.f()", o.f()); // 37
+
+    // If we change object, the independent 'this' will also change!
+    o.b = {g: independent, prop: 42};
+    console.log("Changing object with independent function: o.b.g()", o.b.g()); // 42
+
+    // == Constructor function
+    // When a function is used as a constructor (with the new keyword), its this is bound
+    // to the new object being constructed.
+    function C() {
+        this.a = 37;
+    }
+
+    let o = new C();
+    console.log("Constructor function: o.a". o.a); // 37
+
+    // == Event handler
+    // When a function is used as an event handler, its this is set to the element
+    // the event fired from (some browsers do not follow this convention for listeners
+    // added dynamically with methods other than addEventListener()).
+    // When called as a listener, turns the related element blue
+    function bluify(e) {
+        // Always true
+        console.log("event this === e.currentTarget", this === e.currentTarget);
+        // true when currentTarget and target are the same object
+        console.log("event this === e.target", this === e.target);
+
+        console.log("Updating element: ", this);
+        this.style.backgroundColor = '#A5D9F3';
+    }
+</script>
+
+</body>
+</html>

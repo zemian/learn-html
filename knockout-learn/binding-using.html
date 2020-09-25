@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<!--
+The with and using bindings create a new binding context, so that descendant
+elements are bound in the context of a specified object.
+
+These bindings differ in how they deal with a value of null or undefined:
+
+For the with binding, descendant elements will not be bound at all, but will instead be removed from the document.
+For the using binding, it is generally incorrect to supply a null or undefined value since it will try to use that value as the context for descendant elements.
+-->
+
+<p>A message should appear after 3 seconds:</p>
+
+<p data-bind="text: helloMessage">Hi</p>
+
+<!--
+NOTE: This demo will give error!
+
+Note that we can't use helloMessage properties such as 'greeting' or 'name'
+with the "using" binding during initial construction of view, since they
+are not defined yet. To resolve this, you need to use "with" binding, or
+you need to use "if" binding to guard it first.
+-->
+<div data-bind="using: helloMessage">
+    <p data-bind="text: greeting + ' ' + name">Hi2</p>
+</div>
+
+
+<script>
+    // NOTE: The "using" binding is only available in KO 3.5.0+
+    var vm = {
+        helloMessage: ko.observable()
+    };
+    ko.applyBindings(vm);
+
+    console.log("Init value of helloMessage: ", vm.helloMessage());
+
+    // Change value by timer
+    console.log("Setup delay timer to update helloMessage");
+    setTimeout(function(){
+        vm.helloMessage({greeting: "Hello", name: "World"});
+        console.log("Later value of helloMessage: ", vm.helloMessage());
+    }, 3000);
+</script>
+
+</body>
+</html>
+

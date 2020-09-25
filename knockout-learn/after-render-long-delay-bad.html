@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<template id="personTemplate">
+    <div data-bind="if: isDataReady">
+        <h1 data-bind="text: name"></h1>
+        <p data-bind="text: title"></p>
+    </div>
+</template>
+<div id="app">
+    <div data-bind='template: { name: "personTemplate",
+                    data: myData,
+                    afterRender: myPostProcessingLogic }'> </div>
+</div>
+
+<script>
+    /*
+    Notice that 'myPostProcessingLogic' will be called as soon as DOM is rendered even
+    if you have 'if' binding inside!
+     */
+    function ViewModel() {
+        this.myData = {
+            name: "Zemian",
+            title: "Developer",
+            isDataReady:  ko.observable(false)
+        };
+    }
+    ViewModel.prototype.myPostProcessingLogic = function (params) {
+        console.log("DOM is ready. params", params);
+    };
+    let vm = new ViewModel();
+    ko.applyBindings(vm, document.getElementById("app"));
+
+    console.log("Will update data ready in 3 seconds...");
+    setTimeout(function () {
+        vm.myData.isDataReady(true);
+        console.log("Data is updated ready.");
+    }, 3000);
+</script>
+
+</body>
+</html>
+

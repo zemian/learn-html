@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo1">
+    <h1>Using Checkbox (Boolean)</h1>
+    <input type="checkbox" data-bind="checked: toggleVal"> Toggle
+    <p data-bind="text: 'Value: ' + toggleVal()"></p>
+</div>
+
+<div id="demo2">
+    <h1>Using Checkbox (ON/undefined)</h1>
+    <input type="checkbox" data-bind="checked: toggleVal, checkedValue: 'ON'"> Toggle
+    <p data-bind="text: 'Value: ' + toggleVal()"></p>
+</div>
+
+<div id="demo3">
+    <h1>Using Radio Buttons (ON/OFF)</h1>
+    <input type="radio" name="toggle" value="ON" data-bind="checked: toggleVal"> ON
+    <input type="radio" name="toggle" value="OFF" data-bind="checked: toggleVal"> OFF
+    <p data-bind="text: 'Value: ' + toggleVal()"></p>
+</div>
+
+<!-- https://www.w3schools.com/howto/howto_css_switch.asp -->
+<div id="demo4">
+    <h1>Rectangular switch</h1>
+    <label class="switch">
+        <input type="checkbox" data-bind="checked: toggleVal">
+        <span class="slider"></span>
+    </label>
+    <p data-bind="text: 'Value: ' + toggleVal()"></p>
+</div>
+
+<div id="demo5">
+    <h1>Rounded switch </h1>
+    <label class="switch">
+        <input type="checkbox" data-bind="checked: toggleVal">
+        <span class="slider round"></span>
+    </label>
+    <p data-bind="text: 'Value: ' + toggleVal()"></p>
+</div>
+
+<script>
+    function VM() {
+        this.toggleVal = ko.observable(true)
+    }
+    ko.applyBindings(new VM(), document.getElementById("demo1"));
+
+    var demo2 = {
+        toggleVal: ko.observable("ON")
+    };
+    ko.applyBindings(demo2, document.getElementById("demo2"));
+
+    var demo3 = {
+        toggleVal: ko.observable("ON")
+    };
+    ko.applyBindings(demo3, document.getElementById("demo3"));
+
+    ko.applyBindings(new VM(), document.getElementById("demo4"));
+    ko.applyBindings(new VM(), document.getElementById("demo5"));
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<div id="app" class="app appClass">
+    <span id="msg" class="textClass">Hello</span>
+</div>
+
+<script>
+    /*
+    The .prop() method gets the property value for only the first element in the matched set.
+    The .attr() method gets the attribute value for only the first element in the matched set.
+
+    Attributes vs. Properties
+
+The difference between attributes and properties can be important in specific situations.
+Before jQuery 1.6, the .attr() method sometimes took property values into account when retrieving
+some attributes, which could cause inconsistent behavior. As of jQuery 1.6, the .prop() method
+provides a way to explicitly retrieve property values, while .attr() retrieves attributes.
+
+For example, selectedIndex, tagName, nodeName, nodeType, ownerDocument, defaultChecked, and
+defaultSelected should be retrieved and set with the .prop() method. Prior to jQuery 1.6, these
+properties were retrievable with the .attr() method, but this was not within the scope of attr.
+These do not have corresponding attributes and are only properties.
+     */
+    console.log('$("#app").prop("class")', $("#app").prop("class"));  // app appClass
+    console.log('$("#app").attr("class")', $("#app").attr("class"));  // app appClass
+    console.log('$("#app").prop("nodeName")', $("#app").prop("nodeName")); // DIV
+    console.log('$("#app").attr("nodeName")', $("#app").attr("nodeName")); // undefined
+</script>
+
+</body>
+</html>

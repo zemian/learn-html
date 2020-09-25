@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="myform">
+    <div>
+        <label for="choose">Would you prefer a banana or a cherry?</label>
+        <input type="text" id="choose" name="i_like" value="cherry">
+    </div>
+    <div>
+        <label for="number">How many would you like?</label>
+        <input type="number" id="number" name="amount" value="1">
+    </div>
+    <div>
+        <button onclick="return onSubmit();" name="mybutton">Submit</button>
+    </div>
+</form>
+
+<script>
+function onSubmit(){
+    // Get form input values
+    var form = document.getElementById("myform");
+    var elements = form.elements;
+    for (var i = 0; i < elements.length; i++) {
+        var elem = elements[i];
+        console.log(elem.name + ": " + elem.val + ", type=" + elem.type);
+    }
+
+    // return false to prevent form submission
+    return false;
+}
+</script>
+
+</body>
+</html>

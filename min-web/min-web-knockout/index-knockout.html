@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Web</title>
+    <!-- Knockout and JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+
+    <script>
+        var viewModel = {
+            helloMessage: ko.observable("Hello World")
+        };
+
+        $(function() {
+            ko.applyBindings(viewModel);
+        });
+    </script>
+</head>
+<body>
+
+<div id="demo">
+    <p data-bind="text: helloMessage">Hi</p>
+</div>
+
+</body>
+</html>

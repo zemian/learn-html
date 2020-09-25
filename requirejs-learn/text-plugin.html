@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+    <script>
+        // Text plugin load files relative to the "baseUrl" path.
+        require(
+            ['text!text-plugin-example.html', 'css!text-plugin-example.css', 'text!../hello.html'],
+            function(html, css, helloHtml){
+                console.log("text-plugin-example.html=");
+                console.log(html);
+                console.log("text-plugin-example.css=");
+                console.log(css);
+                console.log("../hello.html");
+                console.log(helloHtml);
+            }
+        );
+    </script>
+</head>
+<body>
+<h1>RequireJS Demo</h1>
+<p>Check console output</p>
+</body>
+</html>

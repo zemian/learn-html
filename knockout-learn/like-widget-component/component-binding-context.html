@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<template id="my-template">
+    <div class="like-or-dislike" data-bind="visible: !chosenValue()">
+        <button data-bind="click: like">Like it</button>
+        <button data-bind="click: dislike">Dislike it</button>
+    </div>
+    <div class="result" data-bind="visible: chosenValue">
+        You <strong data-bind="text: chosenValue"></strong> it
+    </div>
+
+    <h2>Component: Binding Context Variables</h2>
+    <ul>
+        <!--
+        $parents,$root,ko,_subscribable,$rawData,$data,_ancestorBindingInfo,$parentContext,$parent,$component,$componentTemplateNodes
+        -->
+        <li>$context keys: <span data-bind="text: Object.keys($context)"></span></li>
+        <li>$parent: <span data-bind="text: JSON.stringify($context.$parent)"></span></li>
+        <li>$root: <span data-bind="text: JSON.stringify($context.$root)"></span></li>
+        <li>$rawData: <span data-bind="text: JSON.stringify($context.$rawData)"></span></li>
+        <li>$data: <span data-bind="text: JSON.stringify($context.$data)"></span></li>
+        <li>$parent: <span data-bind="text: JSON.stringify($context.$parent)"></span></li>
+        <li>$component: <span data-bind="text: JSON.stringify($context.$component)"></span></li>
+        <li>$componentTemplateNodes: <span data-bind="text: JSON.stringify($context.$componentTemplateNodes)"></span></li>
+
+        <!-- This will produce a "Converting circular structure to JSON" error
+        <li>$parentContext: <span data-bind="text: JSON.stringify($parentContext)"></span></li>
+        -->
+    </ul>
+
+</template>
+
+<p>INSTRUCTION: Use console to change the <code>viewModel</code>.</p>
+
+<div id="app">
+    <p>Widget component:</p>
+    <like-widget params="value: ko.observable(null)"></like-widget>
+
+    <h2>Container Page: Binding Context Variables</h2>
+    <ul>
+        <!--
+        $parents,$root,ko,_subscribable,$rawData,$data,_ancestorBindingInfo,$parentContext,$parent,$component,$componentTemplateNodes
+        -->
+        <li>$context keys: <span data-bind="text: Object.keys($context)"></span></li>
+        <li>$parent: <span data-bind="text: JSON.stringify($context.$parent)"></span></li>
+        <li>$root: <span data-bind="text: JSON.stringify($context.$root)"></span></li>
+        <li>$rawData: <span data-bind="text: JSON.stringify($context.$rawData)"></span></li>
+        <li>$data: <span data-bind="text: JSON.stringify($context.$data)"></span></li>
+        <li>$parent: <span data-bind="text: JSON.stringify($context.$parent)"></span></li>
+        <li>$component: <span data-bind="text: JSON.stringify($context.$component)"></span></li>
+        <li>$componentTemplateNodes: <span data-bind="text: JSON.stringify($context.$componentTemplateNodes)"></span></li>
+
+        <!-- This will produce a "Converting circular structure to JSON" error
+        <li>$parentContext: <span data-bind="text: JSON.stringify($parentContext)"></span></li>
+        -->
+    </ul>
+</div>
+<script>
+    ko.components.register('like-widget', {
+        viewModel: function(params) {
+            // Data: value is either null, 'like', or 'dislike'
+            this.chosenValue = params.value;
+
+            var self = this;
+            self.like = function() { self.chosenValue('like'); };
+            self.dislike = function() { self.chosenValue('dislike'); };
+        },
+        template: { element: 'my-template' }
+    });
+
+    function MyViewModel() {
+    }
+
+    ko.applyBindings(new MyViewModel());
+</script>
+
+</body>
+</html>
+

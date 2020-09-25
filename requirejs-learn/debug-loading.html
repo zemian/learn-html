@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <!--
+    This "debug-requirejs-loading.js" is not quite working!
+    <script src="js/debug-requirejs-loading.js"></script>
+    -->
+    <script src="js/main-config.js"></script>
+    <script>
+        /*
+         The RequireJS has built-in var that shows what modules loaded:
+         "require.s.contexts._.defined"
+         https://stackoverflow.com/questions/11756483/require-js-access-all-loaded-modules
+         */
+        require(['hello', 'mymod', 'domReady'], function(hello, $){
+            var modStr = JSON.stringify(hello);
+            var output = document.querySelector("#output");
+            output.innerHTML = `
+            Module loaded: ${modStr}
+            `;
+        });
+    </script>
+</head>
+<body>
+<h1>RequireJS Demo</h1>
+<div id="output">OUTPUT</div>
+</body>
+</html>

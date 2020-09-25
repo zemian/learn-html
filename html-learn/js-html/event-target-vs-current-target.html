@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <p>foo</p>
+    <p>foo2</p>
+    <p>foo3</p>
+</div>
+
+<script>
+    /*
+     currentTarget always refers to the element to which the event handler has been attached, as opposed to Event.target, which
+     identifies the element on which the event occurred and which may be its direct descendent.
+     */
+    function hide(e){
+        console.log("e.target: ", e.target);
+        console.log("e.currentTarget: ", e.currentTarget);
+
+        // Now hide it.
+        e.currentTarget.style.visibility = 'hidden';
+        // When this function is used as an event handler: this === e.currentTarget
+    }
+
+    var ps = document.getElementsByTagName('p');
+    var useCapture = false;
+    for(var i = 0; i < ps.length; i++){
+        // Console: print the clicked <p> element
+        ps[i].addEventListener('click', hide, useCapture);
+    }
+
+    // NOTE: When listening to body, the target is <p>, but the currentTarget is the <body>
+    // Console: print <body>
+    document.body.addEventListener('click', hide, useCapture);
+
+    // Click around and make paragraphs disappear
+</script>
+
+</body>
+</html>

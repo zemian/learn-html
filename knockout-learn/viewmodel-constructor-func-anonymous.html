@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KnockoutJS Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1>DEMO1</h1>
+    <div>upCase: <span data-bind="text: upCase('foo')"></span></div>
+    <div>Message: <span data-bind="text: message"></span></div>
+    <div>upCaseMessage: <span data-bind="text: upCaseMessage()"></span></div>
+    <div>Link: <a href="#" data-bind="click: handleEvent">Test</a></div>
+    <div>Button: <button data-bind="click: handleEvent">Test</button></div>
+    <div>myList:
+        <ul data-bind="foreach: myList">
+            <li>
+                <span data-bind="text: $data.name"></span>
+                <a href="#" data-bind="click: $parent.handleEventByLoop">Test</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="app2">
+    <h1>DEMO2 - Using anonymous constructor function</h1>
+    dataListLength = <span data-bind="text: dataListLength"></span>
+</div>
+
+<div id="app3">
+    <h1>DEMO3 - Using object literal</h1>
+    dataListLength = <span data-bind="text: dataListLength"></span>
+</div>
+
+<script>
+    // NOTE: Do not forget to use "new" on this anonymous constructor function,
+    // or else your $parent will be "undefined" but other parts still works.
+    // This will lead to very hard to debug problem!
+    var vm = new function() {
+        var self = this;
+        this.message = ko.observable("Hello");
+        this.myList = [{name: 'zemian'}, {name: 'kenny'}, {name: 'lily'}];
+        
+        self.upCase = function(str) {
+            return str.toUpperCase();
+        };
+        self.upCaseMessage = function() {
+            return self.upCase(this.message());
+        };
+        
+        self.handleEvent = function(data, event) {
+            // "this"" is same as data, which is the ViewModelContext
+            console.log("this, data, event, message ", this, data, event, self.message());
+        };
+        
+        self.handleEventByLoop = function(data, event) {
+            console.log("this, data, event, message", this, data, event, self.message());
+        }
+    }();
+    ko.applyBindings(vm, document.getElementById("app"));
+
+    // == VM Model #2 demo
+    var vm2 = new function (){
+        this.dataList = ko.observableArray([1, 2, 3]);
+        this.dataListLength = this.dataList().length;
+    };
+    ko.applyBindings(vm2, document.getElementById("app2"));
+    
+    // == VM Model #3 demo
+    var vm3 = {
+        dataList: ko.observableArray([1, 2, 3]),
+        get dataListLength(){ return this.dataList().length; }
+    };
+    ko.applyBindings(vm3, document.getElementById("app3"));
+</script>
+
+</body>
+</html>

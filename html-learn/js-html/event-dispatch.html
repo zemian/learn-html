@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<style>
+    html body {
+        height: 100%;
+    }
+    #app {
+        border: 1px solid green; height: 100%; width: 400px;
+    }
+    .box-container {
+        border: 1px solid tomato; height: 200px; width: 300px;
+    }
+    .box {
+        border: 1px solid black; height: 100px; width: 100px;
+        display: inline-block;
+    }
+</style>
+<h1>Click the boxes</h1>
+<div id="app">
+    <div id="box-container1" class="box-container">
+        <div id="box1a" class="box"></div>
+        <div id="box1b" class="box"></div>
+    </div>
+    <div id="box-container2" class="box-container">
+        <div id="box2" class="box"></div>
+    </div>
+    <div id="box-container3" class="box-container">
+        <div id="box3" class="box"></div>
+    </div>
+</div>
+
+<script>
+    /*
+
+    EventTarget.dispatchEvent(event)
+
+    The return value is false if event is cancelable and at least one of the event handlers which handled
+    this event called Event.preventDefault(). Otherwise it returns true.
+
+    Unlike "native" events, which are fired by the DOM and invoke event handlers asynchronously
+    via the event loop, dispatchEvent invokes event handlers synchronously. All applicable event
+    handlers will execute and return before the code continues on after the call to dispatchEvent.
+
+     */
+
+    document.getElementById("app").addEventListener("click", function (event) {
+        console.log("App received click", event);
+    });
+
+    var boxContainers = document.getElementsByClassName("box-container");
+    for (var i = 0; i < boxContainers.length; i++) {
+        var box = boxContainers.item(i);
+        box.addEventListener('click', function (event) {
+            console.log("Box Container received click", event);
+        });
+    }
+
+    var boxes = document.getElementsByClassName("box");
+    for (var i = 0; i < boxes.length; i++) {
+        var box = boxes.item(i);
+        box.addEventListener('click', function (event) {
+            console.log("Box received click", event);
+        });
+    }
+</script>
+
+</body>
+</html>

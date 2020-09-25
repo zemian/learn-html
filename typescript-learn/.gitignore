@@ -1,0 +1,7 @@
+# Ignore typescript cached build files
+.tscache/
+*.js
+*.js.map
+
+#We want these .js files
+!amd-examples-js-tests/**/*.js

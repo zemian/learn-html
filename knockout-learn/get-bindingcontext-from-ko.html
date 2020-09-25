@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+<pre>
+    var viewModel = ko.contextFor(document.body).$data;
+    viewModel.helloMessage("Hi again");
+</pre>
+
+<div id="app">
+    <p data-bind="text: helloMessage">Hi</p>
+</div>
+
+<script>
+    ko.applyBindings({
+        helloMessage: ko.observable("Hello World")
+    });
+</script>
+
+</body>
+</html>
+

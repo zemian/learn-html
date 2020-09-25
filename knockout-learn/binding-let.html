@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div data-bind="let: {foo: 'foo-var-override', bar: 'new-var', newMsg: helloMessage}">
+        <ul>
+            <li data-bind="text: foo"></li>
+            <li data-bind="text: bar"></li>
+            <li data-bind="text: newMsg"></li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*
+     The let binding lets you set custom binding context properties that you
+     can then reference in the bindings of all descendant elements.
+
+     NOTE: The let binding will NOT override existing viewModel properties!
+     See "foo" value. However the 'let' binding can access viewModel just fine.
+     */
+    var vm = {
+        foo: ko.observable('foo-var'),
+        helloMessage: "Hi"
+    };
+
+    ko.applyBindings(vm, document.getElementById("app"));
+</script>
+
+</body>
+</html>
+

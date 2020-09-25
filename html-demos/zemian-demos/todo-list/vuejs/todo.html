@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS Todo List</title>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => main());
+        function main() {
+            // Creating new instance of Vue with 'el' will enable the app
+            new Vue({
+                el: "#app",
+                data: {
+                    newTodo: '',
+                    todoList: [
+                        { text: "Write A Todo List", done: true },
+                        { text: "Play a match of Table Tennis", done: false }
+                    ]
+                },
+                methods: {
+                    addItem: function() {
+                        var data = this.$data;
+                        console.log("Adding item: ", data.newTodo);
+                        data.todoList.push({ text: data.newTodo, done: false });
+                    },
+                    deleteItem: function(todo) {
+                        var data = this.$data;
+                        var idx = data.todoList.findIndex(e => e == todo);
+                        console.log("Removing item idx=" + idx + ", text=" + todo.text);
+                        data.todoList.splice(idx, 1);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <div>
+        <input v-model="newTodo">
+        <button v-on:click="addItem">Add</button>
+    </div>
+    <ol>
+        <li v-for="todo in todoList">
+            <input type="checkbox" v-model="todo.done">
+            <span v-bind:style="{'text-decoration': todo.done ? 'line-through' : 'initial'}">{{todo.text}}</span>
+            <button v-on:click="deleteItem(todo)">Delete</button>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>

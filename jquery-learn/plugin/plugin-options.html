@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="../../resources/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <span id="msg">Hello</span>
+</div>
+
+<script>
+    (function ( $ ) {
+        // Add jQuery function with options
+        $.fn.greenify = function( options ) {
+
+            // This is the easiest way to have default options.
+            var settings = $.extend({
+                // These are the defaults.
+                color: "#556b2f",
+                backgroundColor: "green"
+            }, options );
+
+            // Greenify the collection based on the settings variable.
+            return this.css({
+                color: settings.color,
+                backgroundColor: settings.backgroundColor
+            });
+
+        };
+
+    }( jQuery ));
+
+    // Example usage:
+    $( "div" ).greenify({
+        color: "orange"
+    });
+</script>
+
+</body>
+</html>

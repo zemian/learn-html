@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<style>
+    /*
+    https://www.w3schools.com/howto/howto_css_clearfix.asp
+
+    "clearfix" is a common hack to fix a float problem.
+
+    If an element is taller than the element containing it, and it is floated, it will overflow outside of its container.
+
+    Then we can add overflow: auto; to the containing element to fix this problem.
+
+    The overflow:auto clearfix works well as long as you are able to keep control of your margins
+    and padding (else you might see scrollbars). The new, modern clearfix hack however, is safer
+    to use, and it is used for most webpages.
+
+    NOTE: clearfix hack uses 'display: table', and not 'display: block' because:
+    'display: block' can also be used, but it will not prevent collapsed margins.
+    */
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<p>In this example, the image is taller than the element containing it, and it is floated,
+    so it overflows outside of its container:</p>
+<div style="border: 3px solid red;">
+    <img style="float: right;" src="../../../resources/images/pineapple.jpg" alt="Pineapple" width="170" height="170">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum...
+</div>
+
+<p style="clear:right">Add a clearfix class with overflow: auto; to the containing element, to fix this problem:</p>
+<div style="border: 3px solid lightgreen; overflow: auto;">
+    <img style="float: right;" src="../../../resources/images/pineapple.jpg" alt="Pineapple" width="170" height="170">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum...
+</div>
+
+<p style="clear:right">The modern clearfix hack</p>
+<div class="clearfix" style="border: 3px solid green;">
+    <img style="float: right;" src="../../../resources/images/pineapple.jpg" alt="Pineapple" width="170" height="170">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum...
+</div>
+
+</body>
+</html>

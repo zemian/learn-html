@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <style>
+        /*
+            https://www.w3.org/Style/CSS/
+         */
+        p { color: deepskyblue; }
+    </style>
+</head>
+<body>
+
+<p id="testP">Hello World</p>
+<button onclick="onClickChangeColor(this);">ChangeColor</button>
+<button onclick="onClickRemoveColor(this);">RemoveColor</button>
+<script>
+    var colorNum = 99;
+    function onClickChangeColor(event) {
+        console.log("Clicked: ", event);
+        // var color = document.querySelector("#testP").style.cssText;
+        // console.log("Color: ", color);
+        colorNum += 100;
+        var colorHex = colorNum.toString(16).toUpperCase();
+        console.log("Clicked: ", event);
+        document.querySelector("#testP").style.color = "#" + colorHex;
+    }
+    function onClickRemoveColor(event) {
+        console.log("Clicked: ", event);
+
+        // These will not work
+        // document.querySelector("#testP").style.color = null;
+        // document.querySelector("#testP").style.color = "";
+
+        // These will reset values. "initial" is preferred.
+        // document.querySelector("#testP").style.color = "unset";
+        // document.querySelector("#testP").style.color = "initial";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <style>
+        /* Setup background image as single picture fixed and not moving. */
+        body {
+            background-color: #eebb66;
+            background-image: url('https://cdn.pixabay.com/photo/2017/10/31/19/05/web-design-2906159_960_720.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-attachment: fixed;
+            background-position: 0 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <p>See console for details</p>
+</div>
+
+<script>
+    console.log("Replacing text.");
+    document.querySelector("#app").innerText = "Hello World";
+</script>
+
+</body>
+</html>

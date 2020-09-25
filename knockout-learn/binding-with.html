@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<p>A message should appear after 3 seconds:</p>
+
+<p data-bind="text: helloMessage">Hi</p>
+
+<!-- Note that when using "with" binding the children element
+will not even render if 'helloMessage' is undefined! This is unlike the
+"using" binding. -->
+<div data-bind="with: helloMessage">
+    <p data-bind="text: greeting + ' ' + name">Hi2</p>
+</div>
+
+<script>
+    var vm = {
+        helloMessage: ko.observable()
+    };
+    ko.applyBindings(vm);
+
+    console.log("Init value of helloMessage: ", vm.helloMessage());
+
+    // Change value by timer
+    console.log("Setup delay timer to update helloMessage");
+    setTimeout(function(){
+        vm.helloMessage({greeting: "Hello", name: "World"});
+        console.log("Later value of helloMessage: ", vm.helloMessage());
+    }, 3000);
+</script>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/requirejs@latest/require.js"></script>
+    <script>
+        require(['foolib-default'], function (foo){
+            console.log("foo", foo);
+        });
+    </script>
+    <script>
+        require(['foolib-default'], function (foo){
+            // It will have same instance as above!
+            console.log("foo 2", foo);
+        });
+    </script>
+</head>
+<body>
+<h1>See Console Output</h1>
+</body>
+</html>

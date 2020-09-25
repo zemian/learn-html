@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ES6",
+    "module": "CommonJS", /* NodeJS uses CommonJS */
+    "sourceMap": false,
+    "paths": {
+      "*" : ["*"]
+    }
+  },
+  "include": [
+    "**/*"
+  ]
+}

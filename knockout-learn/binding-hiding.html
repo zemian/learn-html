@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div data-bind="visible: shouldShowMessage">
+    You will see this message only when "shouldShowMessage" holds a true value.
+</div>
+
+<script type="text/javascript">
+    var viewModel = {
+        shouldShowMessage: ko.observable(true); // Message initially visible
+    };
+
+    // Auto hide/show
+    function toggleMessage() {
+        console.log("Will toggle message in 3 seconds. Current value: " + viewModel.shouldShowMessage());
+        setTimeout(function() {
+            viewModel.shouldShowMessage(!viewModel.shouldShowMessage());
+            toggleMessage();
+        }, 3000);
+    }
+    toggleMessage();
+
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
+

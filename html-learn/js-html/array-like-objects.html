@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- html headers -->
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<script>
+    console.log("head", document.head);
+    console.log("head.children", document.head.children);
+    console.log("head.childNodes", document.head.childNodes); // "childNodes" will include comment and text nodes
+
+    // Note that you can't access element using brackets with 'document.head.children', but
+    // with getter access method:
+    let collection = document.head.children;
+    for (let i = 0; i < collection.length; i++)
+        console.log("collection.item(i)", collection.item(i));
+
+    // We can convert these objects into array, then we can use brackets access
+    let childrenArray = [].slice.call(document.head.children);
+    console.log("childrenArray", childrenArray);
+    for (let i = 0; i < collection.length; i++)
+        console.log("childrenArray[i]", childrenArray[i]);
+</script>
+
+</body>
+</html>

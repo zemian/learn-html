@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <h1>Click the Box</h1>
+    <div id="box1" style="width: 100px; height: 100px; border: 1px solid black;">
+    </div>
+</div>
+
+<script>
+    // "this" inside a event handler is usually the target Node object.
+    document.getElementById("box1").addEventListener('click', function(event) {
+        console.log("click event received: event, this", event, this);
+        console.log("typeof this", typeof this);
+        console.log("this.constructor.name", this.constructor.name);
+    });
+</script>
+
+</body>
+</html>

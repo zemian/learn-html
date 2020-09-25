@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<h1>Mouseover Demo - See Console</h1>
+<div id="demo" style="width: 100px; height: 100px; background-color: tomato;">
+    <p>Mouseover Me!</p>
+</div>
+
+<script>
+    window.addEventListener('mouseover', function(event) {
+        console.log("mouseover event:", event);
+    });
+
+    /*
+    NOTE: mouseover vs mouseenter:
+     mouseover fires when the pointer moves into the child element as well, while mouseenter
+     fires only when the pointer moves into the bound element.
+     onmousemove : occurs every time the mouse pointer is moved over the div element.
+     onmouseenter : only occurs when the mouse pointer enters the div element.
+
+    Common Event attributes:
+     Event.target - A reference to the target to which the event was originally dispatched.
+        (Event.srcElement non-standard alias to "Event.target")
+     Event.isTrusted - Indicates whether or not the event was initiated by the browser or by script.
+     Event.timeStamp - The time at which the event was created (in milliseconds).
+
+    CustomEvent.detail - Any custom data application pass to this custom event object.
+
+    There are many events to explore:
+     - Event Object Attributes: https://developer.mozilla.org/en-US/docs/Web/API/Event
+     - DOM events: https://www.w3schools.com/jsref/dom_obj_event.asp
+     - Window event attributes (the old style of onxxx): https://www.w3schools.com/tags/ref_eventattributes.asp
+     - Other events: https://developer.mozilla.org/en-US/docs/Web/Events
+     */
+</script>
+
+</body>
+</html>

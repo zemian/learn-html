@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List</title>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', () => main());
+		function main() {
+		    // AddItem handler
+		    document.getElementById("add-item").addEventListener('click', () => {
+		        var todoItem = document.getElementById("todoItem");
+                var li = document.createElement("li");
+                console.log("Adding item: ", todoItem);
+                li.innerHTML = `
+					<input type="checkbox">
+					<span>${todoItem.value}</span>
+					<button>Delete</button>
+                `;
+                li.querySelector("input").addEventListener('click', event => checkOffItem(event));
+                li.querySelector("button").addEventListener('click', event => deleteItem(event));
+                var todoList = document.getElementById("todo-list");
+                todoList.appendChild(li);
+		    });
+      
+		    // Delete Handler
+		    var deleteItems = document.querySelectorAll("#todo-list li button");
+            deleteItems.forEach(li => {
+                li.addEventListener('click', event => deleteItem(event));
+            });
+			function deleteItem(event) {
+                var li = event.target.parentElement;
+                console.log("Removing item: ", li);
+                var todoList = document.getElementById("todo-list");
+                todoList.removeChild(li);
+			}
+			
+			// Checkbox Handler
+            var checkboxItems = document.querySelectorAll("#todo-list li input");
+            checkboxItems.forEach(checkbox => {
+                checkbox.addEventListener('click', event => checkOffItem(event));
+                
+                // Mark off initial todo item if it's checked
+	            if (checkbox.checked) {
+	                var event = new CustomEvent("click");
+	                event.target = checkbox;
+                    checkbox.dispatchEvent(event);
+                }
+            });
+            function checkOffItem(event) {
+                var checkboxItem = event.target;
+                var todoItem = checkboxItem.nextElementSibling;
+                if (checkboxItem.checked)
+                    todoItem.style = 'text-decoration: line-through;';
+                else
+                    todoItem.style = 'text-decoration: initial;';
+            }
+		}
+	</script>
+</head>
+<body>
+
+<div>
+	<input id="todoItem">
+	<button id="add-item">Add</button>
+</div>
+
+<div>
+	<ol id="todo-list">
+		<li>
+			<input type="checkbox" checked>
+			<span>Write A Todo List</span>
+			<button>Delete</button>
+		</li>
+		<li>
+			<input type="checkbox">
+			<span>Play a match of Table Tennis</span>
+			<button>Delete</button>
+		</li>
+	</ol>
+</div>
+
+</body>
+</html>

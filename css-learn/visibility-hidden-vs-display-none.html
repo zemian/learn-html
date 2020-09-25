@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <style>
+        /*
+        https://stackoverflow.com/questions/133051/what-is-the-difference-between-visibilityhidden-and-displaynone/133064
+
+        display:none means that the tag in question will not appear on the page at all (although you can still interact with it through the dom). There will be no space allocated for it between the other tags.
+
+        visibility:hidden means that unlike display:none, the tag is not visible, but space is allocated for it on the page. The tag is rendered, it just isn't seen on the page.
+
+
+        Other common value for display:
+            inline, block, flex, none, initial
+
+        Other common value for visibility:
+            visibility: visible|hidden|collapse|initial|inherit;
+
+            NOTE: collapse is Only for table rows (<tr>), row groups (<tbody>), columns (<col>), column groups (<colgroup>).
+                  If collapse is used on other elements, it renders as "hidden".
+
+
+        Test it:
+
+            document.querySelector("#demo > span").style.display = "inline";
+
+         */
+    </style>
+</head>
+<body>
+
+<h1>CSS Demo</h1>
+<div id="demo">
+    test | <span style="display: none">Appropriate style in this tag</span> | test
+</div>
+<div id="demo2">
+    test2 | <span style="visibility: hidden">Appropriate style in this tag</span> | test2
+</div>
+
+</body>
+</html>

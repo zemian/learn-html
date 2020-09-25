@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Test ?foo=Hello
+    let params = new URLSearchParams(new URL(document.location.href).search);
+    //console.log(params.keys());
+    // for (let k of params.keys())
+    //     console.log(k);
+
+    for (let [k, v] of params.entries())
+        console.log(k, v);
+
+    // console.log(params.get('foo'));
+    // console.log(params.get('_foo'));
+    // console.log(params.get('_ijt'));
+
+    // You can't use [key] syntax!
+    // console.log(params['_ijt']);
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app-6">
+    <div>
+        Two-way binding with v-model:
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+
+    <div>
+        One-way binding:
+        <p>{{ message }}</p>
+        <input :value="message">
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+</script>
+
+</body>
+</html>

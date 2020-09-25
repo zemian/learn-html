@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../resources/node_modules/jquery/dist/jquery.js"></script>
+<!--    <script src="weather-forecast-data.js"></script>-->
+    <script>
+        let weatherForecast;
+        let api = "https://api.weather.gov/gridpoints/MLB/25,68/forecast";
+        $.getJSON(api, function(data){ weatherForecast = data; });
+        $(function(){
+            weatherForecast.properties.periods.slice(0, 5).forEach(function(period) {
+                let dateObj = new Date(period.startTime);
+                let dateString = (dateObj.getMonth()+1) + "-" + dateObj.getDate()  + "-" + dateObj.getFullYear();
+
+                $("tr#name").append(`<td>${period.name}</td>`);
+                $("tr#date").append(`<td>${dateString}</td>`);
+                $("tr#icon").append(`<td><img src="${period.icon}"/></td>`);
+                $("tr#temperature").append(`<td>${period.temperature} &deg; F</td>`);
+                $("tr#windSpeed").append(`<td>Wind: ${period.windSpeed}</td>`);
+                $("tr#shortForecast").append(`<td>${period.shortForecast}</td>`);
+            });
+            //$("#weather tr").attr("wrap='true'").css("width: 100px;");
+        });
+    </script>
+    <table id="weather">
+        <tr id="name">
+        </tr>
+        <tr id="date">
+        </tr>
+        <tr id="temperature">
+        </tr>
+        <tr id="windSpeed">
+        </tr>
+        <tr id="shortForecast">
+        </tr>
+        <tr id="icon">
+        </tr>
+    </table>
+</body>
+</html>

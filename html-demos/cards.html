@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cards</title>
+	<script src="https://unpkg.com/knockout@3.5.0/build/output/knockout-latest.js"></script>
+	
+	<script>
+		var vm = {
+		    cards: [],
+			filePath: '../resources/cards/',
+            fileExt: '.png'
+		};
+		
+		// Populate a deck of cards
+		var suits = ['S', 'H', 'C', 'D'];
+        ['A', 'K', 'Q', 'J'].forEach(i => {
+            suits.forEach(e => vm.cards.push({name: i + e}));
+        });
+		for (var i = 10; i >= 2; i--)
+            suits.forEach(e => vm.cards.push({name: i + e}));
+		
+		// Enable KnockoutJS binding on HTML body
+		document.addEventListener('DOMContentLoaded', () => ko.applyBindings(vm));
+	</script>
+	
+	<style>
+		.card {
+			width: 100px;
+			height: 150px;
+		}
+	</style>
+</head>
+<body>
+
+<div data-bind="foreach: cards">
+	<div>
+		<img data-bind="attr: {
+			src: $parent.filePath + name + $parent.fileExt,
+			class: 'card',
+			alt: name}">
+	</div>
+</div>
+
+</body>
+</html>

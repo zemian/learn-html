@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-UI Learning</title>
+    <link rel="stylesheet" href="../resources/jquery-ui/jquery-ui.min.css">
+
+    <script src="../resources/node_modules/jquery/dist/jquery.js"></script>
+    <script src="../resources/jquery-ui/jquery-ui.min.js"></script>
+</head>
+<body>
+
+<div id="progressbar70">
+</div>
+
+<div id="progressbar-animated">
+</div>
+
+<script>
+    // static progressbar at 70%
+    $( "#progressbar70" ).progressbar({value: 70});
+
+    // progressbar-animated demo
+    var progressVal = 0;
+
+    // Init widget instance
+    var widget = $( "#progressbar-animated" ).progressbar({value: progressVal});
+
+    function update() {
+        progressVal += 5;
+        console.log("progressVal: ", progressVal);
+
+        // Update widget
+        widget.progressbar("value", progressVal);
+
+        if (progressVal < 100) {
+            setTimeout(update, 100);
+        }
+    }
+    update();
+</script>
+
+</body>
+</html>

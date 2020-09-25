@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+    <script>
+        require(['hello', 'domReady'], function(hello){
+            var modStr = JSON.stringify(hello);
+            var output = document.querySelector("#output");
+            output.innerHTML = `
+            Module loaded after DOM is ready: ${modStr}
+            `;
+        });
+    </script>
+</head>
+<body>
+<h1>RequireJS Demo</h1>
+<div id="output">OUTPUT</div>
+</body>
+</html>

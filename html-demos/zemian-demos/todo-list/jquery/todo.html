@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Todo List</title>
+	<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+	
+	<script>
+		$(main); // Invoke main when DOM is ready
+		function main() {
+		    // AddItem handler
+		    $("#add-item").on('click', () => {
+		        var todoItem = $("#todoItem").val();
+                var li = document.createElement("li");
+                console.log("Adding item: ", todoItem);
+                li.innerHTML = `
+					<input type="checkbox">
+					<span>${todoItem}</span>
+					<button>Delete</button>
+                `;
+                $(li).find("input").on('click', event => checkOffItem(event));
+                $(li).find("button").on('click', event => deleteItem(event));
+                $("#todo-list").append(li);
+		    });
+      
+		    // Delete Handler
+		    var deleteItems = $("#todo-list li button");
+            deleteItems.each((index, li) => $(li).on('click', event => deleteItem(event)));
+			function deleteItem(event) {
+                var li = event.target.parentElement;
+                console.log("Removing item: ", li);
+                $(li).remove();
+			}
+			
+			// Checkbox Handler
+            var checkboxItems = $("#todo-list li input");
+            checkboxItems.each((index, checkbox) => {
+                var checkboxJQ = $(checkbox);
+                checkboxJQ.on('click', event => checkOffItem(event));
+
+                // Mark off initial todo item if it's checked
+                if (checkbox.checked) {
+                    // $(checkbox).trigger('click'); // TODO: Why this will not work?
+	                
+                    var event = new CustomEvent("click");
+                    event.target = checkbox;
+                    checkbox.dispatchEvent(event);
+                }
+            });
+            function checkOffItem(event) {
+                var checkboxItem = event.target;
+                var todoItem = checkboxItem.nextElementSibling;
+                if (checkboxItem.checked)
+                    todoItem.style = 'text-decoration: line-through;';
+                else
+                    todoItem.style = 'text-decoration: initial;';
+            }
+		}
+	</script>
+</head>
+<body>
+
+<div>
+	<input id="todoItem">
+	<button id="add-item">Add</button>
+</div>
+
+<div>
+	<ol id="todo-list">
+		<li>
+			<input type="checkbox" checked>
+			<span>Write A Todo List</span>
+			<button>Delete</button>
+		</li>
+		<li>
+			<input type="checkbox">
+			<span>Play a match of Table Tennis</span>
+			<button>Delete</button>
+		</li>
+	</ol>
+</div>
+
+</body>
+</html>

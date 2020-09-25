@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<template id="my-template">
+    <div class="like-or-dislike" data-bind="visible: !chosenValue()">
+        <button data-bind="click: like">Like it</button>
+        <button data-bind="click: dislike">Dislike it</button>
+    </div>
+    <div class="result" data-bind="visible: chosenValue">
+        You <strong data-bind="text: chosenValue"></strong> it
+    </div>
+</template>
+
+<p>INSTRUCTION: Use console to change the <code>viewModel</code>.</p>
+
+<div id="app">
+    <ul data-bind="foreach: products">
+        <li class="product">
+            <strong data-bind="text: name"></strong>
+            <like-widget params="value: userRating"></like-widget>
+        </li>
+    </ul>
+</div>
+
+<script>
+    ko.components.register('like-widget', {
+        viewModel: function(params) {
+            // Data: value is either null, 'like', or 'dislike'
+            this.chosenValue = params.value;
+
+            // NOTE: That the params.value is passing in as an observable object!
+            // See "Product" constructor function.
+            console.log("this.chosenValue =", this.chosenValue);
+
+            var self = this;
+            self.like = function() { self.chosenValue('like'); };
+            self.dislike = function() { self.chosenValue('dislike'); };
+        },
+        template: { element: 'my-template' }
+    });
+
+    function Product(name, rating) {
+        this.name = name;
+        this.userRating = ko.observable(rating || null);
+    }
+
+    function MyViewModel() {
+        this.products = [
+            new Product('Garlic bread'),
+            new Product('Pain au chocolat'),
+            new Product('Seagull spaghetti', 'like') // This one was already 'liked'
+        ];
+    }
+
+    ko.applyBindings(new MyViewModel());
+</script>
+
+</body>
+</html>
+

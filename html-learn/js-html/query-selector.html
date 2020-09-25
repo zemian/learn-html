@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <p>Hello</p>
+    <div class="box">FOO</div>
+    <div class="box fancybox" id="bar" accesskey="bar">BAR</div>
+    <div class="box" accesskey="baz">BAZ</div>
+    <ul>
+        <li><input type="checkbox" checked><span>ONE</span> <a href="#">test</a></li>
+        <li><input type="checkbox"><span>TWO</span> <a href="#">test</a></li>
+        <li><input type="checkbox"><span>THREE</span> <a href="#">test</a></li>
+        <li><input type="checkbox" checked><span>FOUR</span> <a href="#">test</a></li>
+        <li>
+            <ol>
+                <li>ONE</li>
+                <li>TWO</li>
+            </ol>
+        </li>
+    </ul>
+
+    <div id="text-input-demo">
+        <label>Name</label>
+        <input name="name" value="">
+    </div>
+</div>
+
+<script>
+    console.log("== Query Single Node");
+    console.log("getElementById demo: ", document.getElementById("demo"));
+    console.log("querySelector #demo: ", document.querySelector("#demo"));
+
+    console.log("== Query Combinator");
+
+    console.log("=== Query Combinator Descendant"); // Any level of children
+    console.log("querySelector Descendant #demo p: ", document.querySelector("#demo p"));
+    console.log("querySelector Descendant #demo div: ", document.querySelector("#demo div"));
+    console.log("querySelector Descendant #demo li: ", document.querySelector("#demo li"));
+
+    console.log("=== Query Combinator Child"); // Immediate Children
+    console.log("querySelector Child of #demo p: ", document.querySelector("#demo > p"));
+    console.log("querySelector Child of #demo div: ", document.querySelector("#demo > div"));
+    console.log("querySelector Child of #demo li: ", document.querySelector("#demo > li")); /* return null! */
+
+    console.log("=== Query Combinator Adjacent Sibling"); // Immediate adjacent sibling
+    console.log("querySelector Adjacent Sibling #bar + div: ", document.querySelector("#bar + div"));
+    console.log("querySelector Adjacent Sibling #bar + ul: ", document.querySelector("#bar + ul")); /* return null */
+    console.log("querySelector Adjacent Sibling #demo + div: ", document.querySelector("#demo + div")); /* return null */
+    console.log("querySelector Adjacent Sibling #demo + p: ", document.querySelector("#demo + p")); /* return null */
+
+    console.log("=== Query Combinator General Sibling"); // Any adjacent sibling
+    console.log("querySelector General Sibling #bar ~ div: ", document.querySelector("#bar ~ div"));
+    console.log("querySelector General Sibling #bar ~ ul: ", document.querySelector("#bar ~ ul"));
+    console.log("querySelector General Sibling #demo ~ div: ", document.querySelector("#demo ~ div")); /* return null */
+    console.log("querySelector General Sibling #demo ~ p: ", document.querySelector("#demo ~ p")); /* return null */
+
+    console.log("=== Query Combinator Parent");
+    // You can't do this with plain css selector, but only with DOM property
+    console.log("Parent node of '#bar' is: ", document.querySelector("#bar").parentNode);
+
+
+    console.log("== Query Multiple Nodes");
+    console.log("querySelectorAll #demo div: ", document.querySelectorAll("#demo div"));
+    console.log("querySelectorAll #demo li: ", document.querySelectorAll("#demo li"));
+    console.log("querySelectorAll #demo .box: ", document.querySelectorAll("#demo .box"));
+
+
+    console.log("== Query Content");
+    console.log("querySelector #demo p innerText: ", document.querySelector("#demo p").innerText);
+    console.log("querySelector #demo div innerText: ", document.querySelector("#demo div").innerText);
+    console.log("querySelector #demo li innerText: ", document.querySelector("#demo li").innerText);
+    console.log("querySelector #demo li span innerText: ", document.querySelector("#demo li span").innerText);
+    console.log("querySelector #demo li a innerText: ", document.querySelector("#demo li a").innerText);
+
+
+    console.log("== Query Attributes");
+    console.log("querySelector Attributes #demo [accesskey]: ", document.querySelectorAll("#demo [accesskey]"));
+    console.log("querySelector Attributes #demo [accesskey = 'bar']: ", document.querySelectorAll("#demo [accesskey = 'bar']"));
+    console.log("querySelector Attributes #demo [accesskey *= 'ba']: ", document.querySelectorAll("#demo [accesskey *= 'ba']")); /* contains any 'ba' string */
+    console.log("querySelector Attributes #demo [accesskey $= 'ar']: ", document.querySelectorAll("#demo [accesskey $= 'ar']")); /* ends with 'ar' */
+    console.log("querySelector Attributes #demo [accesskey ~= 'bar']: ", document.querySelectorAll("#demo [accesskey ~= 'bar']")); /* contains word 'foo' */
+
+
+    console.log("== Query All");
+    console.log("querySelector All *: ", document.querySelectorAll("*"));
+    console.log("querySelector All *: ", document.querySelectorAll("* [class ~='fancybox']"));
+
+
+    console.log("== Query pseudo-class"); // NOTE: You can't have space between ':'
+    console.log("querySelector pseudo-class #demo li:first-child", document.querySelectorAll("#demo li:first-child"));
+    console.log("querySelector pseudo-class #demo li:nth-child(2)", document.querySelectorAll("#demo li:nth-child(2)")); /* Only the 2nd item */
+    console.log("querySelector pseudo-class #demo li:nth-child(2n)", document.querySelectorAll("#demo li:nth-child(2n)")); /* every other 2n items */
+    console.log("querySelector pseudo-class #demo :checked", document.querySelectorAll("#demo input[type = 'checkbox']:checked"));
+    //console.log("querySelector pseudo-class #text-input-demo input:focus", document.querySelectorAll("#text-input-demo input:focus"));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- hello world example -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <p>See console for details</p>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+    <script>
+        // NOTE: You do not use '#' prefix!
+        console.log(`document.getElementById("demo")`);
+        console.log(document.getElementById("demo"));
+
+        console.log(`document.getElementsByTagName("div")`);
+        console.log(document.getElementsByTagName("div"));
+
+        // NOTE: The querySelector returns first match only! We must use '#' prefix!
+        console.log(`document.querySelector("#demo")`);
+        console.log(document.querySelector("#demo"));
+
+        console.log("'#demo p'", document.querySelector("#demo p"));
+        console.log("'#demo li'", document.querySelector("#demo li"));
+        console.log("querySelectorAll '#demo li'", document.querySelectorAll("#demo li"));
+
+        console.log(`document.querySelector("div")`);
+        console.log(document.querySelector("div"));
+
+        console.log(`document.querySelector("li")`);
+        console.log(document.querySelector("li"));
+
+        console.log(`document.querySelector("table")`);
+        console.log(document.querySelector("table"));
+    </script>
+</div>
+
+</body>
+</html>

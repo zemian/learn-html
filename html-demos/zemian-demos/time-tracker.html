@@ -1,0 +1,82 @@
+<div id="app">
+    <div class="section">
+        <h1 class="title">Activities Time Tracker</h1>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input class="input" data-bind="textInput: newAction" placeholder="Enter Activity">
+            </div>
+            <div class="control">
+                <button class="button is-primary" data-bind="click: onStart">Start</button>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <table class="table is-fullwidth" data-bind="visible: activities().length > 0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th class="has-fixed-width">Start Time</th>
+                    <th class="has-fixed-width">Stop Time</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: activities">
+                <tr>
+                    <td data-bind="text: $index() + 1"></td>
+                    <td data-bind="text: action"></td>
+                    <td data-bind="text: startTime.toLocaleString()"></td>
+                    <td>
+                        <!-- Note that KO does not have if/else binding. Also the Falsy condition
+                        will still render an extra "div" element!
+
+                        User needs to be aware not to bind to "td", or the False will still
+                        generate an extra "td" that will mess up your HTML table structure!
+                        -->
+                        <div data-bind="if: stopTime">
+                            <span data-bind="text: stopTime().toLocaleString()"></span>
+                        </div>
+                        <div data-bind="ifnot: stopTime">
+                            <button class="button is-danger" data-bind="click: $parent.onStop">Stop</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<link href="https://unpkg.com/bulma@0.8.2/css/bulma.css" rel="stylesheet">
+<style>
+    .has-fixed-width {
+        width: 200px;
+    }
+</style>
+<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+
+<script>
+    /**
+     * Note KO does not allow "if" and "text" bindings to be used together!
+     * Because of this, we require to use virtual element to render the stopTime text
+     * above. Else, we need another container element to bind the text.
+     *
+     * Compare this to VueJS, they have a much cleaner syntax!
+     */
+    let app = new function () {
+        this.activities = ko.observableArray([]);
+        this.newAction = ko.observable();
+
+        this.onStart = () => {
+            let entry = {
+                action: this.newAction(),
+                startTime: new Date(),
+                stopTime: ko.observable()
+            }
+            this.activities.push(entry);
+            this.newAction('');
+        };
+        this.onStop = (data) => {
+            data.stopTime(new Date());
+        };
+    };
+    ko.applyBindings(app);
+</script>

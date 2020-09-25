@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery Learning</title>
+	<script src="https://unpkg.com/jquery"></script>
+	<script>
+		/*
+		 jQuery offers several ways to attach a function that will run when the
+		 DOM is ready. All of the following syntaxes are equivalent:
+		 
+		 $( handler )
+		 $( document ).ready( handler )
+		 $( "document" ).ready( handler )
+		 $( "img" ).ready( handler )
+		 $().ready( handler )
+		 
+		 As of jQuery 3.0, only the first syntax is recommended; the other
+		 syntaxes still work but are deprecated.
+		 */
+        $(function () {
+            $("ol").append("<li>Document is ready!</li>");
+        });
+        
+        // == Using promise style with "$.ready"
+        $.when( $.ready ).then(function() {
+            $("ol").append("<li>Document is ready - with Promise method.</li>");
+        });
+
+        // == We can get data file ready and wait for DOM ready together before action
+        $.when(
+            $.getJSON( "ajax/test.json" ),
+            $.ready
+        ).then(function( data ) {
+            console.log("data", data);
+            $("ol").append("<li>Document is ready - with json data file.</li>");
+        });
+	</script>
+</head>
+<body>
+
+<ol></ol>
+
+</body>
+</html>

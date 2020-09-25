@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/requirejs@latest/require.js"></script>
+    <script>
+        // Note that you need to import the module first, then access each
+        // of the named exports with dot syntax.
+        require(['foolib-named'], function (foolib){
+            console.log("foolib", foolib);
+            console.log("foolib.randomId()", foolib.randomId());
+            console.log("foolib.foo", foolib.foo);
+            console.log("foolib.Person", foolib.Person);
+        });
+    </script>
+</head>
+<body>
+<h1>See Console Output</h1>
+</body>
+</html>

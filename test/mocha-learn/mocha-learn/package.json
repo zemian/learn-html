@@ -1,0 +1,14 @@
+{
+  "name": "mocha-learn",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^6.2.1"
+  }
+}

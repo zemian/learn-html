@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="../../resources/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function() {
+            $.ajax({url: "./test.json"}).then(data => {
+                console.log("test.json", data);
+                $("pre").text(JSON.stringify(data));
+            });
+
+            // List of countries
+            // https://restcountries.eu/rest/v2
+
+            // // Get a country info
+            // $.getJSON("https://restcountries.eu/rest/v2/alpha/usa", function(data) {
+            //     $("pre").text(JSON.stringify(data));
+            // });
+
+            // // Get GitHubRepositories
+            // $.getJSON("https://api.github.com/repositories", function(data) {
+            //     $("pre").text(JSON.stringify(data));
+            // });
+
+            // $.ajax({
+            //     url : "https://api.cdnjs.com/libraries",
+            //     method: "GET"
+            // }).then(function(data){
+            //     console.log("REST result:", data);
+            //     $("pre").text(JSON.stringify(data, null, 2));
+            // });
+        });
+    </script>
+</head>
+<body>
+<pre>AJAX_OUTPUT_HERE</pre>
+</body>
+</html>

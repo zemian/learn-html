@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Games</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app" class="container">
+    <h1>{{user.id}}</h1>
+    <ul>
+        <li>Profile: {{JSON.stringify(user.profile)}}</li>
+    </ul>
+</div>
+<script>
+    /*
+    Lichess.org API
+    https://lichess.org/api
+     */
+    let app = new Vue({
+        el: '#app',
+        data: {
+            user: null
+        },
+        created: function () {
+            const url = `https://lichess.org/api/user/bravepawn64`;
+            const options = { headers: {'Accept': 'application/vnd.lichess.v3+json'}}
+            fetch(url, options).then(resp => {
+                resp.json().then(data => {
+                    console.log("Got data from lichess.org", url, data);
+                    this.user = data;
+                });
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

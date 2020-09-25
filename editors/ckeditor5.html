@@ -1,0 +1,12 @@
+<div id="app">
+    <div id="editor"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic@18.0.0/build/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>

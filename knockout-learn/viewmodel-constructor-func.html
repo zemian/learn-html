@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KnockoutJS Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div>upCase: <span data-bind="text: upCase('foo')"></span></div>
+    <div>Message: <span data-bind="text: message"></span></div>
+    <div>upCaseMessage: <span data-bind="text: upCaseMessage()"></span></div>
+    <div>Link: <a href="#" data-bind="click: handleEvent">Test</a></div>
+    <div>Button: <button data-bind="click: handleEvent">Test</button></div>
+    <div>myList:
+        <ul data-bind="foreach: myList">
+            <li>
+                <span data-bind="text: $data.name"></span>
+                <a href="#" data-bind="click: $parent.handleEventByLoop">Test</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function ViewModel() {
+        var self = this;
+        self.message = ko.observable("Hello");
+        self.myList = [{name: 'zemian'}, {name: 'kenny'}, {name: 'lily'}];
+        
+        self.upCase = function(str) {
+            return str.toUpperCase();
+        };
+        self.upCaseMessage = function() {
+            return self.upCase(this.message());
+        };
+        
+        self.handleEvent = function(data, event) {
+            // "this"" is same as data, which is the ViewModelContext
+            console.log("this, data, event, message ", this, data, event, self.message());
+        };
+        
+        self.handleEventByLoop = function(data, event) {
+            console.log("this, data, event, message", this, data, event, self.message());
+        }
+    }
+    var vm = new ViewModel();
+    
+    ko.applyBindings(vm);
+</script>
+
+</body>
+</html>
+

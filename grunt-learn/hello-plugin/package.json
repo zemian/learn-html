@@ -1,0 +1,38 @@
+{
+  "name": "grunt-hello-plugin",
+  "description": "The best Grunt plugin ever.",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Zemian Deng",
+    "email": "zemian.deng@oracle.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://zemian.deng%40oracle.com@alm.oraclecorp.com/ec/s/ec_zemian-vbcs_20072/scm/html-starter.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}

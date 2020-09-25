@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <hello></hello>
+</div>
+
+<script>
+    /*
+    By default component templates are loaded asynchronously. Only if you use 'synchronous: true'
+    it will try to load in sync, but it's still NOT GUARANTEED!
+     */
+    ko.components.register('hello', {
+        viewModel: function (params) {
+            this.name = 'World';
+        },
+        template: 'Hello <span data-bind="text: name"></span>',
+        synchronous: true
+    });
+    ko.applyBindings({});
+</script>
+
+</body>
+</html>
+

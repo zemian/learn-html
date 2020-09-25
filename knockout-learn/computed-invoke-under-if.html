@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p data-bind="ifnot: myData">
+        Waiting <code>viewModel.myData</code> to be set.
+        Use console to change the value.
+        Example: <code>viewModel.myData("Hello");</code>
+    </p>
+
+    <div data-bind="if: myData">
+        <p>The name is <span data-bind="text: myComputedData"></span></p>
+    </div>
+</div>
+
+<script>
+    /**
+     * BUG? The KO docs (3.5.0) says "if" will not render the DOM elements if the condition
+     * is false, but yet the "myComputedData" computed attribute is invoked despite this?
+     *
+     * Notice this example has "if" binding guarded the usage of "myComputedData"
+     * which is a computed method. But even if "if" condition is false, the
+     * computed function WILL BE INVOKED! This mean you must check
+     * the observable being computed on before usage!
+     *
+     * Another option is guard the UI with "if" on the "myComputedData" computed
+     * attribute instead. This makes the problem occur more earlier and obvious
+     * if not handled properly.
+     */
+    function ViewModel() {
+        let self = this;
+        self.myData = ko.observable();
+        self.myComputedData = ko.computed(function() {
+            console.log("myComputedData is invoked.");
+            if (!self.myData())
+                return;
+            return "Computed" + self.myData();
+        });
+    }
+    let viewModel = new ViewModel();
+    ko.applyBindings(viewModel, document.getElementById("app"));
+</script>
+
+</body>
+</html>
+

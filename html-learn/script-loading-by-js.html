@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="app">
+    <p>See console for details</p>
+</div>
+
+<!-- Preloading script for testing if we are not loading using script-loading-by-js.js -->
+<!--<script src="https://unpkg.com/lodash@4.17.15/lodash.js"></script>-->
+<!--<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>-->
+
+<script src="script-loading-by-js.js"></script>
+<script>
+    // // Test Case 1
+    // _.times(10, () => {
+    //     console.log("lodash uniqueId", _.uniqueId('ID'));
+    // });
+
+    // Test Case 2
+    // requirejs.config({
+    //     paths: {
+    //         'loadash': 'https://unpkg.com/lodash@4.17.15/lodash',
+    //         'jquery': 'https://unpkg.com/jquery@3.4.1/dist/jquery',
+    //         'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest'
+    //     }
+    // });
+    // require(['require', 'module'], (req, mod) => {
+    //     console.log("req", req);
+    //     console.log("mod", mod);
+    // });
+
+    // NOTE, we have to provide callback because script loaded through JS is always in
+    // async mode. Even if we set script.async = false!
+    loadScript("https://unpkg.com/lodash@4.17.15/lodash.js", () => {
+        _.times(10, () => {
+            console.log("lodash uniqueId", _.uniqueId('ID'));
+        });
+    });
+
+    loadScript("https://unpkg.com/requirejs@2.3.6/require.js", () => {
+        requirejs.config({
+            paths: {
+                'loadash': 'https://unpkg.com/lodash@4.17.15/lodash',
+                'jquery': 'https://unpkg.com/jquery@3.4.1/dist/jquery',
+                'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest'
+            }
+        });
+        require(['require', 'module'], (req, mod) => {
+            console.log("req", req);
+            console.log("mod", mod);
+        });
+        require(['jquery'], ($) => {
+            console.log("jQuery version " + $.fn.jquery);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+<h1>Flexbox Examples</h1>
+<p>Examples</p>
+
+<div id="ex0">
+    <h1>Example 0 - Block</h1>
+    <style>
+        #ex0 .box {
+            display: block;
+            border: 1px solid red;
+        }
+        #ex0 .item {
+            border: 1px solid blue;
+        }
+    </style>
+    <div class="box">
+        <div class="item">One</div>
+        <div class="item">Two</div>
+        <div class="item">Three
+            <br>has
+            <br>extra
+            <br>text
+        </div>
+    </div>
+</div>
+
+<div id="ex1">
+    <h1>Example 1 - Flexbox</h1>
+    <style>
+        #ex1 .box {
+            display: flex;
+            border: 1px solid red;
+        }
+        #ex1 .item {
+            border: 1px solid blue;
+            width: 300px;
+        }
+    </style>
+    <div class="box">
+        <div class="item">One</div>
+        <div class="item">Two</div>
+        <div class="item">Three
+            <br>has
+            <br>extra
+            <br>text
+        </div>
+    </div>
+</div>
+
+<div id="ex2">
+    <h1>Example 2 - flex-wrap</h1>
+    <style>
+        #ex2 .box {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid red;
+        }
+        #ex2 .item {
+            border: 1px solid blue;
+            width: 300px;
+        }
+    </style>
+    <div class="box">
+        <div class="item">One</div>
+        <div class="item">Two</div>
+        <div class="item">Three
+            <br>has
+            <br>extra
+            <br>text
+        </div>
+    </div>
+</div>
+
+<div id="ex3">
+    <h1>Example 3 - Item Flex</h1>
+    <style>
+        #ex3 .box {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid red;
+        }
+        #ex3 .item {
+            border: 1px solid blue;
+            width: 300px;
+            flex: auto;
+        }
+    </style>
+    <div class="box">
+        <div class="item">One</div>
+        <div class="item">Two</div>
+        <div class="item">Three
+            <br>has
+            <br>extra
+            <br>text
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

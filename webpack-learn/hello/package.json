@@ -1,0 +1,11 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode development"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="../../resources/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<div id="app">
+</div>
+
+<script>
+    (function ($) {
+        console.log("$", $); // "$" is a function that return jQuery object!
+        console.log("$.fn", $.fn); // $.fn is the jQuery object that holds plugin methods!
+
+        $.fn.foo = function () {
+            // "this" is the matched jQuery object
+            console.log("Inside plugin function: this", this);
+        };
+    } (jQuery));
+
+    $("#app").foo();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+<script>
+    // NOTE: require.config() is same as requirejs.config().
+    requirejs.config({
+        baseUrl: "js/",
+        paths: {
+            'foo': 'path/foo',
+            'bar': 'path/bar',
+        }
+    });
+
+    // Call config again to append options. Note the baseUrl will override previous value.
+    let a = requirejs.config({
+        baseUrl: "js2/",
+        paths: {
+            'foo': 'path/foo2',
+            'hello': 'path/hello',
+        }
+    });
+    console.log(a);
+
+    console.log("requirejs", requirejs);
+    console.log("requirejs.config", requirejs.config);
+</script>

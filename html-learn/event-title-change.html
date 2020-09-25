@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Foo</title>
+</head>
+<body>
+
+<div id="app">
+    <input id="title" value="Foo">
+    <button onclick="onTitleChanged(event);">Change Title</button>
+</div>
+
+<script>
+    function onTitleChanged(event) {
+        let newValue = document.getElementById("title").value;
+        console.log("onTitleChanged", newValue);
+        document.title = newValue;
+    }
+
+    //https://stackoverflow.com/questions/2497200/how-to-listen-for-changes-to-the-title-element
+    new MutationObserver(function(mutations) {
+        let newValue = mutations[0].target.text;
+        console.log("Title changed found:", newValue);
+    }).observe(
+        document.querySelector('title'),
+        { subtree: true, characterData: true, childList: true }
+    );
+</script>
+
+</body>
+</html>

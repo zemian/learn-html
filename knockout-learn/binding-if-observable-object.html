@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1>shouldShowMessageComputed - broken</h1>
+    <div data-bind="if: shouldShowMessageComputed">
+        You will see this message only when "employees" object has updates.
+    </div>
+
+    <h1>shouldShowMessageComputed2 - broken</h1>
+    <div data-bind="if: shouldShowMessageComputed2">
+        You will see this message only when "employees" object has updates.
+    </div>
+
+    <h1>shouldShowMessageComputed2b - broken</h1>
+    <div data-bind="if: shouldShowMessageComputed2b">
+        You will see this message only when "employees" object has updates.
+    </div>
+
+    <h1>shouldShowMessageComputed3 - works!</h1>
+    <div data-bind="if: shouldShowMessageComputed3">
+        You will see this message only when "employees" object has updates.
+    </div>
+</div>
+
+<script type="text/javascript">
+    function ViewModel() {
+        let self = this;
+
+        // NOTE: This is tricky and bad way to initialize observable to empty object,
+        // because if you modify the object property, it will not trigger notification
+        // of change!
+        //
+        // The proper way to do this is to actually replace the observable value, not
+        // the properties of its object.
+        self.employees = ko.observable({});
+
+        // Test Case 1: This computed object WILL NOT get call when you update "employees"!
+        self.shouldShowMessageComputed = ko.computed(function(){
+            return self.employees()['zemian'] ? true : false;
+        });
+
+        // Test Case 2: Adding observable at runtime WILL NOT work either!
+        self.shouldShowMessageComputed2 = ko.computed(function(){
+            if (self.employees()['zemian']) {
+                return self.employees()['zemian'].observableFlag();
+            }
+            return false;
+        });
+        self.shouldShowMessageComputed2b = ko.computed({
+            read: function(){
+                if (self.employees()['zemian']) {
+                    return self.employees()['zemian'].observableFlag();
+                }
+                return false;
+            },
+            deferEvaluation: true
+        });
+
+        // Test Case 3: Check observable inside a object property that's pre-created. This WORKS!
+        self.employees()['e1'] = {role: "Developer", foo: "bar", observableFlag: ko.observable(true)};
+        // self.employees()['e2'] = {role: "Developer", foo: "bar", observableFlag: ko.observable(false)};
+        // self.employees()['e3'] = {role: "Developer", foo: "bar", observableFlag: ko.observable(true)};
+        self.shouldShowMessageComputed3 = ko.computed({
+            read: function() {
+                return self.employees()['e1'].observableFlag();
+            },
+            deferEvaluation: true
+        });
+
+        // Auto hide/show
+        self.toggleMessage = function() {
+            let emp = self.employees();
+            console.log("Will toggle message in 3 seconds. Current value: " + JSON.stringify(emp));
+            setTimeout(function() {
+                // For Test Case 1 & 2
+                if (emp['zemian']) {
+                    delete emp['zemian'];
+                } else {
+                    // NOTE: The "observableFlag" property will not be visible in "JSON.stringify(emp)".
+                    // TODO: But why? Is it because it's a observable function?
+                    emp['zemian'] = {role: "Developer", foo: "bar", observableFlag: ko.observable(true)};
+                }
+
+                // For Test Case 3
+                console.log(emp['e1']);
+                if (emp['e1'].observableFlag()) {
+                    emp['e1'].observableFlag(false);
+                } else {
+                    emp['e1'].observableFlag(true);
+                }
+                self.toggleMessage();
+            }, 3000);
+        }
+    }
+    let viewModel = new ViewModel();
+
+    viewModel.toggleMessage();
+
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
+

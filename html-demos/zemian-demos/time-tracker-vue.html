@@ -1,0 +1,84 @@
+<div id="app">
+    <div class="section">
+        <h1 class="title">Activities Time Tracker</h1>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input class="input" v-model="newAction" placeholder="Enter Activity">
+            </div>
+            <div class="control">
+                <button class="button is-primary" @click="onStart">Start</button>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <table class="table is-hoverable is-fullwidth" v-show="activities.length > 0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th class="has-fixed-width">Start Time</th>
+                    <th class="has-fixed-width">Stop Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in activities">
+                    <td v-text="index + 1"></td>
+                    <td v-text="item.action"></td>
+                    <td v-text="item.startTime.toLocaleString()"></td>
+
+                    <!-- Notice that one one of "td" will be rendered. Compare to KO
+                    the container element is removed if condition is Falsy in Vue, but KO
+                    will keep the container element! Resulted in extra noise.
+                    <td v-if="item.stopTime" v-text="item.stopTime.toLocaleString()">
+                    </td>
+                    <td v-else>
+                        <button class="button is-danger" @click="onStop(item)">Stop</button>
+                    </td>
+                    -->
+
+                    <!-- Despite above is working, I think having one "td" is more clear -->
+                    <td>
+                        <div v-if="item.stopTime">
+                            <span v-text="item.stopTime.toLocaleString()"></span>
+                        </div>
+                        <div v-else>
+                            <button class="button is-danger" @click="onStop(item)">Stop</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<link href="https://unpkg.com/bulma@0.8.2/css/bulma.css" rel="stylesheet">
+<style>
+    .has-fixed-width {
+        width: 200px;
+    }
+</style>
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+
+<script>
+    let app = new Vue({
+        data: {
+            activities: [],
+            newAction: ''
+        },
+        methods: {
+            onStart() {
+                let entry = {
+                    action: this.newAction,
+                    startTime: new Date(),
+                    stopTime: ''
+                }
+                this.activities.push(entry);
+                this.newAction = '';
+            },
+            onStop(data) {
+                data.stopTime = new Date();
+            }
+        }
+    });
+    app.$mount('#app');
+</script>

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="app.css">
+<style>
+    .app-data-box {
+        width: 300px; height: 200px;
+        overflow-y: scroll;
+    }
+    .app-data {
+        width: 100%; height: 800px;
+    }
+    .app-data p {
+        margin-bottom: 3em;
+    }
+</style>
+<div id="app">
+    <div class="app-data-box app-container app-has-border">
+        <div class="app-data">
+            <p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis cupiditate distinctio eaque eveniet id illo impedit itaque maiores necessitatibus obcaecati reiciendis, sint sit totam voluptas! Pariatur porro ratione reiciendis.</p>
+            <p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis cupiditate distinctio eaque eveniet id illo impedit itaque maiores necessitatibus obcaecati reiciendis, sint sit totam voluptas! Pariatur porro ratione reiciendis.</p>
+            <p>3. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis cupiditate distinctio eaque eveniet id illo impedit itaque maiores necessitatibus obcaecati reiciendis, sint sit totam voluptas! Pariatur porro ratione reiciendis.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/jquery"></script>
+<script>
+    // Using jQuery. Note the jQuery.innerHeight() is same as JS el.clientHeight.
+    // ref: https://www.geeksforgeeks.org/how-to-detect-when-user-scrolls-to-the-bottom-of-a-div/
+
+    // Info before scroll starts
+    let box = $(".app-data-box");
+    console.log("box.scrollTop()", box.scrollTop());
+    console.log("box.innerHeight()", box.innerHeight());
+    console.log("box[0].scrollHeight", box[0].scrollHeight);
+
+    box.on('scroll', function() {
+        if (box.scrollTop() + box.innerHeight() >= box[0].scrollHeight) {
+            console.log('You reached the end of the box');
+
+            // Info after scroll to end
+            console.log("box.scrollTop()", box.scrollTop());
+            console.log("box.innerHeight()", box.innerHeight());
+            console.log("box[0].scrollHeight", box[0].scrollHeight);
+        }
+    });
+</script>

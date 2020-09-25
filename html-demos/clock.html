@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="clock"></div>
+
+<script>
+    var clock = document.getElementById("clock");
+    var clockUpdater = function() {
+        clock.innerText = "" + new Date();
+    };
+    setInterval(clockUpdater, 1000);
+</script>
+</body>
+</html>

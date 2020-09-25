@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+    <h3>Welcome</h3>
+    <p><oj-bind-text value="[[message]]"></oj-bind-text></p>
+</div>
+
+<script src="https://unpkg.com/requirejs@latest/require.js"></script>
+<script>
+    requirejs.config({
+        paths: {
+            'text': 'https://unpkg.com/requirejs-text@2.0.15/text',
+            'css': 'https://unpkg.com/require-css@0.1.10/css',
+            'jquery': 'https://unpkg.com/jquery@3.4.1/dist/jquery',
+            'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest',
+            'promise': 'https://unpkg.com/es6-promise@4.2.8/dist/es6-promise.auto.min',
+            'signals': 'https://www.unpkg.com/signals@1.0.0/dist/signals.min',
+            'customElements': 'https://unpkg.com/@webcomponents/custom-elements@1.2.0/custom-elements.min',
+            'jqueryui-amd': 'https://www.unpkg.com/jquery-ui@1.12.1/ui',
+            'ojs': 'https://unpkg.com/@oracle/oraclejet@8.1.0/dist/js/libs/oj/min',
+            'ojL10n': 'https://unpkg.com/@oracle/oraclejet@8.1.0/dist/js/libs/oj/ojL10n',
+            'ojtranslations': 'https://unpkg.com/@oracle/oraclejet@8.1.0/dist/js/libs/oj/resources',
+            'hammerjs': 'https://www.unpkg.com/hammerjs@2.0.8/hammer.min',
+            'ojdnd': 'https://unpkg.com/@oracle/oraclejet@8.1.0/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.1.min',
+            'touchr': 'https://unpkg.com/@oracle/oraclejet@8.1.0/dist/js/libs/touchr/touchr',
+        }
+    });
+
+    require(['knockout', 'ojs/ojknockout'], function (ko) {
+        function App() {
+            this.message = ko.observable("Hello World!");
+        }
+        let app = new App();
+        ko.applyBindings(app);
+    });
+</script>
+</body>
+</html>

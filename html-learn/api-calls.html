@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Three ways to fetch API data. See Console.</p>
+
+<script>
+    fetch("https://api.github.com/repositories").then(resp => resp.json())
+        .then(data => console.log("fetch", data));
+</script>
+
+<script>
+    let req = new XMLHttpRequest();
+    req.open("GET", "https://api.github.com/repositories");
+    req.responseType = "json";
+    req.onload = () => {
+        console.log("xhr", req.response);
+    };
+    req.send();
+</script>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<script>
+    $.ajax("https://api.github.com/repositories")
+        .then(data => console.log("jQuery.ajax",data));
+</script>
+
+</body>
+</html>

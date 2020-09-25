@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReactJS Todo List</title>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="https://unpkg.com/react@16.10.2/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16.10.2/umd/react-dom.production.min.js" crossorigin></script>
+    
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    newTodo: '',
+                    todoList: [
+                        { text: "Write A Todo List", done: true },
+                        { text: "Play a match of Table Tennis", done: false }
+                    ]
+                };
+                
+                this.newTodoUpdate = (event) => {
+                    this.setState({newTodo: event.target.value});
+                };
+                
+                this.addItem = () => {
+                    var newTodoText = this.state.newTodo;
+                    console.log("Adding item: ", newTodoText);
+                    this.setState(state => {
+                        state.todoList.push({ text: newTodoText, done: false });
+                        return state;
+                    });
+                };
+                
+                this.deleteItem = (todo) => {
+                    this.setState(state =>{
+                        var todoList = this.state.todoList;
+                        var idx = todoList.findIndex(e => e == todo);
+                        console.log("Removing item idx=" + idx + ", text=" + todo.text);
+                        todoList.splice(idx, 1);
+                        return state;
+                    });
+                };
+                
+                this.updateTodoDoneFlag = (todo) => {
+                    this.setState(state =>{
+                        var todoList = this.state.todoList;
+                        var idx = todoList.findIndex(e => e == todo);
+                        console.log("Update done flag for item idx=" + idx);
+                        todoList[idx].done = !todo.done;
+                        return state;
+                    });
+                };
+            }
+            
+            render() {
+                return (
+                    <div>
+                        <div>
+                            <input value={this.state.newTodo} onChange={this.newTodoUpdate}/>
+                            <button onClick={this.addItem}>Add</button>
+                        </div>
+                        <ol>
+                            {this.state.todoList.map((todo, idx) => {
+                                return <li key={idx}>
+                                    <input type="checkbox" checked={todo.done} onChange={() => this.updateTodoDoneFlag(todo)}/>
+                                    <span style={{textDecoration: todo.done ? 'line-through' : 'initial'}}>{todo.text}</span>
+                                    <button onClick={() => this.deleteItem(todo)}>Delete</button>
+                                </li>
+                            })}
+                        </ol>
+                    </div>
+                );
+            }
+        }
+        
+        const domContainer = document.querySelector('#app');
+        ReactDOM.render(React.createElement(App), domContainer);
+    </script>
+    
+</head>
+<body>
+
+<div id="app"></div>
+
+</body>
+</html>

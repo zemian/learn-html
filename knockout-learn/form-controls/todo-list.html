@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<h4>People</h4>
+<button data-bind="click: addPerson">Add</button>
+<ul data-bind="foreach: people">
+    <li>
+        Name at position <span data-bind="text: $index"> </span>:
+        <span data-bind="text: name"> </span>
+        <a href="#" data-bind="click: $parent.removePerson">Remove</a>
+    </li>
+</ul>
+
+<script>
+    // A todo list like functionality using people data model
+    // https://knockoutjs.com/documentation/foreach-binding.html
+    function ViewModel() {
+        var self = this;
+
+        self.people = ko.observableArray([
+            { name: 'Bert' },
+            { name: 'Charles' },
+            { name: 'Denise' }
+        ]);
+
+        self.addPerson = function() {
+            self.people.push({ name: "New at " + new Date() });
+        };
+
+        self.removePerson = function() {
+            console.log("Removing:", this);
+            // NOTE: The 'this' is bound to the array element!
+            self.people.remove(this);
+        }
+    }
+
+    ko.applyBindings(new ViewModel());
+</script>
+
+</body>
+</html>
+

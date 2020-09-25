@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="../resources/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button class="app">button</button>
+    <input class="app" type="sumit" value="submit">
+    <a class="app" href="#">link</a>
+</div>
+
+<div id="app2">
+    <button class="app2">button</button>
+    <input class="app2" type="sumit" value="submit">
+    <a class="app2" href="#">link</a>
+</div>
+
+<script>
+    // jQuery selector is same as CSS selector.
+    // Examples are here:
+    console.log("foo", $("foo")); // length == 0, because there is no "foo" element
+    console.log("button", $("button")); // length == 1
+    console.log("button input", $("button input")); // length == 0, because input is NOT child of button!
+    console.log("button, input", $("button, input")); // length == 2, because "," is like an OR
+
+    // Careful with select nested elements. This is BAD!
+    console.log("#app button, input, a", $("#app button, input, a"));
+    // This is GOOD
+    console.log("#app button, #app input, #app a", $("#app button, #app input, #app a"));
+    // Or use jQuery
+    console.log("$(\"#app\").find(\"button, input, a\")", $("#app").find("button, input, a"));
+    // Or obviously a simple CSS by class will work too.
+    console.log(".app", $(".app"));
+
+    // Disable all clickable items on first <div id="app>
+    $("#app").find("button, input, a").click(function (event) {
+        console.log("This target clicking is disabled", event.target);
+        event.preventDefault();
+    });
+</script>
+
+</body>
+</html>

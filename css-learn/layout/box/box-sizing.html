@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+
+<!--
+The box-sizing property defines how the width and height of an element are
+calculated: should they include padding and borders, or not.
+
+NOTE: Using "border-box" will force the border outline within the size of width and height values!
+-->
+<h1>box-sizing: content-box (no border+padding)</h1>
+<div style="width: 300px; height: 300px; border: 1px solid green;">
+    <div style="box-sizing: content-box; width: 300px; height: 300px; border: 10px solid black; padding: 10px;">
+        Hello
+    </div>
+</div>
+
+<h1 style="margin-top: 300px;">box-sizing: border-box (include border+padding)</h1>
+<div style="width: 300px; height: 300px; border: 1px solid green;">
+    <div style="box-sizing: border-box; width: 300px; height: 300px; border: 10px solid black; padding: 10px;">
+        Hello
+    </div>
+</div>
+
+</body>
+</html>

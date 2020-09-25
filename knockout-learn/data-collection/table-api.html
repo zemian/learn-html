@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="../../resources/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button data-bind="click: loadMore">Load More</button>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Key</td>
+            <td>Rev</td>
+        </tr>
+        <!-- ko foreach: dataProvider -->
+        <tr>
+            <td data-bind="text: $data.id"></td>
+            <td data-bind="text: $data.key"></td>
+            <td data-bind="text: $data.value.rev"></td>
+        </tr>
+        <!-- /ko -->
+    </table>
+</div>
+
+<script>
+    var vm = {
+        dataProvider: ko.observableArray(),
+        offset: 0,
+        limit: 20
+    };
+    vm.loadMore = function(event) {
+        var url = 'http://localhost:5984/hello/_all_docs?limit=' + vm.limit + "&skip=" + vm.offset;
+        console.log("Fetching " + url);
+        $.ajax(url).then(data => {
+            console.log(data);
+            data.rows.forEach(item => vm.dataProvider.push(item));
+            vm.offset += vm.limit;
+        });
+    };
+
+    ko.applyBindings(vm, document.getElementById("app"));
+
+    vm.loadMore();
+</script>
+
+</body>
+</html>
+

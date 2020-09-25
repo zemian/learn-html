@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+
+    <!-- These two will always be loaded in order. -->
+    <script src="script-load-by-code.js"></script>
+    <script>
+        console.log("Script tag in head is executing...");
+    </script>
+
+    <!-- Because this is async=true, it may be loaded after the DOM is ready. -->
+    <script src="script-load-by-code2.js" async="true"></script>
+</head>
+<body>
+
+<script>
+    function loadScript(name, node) {
+        let script = document.createElement("script");
+        script.src = name;
+        node.appendChild(script);
+    }
+
+    console.log("Script tag in body is executing...");
+    window.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM is loaded.");
+        loadScript("script-load-by-code4.js", document.head);
+    });
+    loadScript("script-load-by-code5.js", document.body);
+</script>
+
+<!-- Because this is async=true, it may be loaded after the DOM is ready. -->
+<script src="script-load-by-code3.js" async="true"></script>
+
+</body>
+</html>

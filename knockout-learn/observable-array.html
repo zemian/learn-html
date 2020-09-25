@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<div id="app">
+    <h1>myObservableArray</h1>
+    <p data-bind="text: myObservableArray">Hi</p>
+
+    <h1>anotherObservableArray</h1>
+    <div data-bind="foreach: anotherObservableArray">
+        <p data-bind="text: $data.name + ' ' + $data.type"></p>
+    </div>
+</div>
+
+<script>
+    var myObservableArray = ko.observableArray();    // Initially an empty array. Note that we
+                                                     // do not need to pass empty array!
+    
+    console.log("Initial myObservableArray()=", myObservableArray()); // => []
+    console.log("myObservableArray.length", myObservableArray().length); // => 0
+    console.log("myObservableArray", myObservableArray);
+    
+    myObservableArray.push('Some value');            // Adds the value and notifies observers
+
+    console.log("After push myObservableArray()=", myObservableArray()); // => []
+    console.log("After push myObservableArray().length", myObservableArray().length); // => 0
+    
+    // NOTE: Do not do this! This is NOT the length of the array and give return 0!
+    console.log("After push myObservableArray.length", myObservableArray.length); // => 0
+
+    // This observable array initially contains three objects
+    var anotherObservableArray = ko.observableArray([
+        { name: "Bungle", type: "Bear" },
+        { name: "George", type: "Hippo" },
+        { name: "Zippy", type: "Unknown" }
+    ]);
+
+    var viewModel = {
+        myObservableArray: myObservableArray,
+        anotherObservableArray: anotherObservableArray
+    };
+    ko.applyBindings(viewModel);
+
+    // alert('The length of the array is ' + myObservableArray().length);
+    // alert('The first element is ' + myObservableArray()[0]);
+</script>
+
+</body>
+</html>
+

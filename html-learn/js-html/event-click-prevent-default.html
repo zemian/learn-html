@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <h1>Click the Box</h1>
+    <div id="box1" style="width: 100px; height: 100px; border: 1px solid black;">
+    </div>
+</div>
+
+<div id="demo2">
+    <h1>Hijack the Link</h1>
+    <a id="link2" href="https://www.google.com">Google.com</a>
+</div>
+
+<div id="demo3">
+    <h1>Hijack the Submit Button</h1>
+    <form>
+        <input id="inputtext3" type="text" name="message" value="hello">
+        <input id="submit3" type="submit">
+    </form>
+</div>
+
+<div id="demo4">
+    <h1>Hijack the Checkbox</h1>
+    <form>
+        <label>Check Flag</label>
+        <input id="checkbox4" type="checkbox">
+    </form>
+</div>
+
+<script>
+    // Demo1
+    document.getElementById("box1").addEventListener('click', function(event) {
+        console.log("clicked ", event);
+    });
+
+    // Demo2
+    document.getElementById("link2").addEventListener('click', function(event) {
+        console.log("clicked ", event);
+
+        // Prevent link to follow
+        event.preventDefault();
+    });
+
+    // Demo3
+    document.getElementById("submit3").addEventListener('click', function(event) {
+        console.log("clicked ", event);
+
+        // Prevent button to submit
+        event.preventDefault();
+    });
+
+    // Demo4
+    document.getElementById("checkbox4").addEventListener('click', function(event) {
+        console.log("clicked ", event);
+
+        // Prevent checkbox to be checked!
+        event.preventDefault();
+    });
+</script>
+
+</body>
+</html>

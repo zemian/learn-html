@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML/CSS/JavaScript Starter</title>
+    </head>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        .wrapper {
+            border: 1px solid tomato;
+            width: 300px;
+            height: 100px;
+        }
+
+        .relative {
+            position: relative;
+            left: 10px;
+            top: 10px;
+            border: 1px solid green;
+            width: 300px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>position: relative;</h1>
+
+<p>An element with position: relative; is positioned relative to its "self", or
+    normal position.</p>
+
+<h2>Demo1: relative with 10px offset.</h2>
+<div id="demo1">
+    <div class="wrapper">
+        <div class="relative">
+            This div element has position relative to wrapper;
+        </div>
+    </div>
+</div>
+
+<h2>Demo2: parent position has no affect.</h2>
+<div id="demo2">
+    <div class="wrapper" style="position: relative;">
+        <div class="relative">
+            This div element has position relative to wrapper;
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KnockoutJS Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div>upCase: <span data-bind="text: upCase('foo')"></span></div>
+    <div>Message: <span data-bind="text: message"></span></div>
+    <div>upCaseMessage: <span data-bind="text: upCaseMessage()"></span></div>
+    <div>Link: <a href="#" data-bind="click: handleEvent">Test</a></div>
+    <div>Button: <button data-bind="click: handleEvent">Test</button></div>
+    <div>myList:
+        <ul data-bind="foreach: myList">
+            <li>
+                <span data-bind="text: $data.name"></span>
+                <a href="#" data-bind="click: $parent.handleEventByLoop">Test</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    /*
+    Best Practice with Object Literal is:
+    1) Place all data inside the literal
+    2) Place all functions outside of the literal and add them as properties
+     */
+    var vm = {
+        message: ko.observable("Hello"),
+        myList: [{name: 'zemian'}, {name: 'kenny'}, {name: 'lily'}],
+        
+        upCase: function(str) {
+            return str.toUpperCase();
+        },
+        upCaseMessage: function() {
+            return this.upCase(this.message());
+        },
+        
+        handleEvent: function(data, event) {
+            // "this"" is same as data, which is the ViewModelContext
+            console.log("this, data, event, message ", this, data, event, this.message());
+        },
+        
+        handleEventByLoop: function(data, event) {
+            // "this" is same as data, which is the nested ViewModelContext (or the loop item)
+            // In this case you can't access "this.message", you would need to either
+            // 1) write this function outside of vm object literal, so you have access to the 'vm' var!
+            // 2) use a ViewModel constructor function so that you can use 'var self = this' and then 'self.message'
+            // 3) pass in as separate parameter during the 'click' binding - (note you need a function as value)
+            console.log("this, data, event", this, data, event);
+        }
+    };
+    ko.applyBindings(vm);
+</script>
+
+</body>
+</html>

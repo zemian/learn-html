@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+<script src="https://unpkg.com/@popperjs/core@2.1.1/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.js"></script>
+
+<div id="app" class="container" style="width: 18rem;">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" value="World" class="form-control">
+        <button id="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div id="output"></div>
+</div>
+
+<script>
+    $("#submit").on('click', () =>{
+        let name = $("#name").val();
+        $("#output").text("Hello, " + name + "!");
+    });
+</script>

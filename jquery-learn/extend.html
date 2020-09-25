@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<script>
+    // Case 1: Note, only object are consider shallow copy. String properties are
+    //         copied properly
+    console.log("Case #1");
+    var objectIsOld = {  bar: "test", foo: {name: 'Manjula', age: 25, Profession: 'Software Engineer' }};
+    var objectIsOld2 = objectIsOld;
+
+    // In Jquery you can use:
+    // Shallow copy
+    var objectIsNew = jQuery.extend({}, objectIsOld);
+    // Deep copy
+    var objectIsNew2 = jQuery.extend(true, {}, objectIsOld);
+
+    objectIsOld.foo.name = "NameUpdated";
+    objectIsOld.bar = "changed";
+    console.log("objectIsOld: ", objectIsOld);
+    console.log("objectIsOld2: ", objectIsOld2);
+    console.log("objectIsNew: ", objectIsNew);
+    console.log("objectIsNew2: ", objectIsNew2);
+
+    // Case 2: NOTE that jquery will make copy of String in one level of object.
+    //              and these are NOT shallow!
+    console.log("Case #2");
+    var objectIsOld = { name: 'Manjula', age: 25, Profession: 'Software Engineer' };
+    var objectIsOld2 = objectIsOld;
+
+    // In Jquery you can use:
+    // Shallow copy
+    var objectIsNew = jQuery.extend({}, objectIsOld);
+    // Deep copy
+    var objectIsNew2 = jQuery.extend(true, {}, objectIsOld);
+
+    objectIsOld.name = "NameUpdated";
+
+    console.log("objectIsOld: ", objectIsOld);
+    console.log("objectIsOld2: ", objectIsOld2);
+    console.log("objectIsNew: ", objectIsNew);
+    console.log("objectIsNew2: ", objectIsNew2);
+
+    //NOTE: The jQuery.extend can extends more than one object!
+</script>
+
+</body>
+</html>

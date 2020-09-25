@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SplitJS Demo</title>
+    <style>
+        .split, .gutter.gutter-horizontal {
+            float: left;
+        }
+        .gutter.gutter-horizontal {
+            cursor: ew-resize;
+            background-color: black;
+            height: 100%;
+        }
+        .content {
+            margin: 1em;
+        }
+        #demo {
+            border: 1px solid black;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo">
+    <div class="split" id="one">
+        <div class="content">ONE</div>
+    </div>
+    <div class="split" id="two">
+        <div class="content">TWO</div>
+    </div>
+</div>
+
+<script src="../resources/splitjs/split.min.js"></script>
+<script>
+    Split(['#one', '#two']);
+</script>
+
+</body>
+</html>

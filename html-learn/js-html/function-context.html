@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<script>
+    // Function Creates New Context!
+    // http://benalman.com/news/2010/11/immediately-invoked-function-expression/
+
+    // Because this function returns another function that has access to the
+    // "private" var i, the returned function is, effectively, "privileged."
+
+    function makeCounter() {
+        // `i` is only accessible inside `makeCounter`.
+        var i = 0;
+
+        return function() {
+            console.log( ++i );
+        };
+    }
+
+    // Note that `counter` and `counter2` each have their own scoped `i`.
+
+    var counter = makeCounter();
+    counter(); // logs: 1
+    counter(); // logs: 2
+
+    var counter2 = makeCounter();
+    counter2(); // logs: 1
+    counter2(); // logs: 2
+
+    //NOTE: The reason that counter is reset when you make 2nd variable is that the function
+    // will evaluate all variables before the return statement, hence reset them. But
+    // since it return function, the variables are enclosed and captured, not exposed
+    // directly to caller.
+    //
+    // Hence this above example demonstrate that function creates a "New Context" that
+    // enclose all variables hence creating a "private naming scope" space.
+
+    // More example:
+    // Example2: making the enclosing 'id' variable dynamic (opposite of above example, where
+    // counter is reset per makeCounter() call.
+    function makeIdGen() {
+        var id = Math.random().toString(16);
+        return function() {
+            console.log("before change", id);
+            id = Math.random().toString(16);
+            console.log("after change", id);
+        };
+    }
+    var idGen = makeIdGen();
+    console.log("idGen.id", idGen.id); // Note this is undefined! Id is effectively private and unexposed.
+    idGen();
+    idGen();
+
+    var idGen = makeIdGen();
+    idGen();
+    idGen();
+</script>
+
+</body>
+</html>

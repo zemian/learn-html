@@ -1,4 +1,16 @@
-.DS_Store
-.idea/
+node_modules/
 
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+.tscache/
+
+# Ignore test files
 temp/
+temp.*
+temp-*.*
+
+nohup.out
+/test/karma-learn/karma_html/

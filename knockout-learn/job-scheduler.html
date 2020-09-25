@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+
+
+<div id="app">
+    <div class="container">
+        <h1 class="title">Job Scheduler</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Schedule</td>
+                <td>Description</td>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: jobs">
+            <tr>
+                <td data-bind="text: id"></td>
+                <td data-bind="text: name"></td>
+                <td><code data-bind="text: schedule"></code></td>
+                <td data-bind="text: description"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    let app = {
+        jobs: ko.observableArray([
+            {id: 101, name: "Job1", schedule: "0 2 * * *", description: "Daily at 2am"},
+            {id: 102, name: "Job2", schedule: "0 5,17 * * *", description: "Twice a day"},
+            {id: 103, name: "Job3", schedule: "* * * * *", description: "Every minutes"},
+            {id: 104, name: "Job4", schedule: "0 17 * * sun", description: "Sunday at 5pm"},
+            {id: 105, name: "Job5", schedule: "*/10 * * * *", description: "Every 10 minutes"}
+        ])
+    };
+    ko.applyBindings(app);
+</script>

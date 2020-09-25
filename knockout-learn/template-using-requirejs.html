@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/requirejs/require.js"></script>
+    <script src="js/main-config.js"></script>
+    <script>
+        require(['knockout', 'jquery', 'text!../template-using-requirejs-template.html'], function(ko, $, template) {
+            function MyViewModel() {
+                this.people = [
+                    { name: 'Franklin', credits: 250 },
+                    { name: 'Mario', credits: 5800 },
+                    { name: 'Zemian', credits: 9999.99 }
+                ];
+                this.templateNodes = $.parseHTML(template);
+            }
+            $(function() {
+                ko.applyBindings(new MyViewModel());
+            });
+        });
+    </script>
+</head>
+<body>
+
+
+
+<div id="app">
+    <h2>Participants</h2>
+    Here are the participants:
+    <div data-bind="template: { nodes: templateNodes, foreach: people }"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    Hello World
+</div>
+<div id="demo2">
+    <p>Test</p>
+</div>
+<div id="demo3">
+    <!-- Hello -->
+</div>
+<div id="demo4">
+    <!CDATA[[ FooBar ]]>
+</div>
+
+<script>
+    // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
+    console.log("HTML Document NodeType Values:");
+    console.log("document=" + document.nodeType);
+    console.log("div=" + document.querySelector("#demo").nodeType);
+    console.log("div#demo content=" + document.querySelector("#demo").childNodes.item(0).nodeType);
+    console.log("div#demo2 content=" + document.querySelector("#demo2").childNodes.item(0).nodeType);
+    console.log("div#demo3 content=" + document.querySelector("#demo3").childNodes.item(0).nodeType);
+    console.log("div#demo4 content=" + document.querySelector("#demo4").childNodes.item(0).nodeType);
+
+    console.log("document.createElement NodeType Values:");
+    console.log("script=" + document.createElement("foobar").nodeType);
+    console.log("comment=" + document.createComment("foo").nodeType);
+</script>
+</body>
+</html>

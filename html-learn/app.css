@@ -1,0 +1,109 @@
+#app {
+    margin: 2em;
+    padding: 1em;
+}
+.app-section {
+    padding: 3rem 1.5rem;
+    display: block;
+}
+.app-container {
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+.app-content {
+    margin-bottom: 1.5em;
+}
+.app-box {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid black;
+}
+.app-card {
+    width: 25em;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+    overflow: auto;
+}
+.app-t-box-h1 {
+    width: 5em;
+    height: 3em;
+    background-color: lightblue;
+}
+.app-t-box-h2 {
+    width: 10em;
+    height: 6em;
+    background-color: lightgreen;
+}
+.app-t-box-v1 {
+    width: 3em;
+    height: 5em;
+    background-color: lightyellow;
+}
+.app-t-box-v2 {
+    width: 3em;
+    height: 5em;
+    background-color: lightseagreen;
+}
+.app-is-narrow {
+    margin: 1em;
+    padding: 1em;
+    width: 25em;
+    overflow: auto;
+}
+.app-is-right-justify {
+    margin-left: auto;
+    text-align: right;
+}
+.app-is-left-justify {
+    margin-right: auto;
+    text-align: left;
+}
+.app-is-full-height {
+    height: 100%;
+    max-height: 100%;
+}
+.app-is-full-width {
+    width: 100%;
+    max-width: 100%;
+}
+.app-is-full {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+.app-has-right-gap {
+    margin-right: 1em;
+}
+.app-has-bottom-gap {
+    margin-right: 1em;
+}
+.app-has-border {
+    border: 1px solid black;
+}
+.app-has-border-2 {
+    border: 1px dashed black;
+}
+.app-bg-1 {
+    background-color: lightseagreen;
+}
+.app-bg-2 {
+    background-color: lightblue;
+}
+.app-bg-3 {
+    background-color: lightyellow;
+}
+.app-bg-4 {
+    background-color: lightcoral;
+}
+.app-columns {
+    display: flex;
+}
+.app-column {
+    flex: 1 1 auto;
+}
+.app-column-no-grow {
+    flex: 0 0 auto;
+}

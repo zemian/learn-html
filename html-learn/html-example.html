@@ -1,0 +1,124 @@
+<!--
+Saw this HTML used in a CSS tutorial and thought it's good for study.
+http://localhost:63342/html-starter/css-learn/selector-trysel.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<h1>Welcome to My Homepage</h1>
+
+<div class="intro">
+    <p>My name is Donald <span id="Lastname">Duck.</span></p>
+
+    <p id="my-Address">I live in Duckburg</p>
+
+    <p>I have many friends:</p>
+</div>
+
+<ul id="Listfriends">
+    <li>Goofy</li>
+    <li>Mickey</li>
+    <li>Daisy</li>
+    <li>Pluto</li>
+</ul>
+
+<p class="myquote">All my friends are great!<br>
+    But I really like Daisy!!</p>
+
+<p lang="it" title="Hello beautiful">Ciao bella</p>
+
+<h3>We are all animals!</h3>
+<p><b>My latest discoveries have led me to believe that we are all animals:</b></p>
+
+<table cellpadding="2" cellspacing="2">
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Type of Animal</th>
+    </tr>
+    <tr>
+        <td>Mickey</td>
+        <td>Mouse</td>
+    </tr>
+    <tr>
+        <td>Goofey</td>
+        <td>Dog</td>
+    </tr>
+    <tr>
+        <td>Daisy</td>
+        <td>Duck</td>
+    </tr>
+    <tr>
+        <td>Pluto</td>
+        <td>Dog</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="noSel newsletter">
+    <form>
+        <h4>Subscribe to my newsletter:</h4>
+        <div>
+            <div>Name:</div>
+            <div><input type="text" class="markup"></div>
+        </div>
+        <div>
+            <div>E-mail:</div>
+            <div><input type="email" class="markup" onchange="changeEmail(this)"></div>
+        </div>
+        <div>Password:</div>
+        <div><input type="password" name="password" value="password"/></div>
+        <div class="noSel"></div>
+        <div class="noSel">
+            Female: <input name="rr" type="radio" id="rr1" checked="checked">
+            Male: <input name="rr" type="radio" id="rr2">
+            Other: <input name="rr" type="radio" id="rr3" disabled="disabled">
+        </div>
+        <h4>Newscategories:</h4>
+        <div>
+            <div>Ducks:</div>
+            <div><input id="cc1" type="checkbox" checked="checked"></div>
+        </div>
+        <div>
+            <div>Dogs:</div>
+            <div><input id="cc2" type="checkbox"></div>
+        </div>
+        <div>
+            <div>Humans:</div>
+            <div><input id="cc3" type="checkbox"></div>
+        </div>
+        <div class="noSel"></div>
+        <p class="noSel">Your lucky number (between 1 and 10): <input type="number" min="1" max="10" value="7"></p>
+
+        <div>
+            <div>
+                <h4>My Favourite:</h4>
+                <select multiple class="myselect">
+                    <option>Donald</option>
+                    <option selected>Mickey</option>
+                    <option>Goofy</option>
+                </select>
+            </div>
+            <div>
+                <h4>Upload image:</h4>
+                <input type="file"/>
+            </div>
+            <input type="image" src="images/arrow-r.jpg"/>
+            <div></div>
+        </div>
+
+        <input class="noSel" type="reset" value="Reset"/>
+        <input class="noSel" type="submit" value="Submit"/>
+        <input class="noSel" type="button" value="Cancel"/>
+    </form>
+</div>
+
+
+</body>
+</html>

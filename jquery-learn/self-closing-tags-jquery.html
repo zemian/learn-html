@@ -1,0 +1,33 @@
+<!-- Lesson Learned:
+
+* Just don't do "<div/>" in any .html files. It's just bad.
+* A non-void elements are HTML tags that will not accept content:
+    (eg: area, base, br, col, embed, hr, img, input, link, meta, param, source, track, wbr)
+* XHTML is XML complaint so self closing tag on non-void elements is ok.
+* HTML is not XML complaint and will not support self closing tag on non-void elements!
+
+REF: https://html.spec.whatwg.org/multipage/syntax.html
+-->
+
+<!--
+jQuery change the way they parse <div/> starting 3.5.0
+See https://jquery.com/upgrade-guide/3.5/
+
+The updated 3.5.1 will parse '<div/><span/>' into what your browser will do, which is '<div><span></span></div>'!
+Unlike in 3.4.1, it will parse into '<div></div><span></span>' instead.
+-->
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.js"></script>
+<!--<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>-->
+<style>
+    #app > div {
+        border: 1px solid black; margin: 1em; min-height: 3em;
+    }
+</style>
+<div id="app">
+    <div id="test">
+    </div>
+</div>
+
+<script>
+    $('<div/><span/>').appendTo('#test');
+</script>

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.52.2/lib/codemirror.css">
+<div id="app">
+    <textarea id="myTextarea">
+    let myTextarea = document.getElementById("myTextarea");
+    let editor = CodeMirror.fromTextArea(myTextarea, {
+        lineNumbers: true
+    });
+    </textarea>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.52.2/lib/codemirror.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.52.2/mode/javascript/javascript.js"></script>
+<script>
+    // Power By https://codemirror.net
+    let myTextarea = document.getElementById("myTextarea");
+    let editor = CodeMirror.fromTextArea(myTextarea, {
+        lineNumbers: true,
+        mode: "javascript"
+    });
+</script>

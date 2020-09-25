@@ -1,0 +1,11 @@
+<div id="app">
+    <span data-bind="text: message"></span>
+</div>
+
+<script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+<script>
+    let app = new function () {
+        this.message = ko.observable("Hello");
+    };
+    ko.applyBindings(app, document.getElementById("app"));
+</script>

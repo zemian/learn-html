@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #demo {
+            border: black 1px solid;
+            height: 300px;
+
+            /*!* Apply to all four sides *!*/
+            /*margin: 1em;*/
+            /*margin: -3px;*/
+
+            /*!* vertical | horizontal *!*/
+            /*margin: 5% auto;*/
+
+            /*!* top | horizontal | bottom *!*/
+            /*margin: 1em auto 2em;*/
+
+            /*!* top | right | bottom | left *!*/
+            /*margin: 2px 1em 0 auto;*/
+
+            /*!* Global values *!*/
+            /*margin: inherit;*/
+            /*margin: initial;*/
+            /*margin: unset;*/
+        }
+        .center {
+            margin: auto;
+            background: lime;
+            width: 66%;
+        }
+
+        .outside {
+            margin: 3rem 0 0 -3rem;
+            background: cyan;
+            width: 66%;
+        }
+
+        #demo2 > div {
+            border: black 1px solid;
+            height: 100px;
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+The margin CSS property sets the margin area on all four sides of an element.
+It is a shorthand for margin-top, margin-right, margin-bottom, and margin-left.
+https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+
+NOTE: The top and bottom margins have no effect on non-replaced inline elements,
+such as <span> or <code>.
+
+The top and bottom margins of blocks are sometimes combined (collapsed) into a
+single margin whose size is the largest of the individual margins (or just one
+of them, if they are equal), a behavior known as margin collapsing. Note that
+the margins of floating and absolutely positioned elements never collapse.
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing
+-->
+<div id="demo">
+    <div class="center">This element is centered.</div>
+
+    <div class="outside">This element is positioned outside of its container.</div>
+</div>
+
+<div id="demo2">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+</div>
+
+</body>
+</html>

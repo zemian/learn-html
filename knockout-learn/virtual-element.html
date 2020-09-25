@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!-- ko foreach: myList -->
+    <p data-bind="text: $data"></p>
+    <!-- /ko -->
+</div>
+
+<script>
+    /*
+    The virtual element is used when no element is needed to process KO binding.
+     */
+    function ViewModel() {
+        this.myList = [3, 2, 4, 5, 1];
+    }
+    ko.applyBindings(new ViewModel(), document.getElementById("app"));
+</script>
+
+</body>
+</html>
+

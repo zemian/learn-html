@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+    <script>
+        $(function() {
+            $("#demo").mouseover(function(event){
+                console.log("mouseover event: ", event);
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h1>Mouseover Demo - See Console</h1>
+<div id="demo" style="width: 100px; height: 100px; background-color: tomato;">
+    <p>Mouseover Me!</p>
+</div>
+
+</body>
+</html>

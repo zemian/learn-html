@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PI Digits</title>
+	
+	<script>
+		/*
+		References:
+		
+		What is PI:
+		 The number π (/paɪ/) is a mathematical constant.
+		 https://en.wikipedia.org/wiki/Pi
+		 PI = Circumference / Diamteter
+		 3.14 15 926 5358 9793 238 4626...
+		
+		How to calculate PI digits:
+		 https://www.mathscareers.org.uk/article/calculating-pi/
+		
+		Algorithms:
+		 - Using an inverse tangent (arctan) infinite series
+		 - New iterative algorithms for computing π, which were much faster than the infinite series
+		 - The invention of fast multiplication algorithms that could multiply large numbers very rapidly
+		 
+		 NOTE: the iterative algorithms require significantly more memory than infinite series.
+		 
+		 - New infinite series were discovered in the 1980s and 1990s that are as fast as iterative algorithms, yet are simpler and less memory intensive
+			- Srinivasa Ramanujan
+			- Chudnovsky
+		 
+		 - Spigot algorithms: they produce single digits of π that are not reused after they are calculated.
+		 - Simon Plouffe: PSLQ integer relation algorithm
+		 - One of Plouffe formula, unlike others before it, can produce any individual hexadecimal digit of π without calculating all the preceding digits.
+			
+			
+		 NOTE: formula are describe to produce number of digits per term.
+		 
+		Calculating PI at any digit:
+		 https://www.math.hmc.edu/funfacts/ffiles/20010.5.shtml
+		
+		PI with JS:
+		 http://ajennings.net/blog/a-million-digits-of-pi-in-9-lines-of-javascript.html
+		 http://ajennings.net/pi.html
+		 https://news.ycombinator.com/item?id=20953485
+		
+		A million digits of PI:
+		 https://www.piday.org/million/
+		 
+		History of calculating PI:
+		 https://en.wikipedia.org/wiki/Chronology_of_computation_of_%CF%80
+		 https://cloud.google.com/blog/products/compute/calculating-31-4-trillion-digits-of-archimedes-constant-on-google-cloud
+		 
+		 */
+		
+		
+		// First thousand digits
+		// TO calculate a million digit, replace 1020n to 1000020n
+        let i = 1n;
+        let x = 3n * (10n ** 1020n);
+        let pi = x;
+        while (x > 0) {
+            x = x * i / ((i + 1n) * 4n);
+            pi += x / (i + 2n);
+            i += 2n;
+        }
+        console.log(pi / (10n ** 20n));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

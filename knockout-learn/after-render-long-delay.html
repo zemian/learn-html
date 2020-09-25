@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<template id="personTemplate">
+    <h1 data-bind="text: name"></h1>
+    <p data-bind="text: title"></p>
+</template>
+<div id="app">
+    <div data-bind='template: { if: isDataReady,
+                        name: "personTemplate",
+                        data: myData,
+                        afterRender: myPostProcessingLogic }'> </div>
+</div>
+
+<script>
+    /*
+    If you want 'myPostProcessingLogic' callback to be called after the delay data is ready,
+    ensure you protected the template with 'if' binding. You can use "if" as part of "template"
+    binding itself!
+     */
+    function ViewModel() {
+        this.isDataReady = ko.observable(false);
+        this.myData = {
+            name: "Zemian",
+            title: "Developer"
+        };
+    }
+    ViewModel.prototype.myPostProcessingLogic = function (params) {
+        console.log("DOM is ready. params", params);
+    };
+    let vm = new ViewModel();
+    ko.applyBindings(vm, document.getElementById("app"));
+
+    console.log("Will update data ready in 3 seconds...");
+    setTimeout(function () {
+        vm.isDataReady(true);
+        console.log("Data is updated ready.");
+    }, 3000);
+</script>
+
+</body>
+</html>
+

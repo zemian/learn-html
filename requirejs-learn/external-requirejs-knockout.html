@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script>
+        requirejs.config({
+            paths: {
+                'knockout': 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min'
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            require(['knockout'], function(ko){
+                let viewModel = {
+                    message: ko.observable("Hello World.")
+                };
+
+                ko.applyBindings(viewModel, document.getElementById('demo'));
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="demo">
+    <h1>RequireJS + Knockout Demo</h1>
+    <p data-bind="text: message"></p>
+</div>
+
+</body>
+</html>

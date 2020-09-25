@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <hello></hello>
+</div>
+
+<template id="hello-template">
+    Hello <span data-bind="text: name"></span>
+</template>
+
+<script>
+    ko.components.register('hello', {
+        viewModel: function (params) {
+            this.name = 'World';
+        },
+        template: {element: 'hello-template'}
+    });
+    ko.applyBindings({});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<div id="demo">
+    <p>See console for details</p>
+</div>
+
+<script>
+    // https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
+    function readTextFile(file, callback) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.overrideMimeType("application/json");
+        rawFile.open("GET", file, true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4 && rawFile.status == "200") {
+                callback(rawFile.responseText);
+            }
+        };
+        rawFile.send(null);
+    }
+
+    //usage:
+    readTextFile("js/read-json-file-example.json", function(text){
+        var data = JSON.parse(text);
+        console.log(data);
+    });
+</script>
+
+</body>
+</html>

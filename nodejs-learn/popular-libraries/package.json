@@ -1,0 +1,12 @@
+{
+  "name": "dependency-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "hello": "node underscore/hello.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "underscore": "^1.9.1"
+  }
+}

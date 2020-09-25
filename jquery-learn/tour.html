@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Learning</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+
+<div>
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+    </style>
+    <a href="http://jquery.com/">jQuery</a>
+</div>
+
+<div>
+    <a id="a_demo2" href="http://jquery.com/">jQuery</a>
+</div>
+
+<div>
+<p id="msg">Hello (click me!)</p>
+</div>
+
+<div>
+<input id="input1" type="text" value="foo" name="bar">
+</div>
+
+<div>
+<button>Click Me</button>
+</div>
+
+<ol id="insert-demo">
+    <li>One</li>
+</ol>
+<ol id="insert-demo2">
+    <li>One</li>
+</ol>
+
+<script>
+
+    $( "a" ).click(function( event ) {
+        alert( "The link will no longer take you to jquery.com" );
+        event.preventDefault();
+    });
+    $( "a" ).addClass( "test" );
+    // $( "a" ).removeClass( "test" );
+
+    $( "#a_demo2" ).click(function( event ) {
+        event.preventDefault();
+        $( this ).hide( "slow" );
+    });
+
+    $("#msg").text("Hello World");
+
+    console.log("msg text:", $("#msg").text());
+
+    console.log("input1 val:", $("#input1").val());
+    console.log("input1 text:", $("#input1").text()); /* DON'T do this! It's empty. */
+
+    $("button").on('click', function(event) {
+        console.log("this: ", this);
+        console.log("event: ", event);
+    });
+
+    $("#msg").on('click', function(event) {
+        console.log("this: ", this);
+        console.log("event: ", event);
+        $(this).toggle();
+
+        // Makes it re-appear again
+        setTimeout(() => $(this).toggle(), 1000);
+    });
+
+    $("#insert-demo").append('<li>Two</li>');
+    $("#insert-demo2").html('<li>REPLACED</li><li>DONE</li>');
+
+    $.get( "readme.txt", function(data) {
+        console.log("data: ", data);
+    } );
+</script>
+
+</body>
+</html>

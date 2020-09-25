@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+
+<div id="app">
+    <div class="container">
+        <h1 class="title">Job Scheduler</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Schedule</td>
+                <td>Description</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>101</td>
+                <td>Job1</td>
+                <td><code>0 2 * * *</code></td>
+                <td>Daily at 2am</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Job2</td>
+                <td><code>0 5,17 * * *</code></td>
+                <td>Twice a day</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Job3</td>
+                <td><code>* * * * *</code></td>
+                <td>Every minutes</td>
+            </tr>
+            <tr>
+                <td>104</td>
+                <td>Job4</td>
+                <td><code>0 17 * * sun</code></td>
+                <td>Sunday at 5pm</td>
+            </tr>
+            <tr>
+                <td>105</td>
+                <td>Job5</td>
+                <td><code>*/10 * * * *</code></td>
+                <td>Every 10 minutes</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

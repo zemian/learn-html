@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+</head>
+<body>
+
+
+
+<div>
+    The name is <span data-bind="text: personName"></span>, and he is
+    <!--ko text: personAge--><!--/ko-->.
+</div>
+
+<script>
+    // Loading KO+JQuery with RequiresJS (But we will not use JQuery in this demo yet.)
+    // Observe how RequestJS loading extra, unused library.
+    requirejs.config({
+        paths: {
+            'knockout': 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min',
+            'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery'
+        }
+    });
+
+    //require(['knockout', 'jquery'], function(ko, $) {
+    require(['knockout'], function(ko) {
+        // Try open in browser and then modify the name "myViewModel.personName('Zemian');"
+        var viewModel = {
+            personName: ko.observable('Bob'),
+            personAge: 123
+        };
+        ko.applyBindings(viewModel);
+    });
+</script>
+
+</body>
+</html>

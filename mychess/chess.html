@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Games</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app" class="container">
+    <h1 class="title">Chess.com stats for {{username}}</h1>
+    <ul>
+        <li>There are total of {{games.length}} games.</li>
+    </ul>
+</div>
+<script>
+    /*
+    Chess.com API
+    https://www.chess.com/news/view/published-data-api#pubapi-endpoint-player-stats
+     */
+    let app = new Vue({
+        el: '#app',
+        data: {
+            username: 'bravepawn64',
+            games: []
+        },
+        created: function () {
+            const url = `https://api.chess.com/pub/player/${this.username}/games/archives`;
+            fetch(url).then(resp => resp.json()).then(data => {
+                console.log("Got data from chess.com", url, data);
+                this.games = data.archives;
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

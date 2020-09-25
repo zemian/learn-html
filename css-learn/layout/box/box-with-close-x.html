@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+</head>
+<body>
+
+<style>
+    /*
+    https://stackoverflow.com/questions/33336396/html-css-close-button-overlapping-right-upper-corner
+    */
+    #container {
+        position: relative;
+        width: 80%;
+        margin: 20px 20px 20px 20px;
+        border: 2px solid Black;
+        padding: 15px 15px 15px 15px;
+        background: #A4D3EE;
+        box-shadow: 5px 5px 2px #888888;
+        overflow: visible;
+    }
+    
+    #x {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: red;
+        color: white;
+    }
+</style>
+<div id="container">
+    <button id="x">X</button>
+    Text Text Text
+    Text Text Text
+    Text Text Text
+</div>
+
+</body>
+</html>

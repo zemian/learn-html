@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/jquery/dist/jquery.js"></script>
+
+    <script>
+        // There are few ways to setup callback function when HTML DOM is ready.
+
+        /*
+        Option1:
+         The DOMContentLoaded event fires when the initial HTML document has been
+         completely loaded and parsed, without waiting for stylesheets, images, and
+         subframes to finish loading.
+
+         https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
+        */
+        window.addEventListener('DOMContentLoaded', (event) => {
+            console.log("DOM is ready.", event);
+        });
+
+        /*
+        Option2:
+
+         The load event is fired when the whole page has loaded, including all
+         dependent resources such as stylesheets images. This is in contrast to
+         DOMContentLoaded, which is fired as soon as the page DOM has been loaded,
+         without waiting for resources finish loading.
+
+         https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+         https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
+        */
+        window.addEventListener('load', (event) => {
+            console.log("Page is fully loaded, and so DOM is ready.", event);
+        });
+
+        /*
+        Option3:
+
+        This is same as Option2, but with "onload" handler.
+
+        NOTE: "document.onload" will not work on Chrome 75.0.3770.142!
+         */
+        window.onload = function() {
+            console.log("window.onload handler: Page is fully loaded, and so DOM is ready.");
+        }
+
+        /*
+        Option4:
+
+        Use jQuery's $().ready() function, or the more common shorthand: $() function.
+
+        One big difference the jQuery has is that event such as "DOMContentLoaded"
+        will fire only one time, and if you miss it, it will not get call! But jQuery
+        will ensure it will be executed!
+
+        NOTE: $().ready() or $(document).ready() are deprecated. Use $() instead.
+         */
+        $(function() {
+            console.log("jQuery: DOM is ready.");
+        });
+
+        /*
+        NOTE: About CSS. All CSS (including external ones) should be defined
+        before JavaScript. This practice would ensure your JS can manipulate
+        CSS when it's ready.
+         */
+    </script>
+</head>
+<body>
+
+<div id="demo">
+    <p>See console for details</p>
+</div>
+
+<script>
+/*
+Option5:
+
+Another often used method is simply place <script> tag at the end of the
+html document.
+*/
+console.log("end of document script tag: assume DOM is ready.");
+</script>
+
+</body>
+</html>

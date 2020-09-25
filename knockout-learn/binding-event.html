@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS/JavaScript Starter</title>
+    <script src="../resources/node_modules/knockout/build/output/knockout-latest.js"></script>
+</head>
+<body>
+
+
+
+<div>
+    <div data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+        Mouse over me
+    </div>
+    <div data-bind="visible: detailsEnabled">
+        Details
+    </div>
+</div>
+
+<script type="text/javascript">
+    var viewModel = {
+        detailsEnabled: ko.observable(false),
+        enableDetails: function() {
+            this.detailsEnabled(true);
+        },
+        disableDetails: function() {
+            this.detailsEnabled(false);
+        }
+    };
+    ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
+
