@@ -2,9 +2,9 @@
 requirejs.config({
     baseUrl: "js",
     paths: {
-        'jquery': '../../resources/node_modules/jquery/dist/jquery',
-        'text': '../../resources/node_modules/requirejs-text/text',
-        'css': '../../resources/node_modules/require-css/css',
-        'domReady': '../../resources/node_modules/requirejs-domready/domReady'
+        'jquery': 'https://unpkg.com/jquery@3.5.1/dist/jquery',
+        'text': 'https://unpkg.com/requirejs-text@2.0.15/text',
+        'css': 'https://unpkg.com/require-css@0.1.10/css',
+        'domReady': 'https://unpkg.com/requirejs-domready@2.0.3/domReady',
     }
 });
