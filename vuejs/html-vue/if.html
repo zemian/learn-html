@@ -1,0 +1,19 @@
+<!--
+NOTE: v-if vs v-show
+
+The v-if will NOT render DOM element if condition is false!
+
+The v-show will keep DOM element but hides it with "display: none" CSS
+-->
+<div id="app">
+    <h3 v-if="flag">Welcome</h3>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            flag: true
+        }
+    });
+</script>

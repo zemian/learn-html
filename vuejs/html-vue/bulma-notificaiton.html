@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma@0.9.0/css/bulma.css">
+<div id="app" class="container">
+	<h1 class="title">Notification Demo</h1>
+
+	<div class="notification" v-show="showNotif">
+		<button class="delete" @click="hideNotif"></button>
+		Lorem ipsum dolor sit amet, consectetur
+		adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
+		consectetur adipiscing elit
+	</div>
+</div>
+
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+<script>
+	let app = new Vue({
+		el: "#app",
+		data: {
+			showNotif: true
+		},
+		methods: {
+			hideNotif: function () {
+				this.showNotif = false;
+			}
+		}
+	});
+</script>

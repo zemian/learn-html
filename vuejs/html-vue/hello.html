@@ -1,0 +1,18 @@
+<!-- 
+Notice the reactive property of the message if you change it in Console!
+
+See also https://zemian.github.io/2020/04/18/hello-vuejs/
+-->
+<div id="app">
+    <span v-text="message"></span>
+</div>
+
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        data: {
+            message: "Hello"
+        }
+    });
+    app.$mount("#app");
+</script>

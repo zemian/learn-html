@@ -1,0 +1,15 @@
+<!-- A shorthand for v-on is just "@" -->
+
+<div id="app">
+	<button v-on:click="count++">You clicked me {{ count }} times.</button>
+</div>
+
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+<script>
+	let app = new Vue({
+		el: "#app",
+		data: {
+			count: 0
+		}
+	});
+</script>
