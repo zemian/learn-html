@@ -1,8 +1,12 @@
 <script src="http://localhost:35729/livereload.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
 
+<!--
+Since button and label are inline elements, you can use "has-text-centered".
+https://github.com/jgthms/bulma/issues/2222
+-->
 <section class="section">
-    <div class="container">
+    <div class="container has-text-centered" style="width: 300px;">
         <div class="field">
             <label class="label">Name</label>
             <div class="control">
@@ -17,10 +21,11 @@
             </div>
         </div>
 
-        <div class="field">
+        <div class="field is-grouped is-grouped-centered">
             <div class="control">
                 <button class="button is-link">Submit</button>
             </div>
         </div>
     </div>
 </section>
+

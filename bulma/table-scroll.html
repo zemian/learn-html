@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
+
+<!-- The is-striped will only work inside a tbody! -->
+<div class="table-container">
+    <table class="table is-bordered is-striped">
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Generating large numbers grid
+    let tbody = document.querySelector("tbody");
+    for (let row = 0; row < 5; row++) {
+        let tr = document.createElement("tr");
+        for (let col = 1; col <= 100; col++) {
+            let td = document.createElement("td");
+            td.innerText = (row * 100) + col;
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+</script>
