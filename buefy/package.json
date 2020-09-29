@@ -1,0 +1,16 @@
+{
+  "name": "learn-buefy",
+  "version": "1.0.0",
+  "description": "Exploring [Buefy](https://buefy.org/) = Bulma + VueJS",
+  "main": "index.js",
+  "dependencies": {
+    "buefy": "^0.8.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "vue serve App.vue"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
