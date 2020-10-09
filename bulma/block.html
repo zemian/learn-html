@@ -1,9 +1,31 @@
 <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.1/css/bulma.css">
 
-<!-- TODO: How is the "block" class used?
-As of bulma v0.8.1, it's not a defined class!
--->
-<div>
-    <span class="block">Hello World!</span>
-    <span class="block">Hello World!</span>
-</div>
+<section class="section">
+  <h1>With Block</h1>
+  <div class="container">
+    <div class="block">
+      This text is within a <strong>block</strong>.
+    </div>
+    <div class="block">
+      This text is within a <strong>second block</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+    </div>
+    <div class="block">
+      This text is within a <strong>third block</strong>. This block has no margin at the bottom.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h1>Without Block</h1>
+  <div class="container">
+    <div>
+      This text is <em>not</em> within a <strong>block</strong>.
+    </div>
+    <div>
+      This text <em>isn't</em> within a <strong>block</strong> either. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+    </div>
+    <div>
+      This text is also <em>not</em> within a <strong>block</strong>.
+    </div>
+  </div>
+</section>
