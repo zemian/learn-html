@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      .click-store {
+        background: lightgray;
+        height: 3em;
+        width: 400px; 
+        margin: 1em auto 0 auto;
+        padding-top: 1em;
+        text-align: center;
+      }
+      .click-box {
+        height: 400px; 
+        width: 400px; 
+        margin: 2em auto 0 auto;
+        border: 1px black solid;
+      }
+    </style>
+    <script>
+      function clickAction(event) {
+        //console.log("click", event);
+        let scoreElem = document.getElementById("count");
+        scoreElem.innerText = Number(scoreElem.innerText) + 1;
+
+        event.preventDefault();
+      }
+    </script>
+</head>
+<body>
+
+  <div class="click-store">
+    Click Count: <span id="count">0</span>
+  </div>
+  <div class="click-box" onclick="clickAction(event);">
+  </div>
+
+</body>
+</html>
