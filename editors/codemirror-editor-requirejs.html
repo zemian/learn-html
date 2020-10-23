@@ -14,11 +14,10 @@
         // power by https://codemirror.net
         // Note that you actually do not need an textarea of your own to work. CM will create one for you.
         // If you use your own textarea, you can't pass in "value" as initial value in CM configuration object!
-        let initText = `
-            let myTextarea = document.getElementById("myTextarea");
-                var editor = CodeMirror.fromTextArea(myTextarea, {
-                lineNumbers: true
-            });`;
+        let initText = `let myTextarea = document.getElementById("myTextarea");
+    var editor = CodeMirror.fromTextArea(myTextarea, {
+    lineNumbers: true
+});`;
         let app = document.getElementById("app");
         let editor = CodeMirror(app, {
             value: initText,
