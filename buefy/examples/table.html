@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/buefy@0.9.4/dist/buefy.min.css">
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+<script src="https://unpkg.com/buefy@0.9.4/dist/buefy.min.js"></script>
+
+<div id="app">
+    <b-table icon-pack='fas' :data="dataList" paginated pagination-simple per-page="15">
+        <b-table-column v-slot="col">
+            {{ col.row.id }}
+        </b-table-column>
+        <b-table-column v-slot="col">
+            {{ col.row.description }}
+        </b-table-column>
+    </b-table>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                dataList: []
+            }
+        },tabl
+        mounted: function () {
+            for (let i = 0 ; i < 100; i++) {
+                this.dataList.push({id: 1000 + i, description: "test #" + i});
+            }
+        }
+    });
+</script>

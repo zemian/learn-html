@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/buefy@0.9.4/dist/buefy.min.css">
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+<script src="https://unpkg.com/buefy@0.9.4/dist/buefy.min.js"></script>
+
+<div id="app">
+    <div>
+        <b-icon pack='fas' icon="copy"></b-icon>
+        <b-icon pack='fas' icon="cut"></b-icon>
+        <b-icon pack='fas' icon="paste"></b-icon>
+    </div>
+    <div>
+        <b-button icon-pack="fas" icon-left="copy"></b-button>
+        <b-button icon-pack="fas" icon-left="cut"></b-button>
+        <b-button icon-pack="fas" icon-left="paste"></b-button>
+    </div>
+
+    <b-field>
+        <p class="control">
+            <button class="button">
+                <b-icon icon="format-bold"></b-icon>
+            </button>
+        </p>
+        <p class="control">
+            <button class="button">
+                <b-icon icon="format-italic"></b-icon>
+            </button>
+        </p>
+        <p class="control">
+            <button class="button">
+                <b-icon icon="format-underline"></b-icon>
+            </button>
+        </p>
+    </b-field>
+</div>
+<script>
+	// TODO: How to load default FontAwsome by default?
+    // Vue.use(Buefy, {
+    //     defaultIconComponent: "vue-fontawesome",
+    //     defaultIconPack: "fas"
+    // });
+    new Vue({
+        el: '#app'
+    });
+</script>
