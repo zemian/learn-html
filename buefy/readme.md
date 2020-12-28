@@ -1,5 +1,15 @@
 Exploring [Buefy](https://buefy.org/) = Bulma + VueJS
 
-Try `hello.html` to see an example, or run `npx vue serve App.vue`
+## Standalone Examples
 
-To explore more [UI components](https://buefy.org/documentation), copy example in their site and then paste it into `UiTest.vue` file, and then `npx vue serve App.vue` should auto reload it.
+See `examples` folder.
+
+## UI Component Tester
+
+Use the SPA `App.vue` and `UiTest.vue to test any examples from [UI components](https://buefy.org/documentation).
+
+
+```
+# Paste any example into UiTest.vue and then run
+npx vue serve App.vue
+```
