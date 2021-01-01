@@ -1,14 +1,14 @@
 <script src="https://unpkg.com/vue@next"></script>
 <div id="app">
     <ul>
-        <li v-for="item in items">{{item}}</li>
+        <li v-for="day in weekdays">{{day}}</li>
     </ul>
 </div>
 <script>
     Vue.createApp({
         data: function () {
             return {
-                items: ['one', 'two', 'three']
+                weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             }
         }
     }).mount('#app');
