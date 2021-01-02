@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@latest/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/vue"></script>
+<div id="app" class="section columns">
+    <div class="column">
+        <h1 class="title">Selection</h1>
+        <div class="control" v-for="weekday in weekdays">
+            <input type="checkbox" class="checkbox" :value="weekday" v-model="selectedWeekdays">{{weekday}}
+        </div>
+    </div>
+    <div class="column">
+        <h1 class="title">Selected</h1>
+        <ul class="panel">
+            <li class="panel-block" v-for="day in selectedWeekdays">{{day}}</li>
+        </ul>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                selectedWeekdays: ['Sat', 'Sun']
+            }
+        }
+    });
+</script>
