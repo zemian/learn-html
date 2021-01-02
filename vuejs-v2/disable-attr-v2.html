@@ -1,0 +1,16 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+    <button :disabled="flag1">Test 1</button>
+    <button :disabled="flag2">Test 2</button>
+    <button v-bind="{disabled: flag1}">Test 3</button>
+    <button v-bind="{disabled: flag2}">Test 4</button>
+</div>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            flag1: true,
+            flag2: false
+        }
+    });
+</script>
