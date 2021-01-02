@@ -1,16 +1,12 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
-    <h3>Welcome - Use tooltips to see title message</h3>
-    <p v-bind:title="message">TEST1</p>
-    <p :title="message">TEST2</p>
     <button :disabled="disableFlag">Test Link</button>
 </div>
 <script>
     let app = new Vue({
         el: "#app",
         data: {
-            message: "Hello World!",
-            disableFlag: true
+            disableFlag: false
         }
     });
 </script>

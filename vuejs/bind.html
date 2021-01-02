@@ -3,14 +3,15 @@
     <h3>Welcome - Use tooltips to see title message</h3>
     <p v-bind:title="message">TEST1</p>
     <p :title="message">TEST2</p>
-    <button :disabled="enableButton">Test Link</button>
+    <button :disabled="disableFlag">Test Link</button>
 </div>
 <script>
     let app = new Vue({
         el: "#app",
         data: {
             message: "Hello World!",
-            enableButton: false
+            disableFlag: true
         }
     });
 </script>
+
