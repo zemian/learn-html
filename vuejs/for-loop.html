@@ -1,13 +1,54 @@
 <script src="https://unpkg.com/vue@next"></script>
 <div id="app">
+    <!-- Loop numbers/range -->
     <ul>
         <li v-for="i in 3">{{i}}</li>
+    </ul>
+    <!-- Loop list -->
+    <ul>
+        <li v-for="item in groceryList" :key="item.id">{{item.text}}</li>
+    </ul>
+    <!-- Loop list with index-->
+    <ul>
+        <li v-for="(item, index) in groceryList" :key="item.id">{{index}}: {{item.text}}</li>
+    </ul>
+    <!-- Loop object -->
+    <ul>
+        <li v-for="(v, k) in obj" :key="k">{{k}} => {{v}}</li>
+    </ul>
+
+    <!-- Loop that generate multiple elements! -->
+    <ul>
+        <template v-for="i in 3">
+            <li>{{i}}</li>
+            <li class="divider" role="presentation"></li>
+        </template>
+    </ul>
+
+    <!-- Loop that generates custom component -->
+    <ul>
+        <my-item v-for="i in 3" :text="'Item#' + i"></my-item>
     </ul>
 </div>
 <script>
     let vm = Vue.createApp({
         data: function () {
             return {
+                groceryList: [
+                    { id: 0, text: 'Vegetables' },
+                    { id: 1, text: 'Cheese' },
+                    { id: 2, text: 'Whatever else humans are supposed to eat' }
+                ],
+                obj: {
+                    id: 0,
+                    text: 'Vegetables'
+                },
+            }
+        },
+        components: {
+            'my-item': {
+                props: ['text'],
+                template: '<li>{{text}}</li>'
             }
         }
     }).mount('#app');
