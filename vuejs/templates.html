@@ -1,0 +1,33 @@
+<!--
+https://vuejsdevelopers.com/2017/03/24/vue-js-component-templates/
+
+There are many ways to provide 'template' in Vue Component:
+
+1. JS Plain text - string
+2. JS Template Literal using backticks
+3. Using <script type="text/x-template" id="template-id"></script> with "template: '#template-id'"
+4. Use "inline-template" attribute with the component and the add to the component content
+5. Use the component "render()" function and Vue.h() method.
+6. Use JSX inside component "render()" function
+-->
+<script src="https://unpkg.com/vue@next"></script>
+<div id="app">
+    <hello></hello>
+</div>
+<template id="hello">
+    {{message}}
+</template>
+<script>
+    let vm = Vue.createApp({
+        components: {
+            'hello': {
+                data: function() {
+                    return {
+                        message: "Hello World"
+                    }
+                },
+                template: '#hello'
+            }
+        }
+    }).mount('#app');
+</script>
