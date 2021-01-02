@@ -18,10 +18,11 @@
     </nav>
     <table class="table is-fullwidth">
         <tr v-for="contact in contacts">
+            <td>{{contact.id}}</td>
             <td>{{contact.create_ts}}</td>
             <td>{{contact.name}}</td>
             <td>{{contact.email}}</td>
-            <td>{{contact.message}}</td>
+            <td>{{contact.subject}}</td>
         </tr>
     </table>
 </div>
