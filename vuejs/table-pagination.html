@@ -12,7 +12,8 @@
         <ul class="pagination-list">
             <li v-for="p in displayPages">
                 <span v-if="p === -1" class="pagination-ellipsis">&hellip;</span>
-                <a v-else class="pagination-link" :class="{'is-current': page === p}" @click="fetchPage(p)">{{p}}</a>
+                <a v-else class="pagination-link"
+                   :class="{'is-current': page === p}" @click="fetchPage(p)">{{p}}</a>
             </li>
         </ul>
     </nav>
