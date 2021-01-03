@@ -22,6 +22,18 @@
         });
 
         app.mount('#app');
+
+        /*
+        // Alternatively, we can setup components as part of the App options
+        Vue.createApp({
+            components: {
+                'todo-item2' : {
+                    props: ['todo'],
+                    template: `<li>{{ todo.text }}</li>`
+                }
+            }
+        });
+         */
     };
 </script>
 
