@@ -12,21 +12,21 @@ There are many ways to provide 'template' in Vue Component:
 -->
 <script src="https://unpkg.com/vue@next"></script>
 <div id="app">
-    <hello></hello>
+    <hello-message></hello-message>
 </div>
-<template id="hello">
+<template id="hello-message">
     {{message}}
 </template>
 <script>
     let vm = Vue.createApp({
         components: {
-            'hello': {
+            'hello-message': {
                 data: function() {
                     return {
                         message: "Hello World"
                     }
                 },
-                template: '#hello'
+                template: '#hello-message'
             }
         }
     }).mount('#app');
