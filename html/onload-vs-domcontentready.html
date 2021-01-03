@@ -1,0 +1,20 @@
+<!--
+What's the diff between "window.onload = fn" vs "document.addEventListener('DOMContentLoaded', fn)" ?
+
+https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+
+The load event fires at the end of the document loading process. At this point, all of the objects in the document are in the DOM, and all the images, scripts, links and sub-frames have finished loading.
+
+There are also DOM Events like DOMContentLoaded and DOMFrameContentLoaded (which can be handled using EventTarget.addEventListener()) which are fired after the DOM for the page has been constructed, but do not wait for other resources to finish loading.
+-->
+
+<script>
+    window.onload = function () {
+        console.log("window.onload is called");
+    }
+
+    // Note this will be called first!
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("DOMContentLoaded is called");
+    });
+</script>
