@@ -1,3 +1,19 @@
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@latest/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    window.onload = () => {
+        Vue.createApp({
+            data: function () {
+                return {
+                    weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    selectedWeekdays: ['Sat', 'Sun']
+                }
+            }
+        }).mount('#app');
+    };
+</script>
+
 <div id="app" class="section columns">
     <div class="column">
         <h1 class="title">Selection</h1>
@@ -12,16 +28,3 @@
         </ul>
     </div>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@latest/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/bulma">
-<script src="https://unpkg.com/vue@next"></script>
-<script>
-    let vm = Vue.createApp({
-        data: function () {
-            return {
-                weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                selectedWeekdays: ['Sat', 'Sun']
-            }
-        }
-    }).mount('#app');
-</script>

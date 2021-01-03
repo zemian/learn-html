@@ -1,18 +1,21 @@
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    window.onload = () => {
+        // https://v3.vuejs.org/guide/migration/attribute-coercion.html#enumerated-attributes
+        let vm = Vue.createApp({
+            data: function () {
+                return {
+                    flag1: undefined,
+                    flag2: true
+                }
+            }
+        }).mount('#app');
+    }
+</script>
+
 <div id="app">
     <button :disabled="flag1">Test 1</button>
     <button :disabled="flag2">Test 2</button>
     <button v-bind="{disabled: flag1}">Test 3</button>
     <button v-bind="{disabled: flag2}">Test 4</button>
 </div>
-<script src="https://unpkg.com/vue@next"></script>
-<script>
-    // https://v3.vuejs.org/guide/migration/attribute-coercion.html#enumerated-attributes
-    let vm = Vue.createApp({
-        data: function() {
-            return {
-                flag1: undefined,
-                flag2: true
-            }
-        }
-    }).mount('#app');
-</script>
