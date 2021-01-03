@@ -1,5 +1,37 @@
 <link rel="stylesheet" href="https://unpkg.com/bulma@latest">
+<!-- NOTE that using "content" class, it style element as it without
+you have to specify class to each element. -->
 
+<h1>Example1 - no content class</h1>
+<div>
+    <ol type="1">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <ol type="A">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <ol type="a">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <ol type="I">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <ol type="i">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+</div>
+
+<h1>Example2 - with content class</h1>
 <div class="content">
     <ol type="1">
         <li>Coffee</li>
@@ -28,6 +60,7 @@
     </ol>
 </div>
 
+<h1>Example3 - with content class and further specified classes</h1>
 <div class="content">
     <ol class="is-lower-alpha">
         <li>Coffee</li>
