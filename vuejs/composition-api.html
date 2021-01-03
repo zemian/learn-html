@@ -1,7 +1,7 @@
 <script type="module">
     import {createApp, ref} from 'https://unpkg.com/vue@next/dist/vue.esm-browser.js';
     window.onload = () => {
-        window.vm = createApp({
+        createApp({
             setup() {
                 let message = ref('Hello World');
                 return {
