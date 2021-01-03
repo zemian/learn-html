@@ -1,26 +1,7 @@
 <script src="https://unpkg.com/vue@next"></script>
 <script>
     window.onload = () => {
-        // https://v3.vuejs.org/guide/introduction.html#composing-with-components
-        const TodoList = {
-            data() {
-                return {
-                    groceryList: [
-                        { id: 0, text: 'Vegetables' },
-                        { id: 1, text: 'Cheese' },
-                        { id: 2, text: 'Whatever else humans are supposed to eat' }
-                    ]
-                }
-            }
-        }
-
-        const app = Vue.createApp(TodoList)
-
-        app.component('todo-item', {
-            props: ['todo'],
-            template: `<li>{{ todo.text }}</li>`
-        });
-
+        let app = Vue.createApp({});
         let vm = app.mount('#app');
 
         console.log("app", app);
