@@ -1,14 +1,15 @@
-/*
-https://v3.vuejs.org/guide/computed.html#computed-caching-vs-methods
-However, the difference is that computed properties are cached based on their reactive dependencies. A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as author.books has not changed, multiple access to the publishedBooksMessage computed property will immediately return the previously computed result without having to run the function again.
-*/
-
-<script src="https://unpkg.com/vue@next"></script>
 <div id="app">
     <p>Has published books:</p>
     <span>{{ publishedBooksMessage }}</span>
 </div>
+
+<script src="https://unpkg.com/vue@next"></script>
 <script>
+    /*
+    https://v3.vuejs.org/guide/computed.html#computed-caching-vs-methods
+    However, the difference is that computed properties are cached based on their reactive dependencies. A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as author.books has not changed, multiple access to the publishedBooksMessage computed property will immediately return the previously computed result without having to run the function again.
+    */
+
     Vue.createApp({
         data() {
             return {
