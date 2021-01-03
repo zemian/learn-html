@@ -21,7 +21,10 @@
             template: `<li>{{ todo.text }}</li>`
         });
 
-        app.mount('#app');
+        let vm = app.mount('#app');
+
+        console.log("app", app);
+        console.log("vm", vm);
     };
 </script>
 
