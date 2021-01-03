@@ -1,0 +1,16 @@
+<script type="module">
+    import Vue from 'https://unpkg.com/vue@latest/dist/vue.esm.browser.js';
+    window.onload = () => {
+        new Vue({
+            data: function () {
+                return {
+                    message: "Hello VueJS"
+                }
+            }
+        }).$mount('#app');
+    };
+</script>
+
+<div id="app">
+    {{ message }}
+</div>
