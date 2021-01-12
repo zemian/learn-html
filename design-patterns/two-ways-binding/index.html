@@ -1,0 +1,26 @@
+<!--
+https://medium.com/better-programming/js-vanilla-two-way-binding-5a29bc86c787
+https://github.com/SantiagoGdaR/js-two-way-binding
+-->
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Two Way Data Binding</title>
+    </head>
+<body>
+    Name: <input data-tw-bind="name" type="text">
+    <span data-tw-bind="name"></span>
+    <hr/>
+    Surname: <input data-tw-bind="surname" type="text">
+    <span data-tw-bind="surname"></span>
+    <hr/>
+    <button onclick="log()">See Scope Values</button>
+    <hr/>
+    <button onclick="changeNameByCode()">Change Name By Code</button>
+    <hr/>
+    <button onclick="changeSurnameByCode()">Change Surname By Code</button>
+    <hr/>
+    <script src="app.js"></script>
+</body>
+</html>
