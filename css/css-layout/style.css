@@ -1,0 +1,145 @@
+/*
+Simple CSS styling for a typical web application
+Author: Zemian Deng
+Date: 2021-01-20
+ */
+
+/** Global Reset */
+* {
+    box-sizing: border-box;
+}
+html body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/** Content layout */
+.section {
+    margin: 1em 2em;
+}
+.container {
+    margin: 0 auto;
+}
+.columns {
+    display: flex;
+    flex-direction: row;
+}
+.column {
+    flex: 1 1 auto;
+}
+.rows {
+    display: flex;
+    flex-direction: column;
+}
+.row {
+    flex: 1 1 auto;
+}
+.box {
+    background-color: whitesmoke;
+    color: black;
+    padding: 1em;
+    margin: 1em;
+    min-height: 10em;
+    border-radius: .25em;
+}
+
+/** Helper utilities */
+.is-absolute-centered {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.is-fullheight {
+    height: 100%;
+}
+.is-halfheight {
+    height: 50%;
+}
+.is-quarterheight {
+    height: 25%;
+}
+.is-noheight {
+    height: unset;
+}
+
+/* Color pallete: https://coolors.co/080708-3772ff-df2935-fdca40-e6e8e6 */
+.is-color-1 {
+    color: #080708;
+}
+.is-color-2 {
+    color: #3772FF;
+}
+.is-color-3 {
+    color: #DF2935;
+}
+.is-color-4 {
+    color: #FDCA40;
+}
+.is-color-5 {
+    color: #E6E8E6;
+}
+.is-color-white {
+    color: #FFFFFF;
+}
+.is-color-black {
+    color: #000000;
+}
+
+.has-bg-1 {
+    background-color: #080708;
+    color: #FFFFFF;
+}
+.has-bg-2 {
+    background-color: #3772FF;
+    color: #FFFFFF;
+}
+.has-bg-3 {
+    background-color: #DF2935;
+    color: #FFFFFF;
+}
+.has-bg-4 {
+    background-color: #FDCA40;
+    color: #000000;
+}
+.has-bg-5 {
+    background-color: #E6E8E6;
+    color: #000000;
+}
+.has-bg-white {
+    background-color: #FFFFFF;
+}
+.has-bg-black {
+    background-color: #000000;
+}
+
+.has-border-1 {
+    border: 1px solid #080708;
+}
+.has-border-2 {
+    border: 1px solid #3772FF;
+}
+.has-border-3 {
+    border: 1px solid #DF2935;
+}
+.has-border-4 {
+    border: 1px solid #FDCA40;
+}
+.has-border-5 {
+    border: 1px solid #E6E8E6;
+}
+
+/* Easy Components */
+.app-header {
+    background-color: black;
+    color: white;
+    height: 200px;
+}
+.app-content {
+    min-height: 65vh;
+}
+.app-footer {
+    background-color: whitesmoke;
+    height: 100px;
+}

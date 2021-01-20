@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="style.css">
+<style>
+    /** A layout that the content to center of the screen. */
+    .row.layout-header {
+        flex: 0 1 auto;
+    }
+    .row.layout-content {
+    }
+    .row.layout-footer {
+        flex: 0 0 auto;
+    }
+</style>
+<div id="app" class="rows is-fullheight">
+    <div class="row layout-header">
+        <div class="app-header is-absolute-centered">HEADER</div>
+    </div>
+    <div class="row layout-content">
+        <div class="section">
+            <div class="columns">
+                <div class="column">
+                    <div class="box has-bg-2 is-absolute-centered">HELLO</div>
+                </div>
+                <div class="column">
+                    <div class="box has-bg-3 is-absolute-centered">HELLO</div>
+                </div>
+                <div class="column">
+                    <div class="box has-bg-4 is-absolute-centered">HELLO</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row layout-footer">
+        <div class="app-footer is-absolute-centered">FOOTER</div>
+    </div>
+</div>
