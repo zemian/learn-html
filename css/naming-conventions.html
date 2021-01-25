@@ -1,0 +1,55 @@
+<!--
+See CSS convention used in these projects:
+https://en.bem.info
+https://bulma.io/
+https://tailwindcss.com/
+-->
+<style>
+    .container {
+        border: 1px solid black;
+        border-radius: 1em;
+    }
+
+    .is-blue {
+        color: white;
+        background-color: #00aed9;
+    }
+
+    .container.is-blue {
+        border-color: #0074D9;
+        color: white;
+        background-color: #0074D9;
+    }
+
+    .container--is-blue {
+        border-color: #0074D9;
+        color: white;
+        background-color: #0074D9;
+    }
+</style>
+<div id="app">
+
+    <div class="container">
+        HELLO
+    </div>
+
+    <!-- Which one is better? -->
+    <div class="container is-blue">
+        HELLO
+    </div>
+    <div class="container container--is-blue">
+        HELLO
+    </div>
+
+    <!-- How CSS selector resolve conflict -->
+    <div class="is-blue">
+        HELLO
+    </div>
+    <div class="container">
+        <div class="is-blue">
+            HELLO
+        </div>
+    </div>
+</div>
+
+

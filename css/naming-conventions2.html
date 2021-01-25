@@ -1,0 +1,46 @@
+<!--
+Here is seems that using plain CSS specificity modifier is more flexible design?
+-->
+<style>
+    .container {
+        margin: 2.5em 2em;
+    }
+
+    .container .price-tag {
+        background-color: whitesmoke;
+    }
+    .container .is-red {
+        color: red;
+    }
+
+    .container__price-tag--red {
+        background-color: whitesmoke;
+        color: red;
+    }
+
+    /* What happen if there is some other lib that conflict with modifiers?
+     Due to CSS specificity rule, it will not affect above!
+     */
+    .price-tag {
+        background-color: #ccc;
+    }
+    .is-red {
+        color: darkred;
+    }
+</style>
+<div id="app">
+
+    <div class="container">
+        <div class="price-tag is-red">
+            HELLO
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container__price-tag--red">
+            HELLO
+        </div>
+    </div>
+</div>
+
+
