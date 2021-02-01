@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
+
+<div id="app" class="section">
+    <div class="container">
+        <h1 class="title">Hello VueJS+BulmaCSS</h1>
+        <div class="columns">
+            <div class="column" v-for="i in columns">
+                <div class="notification is-primary">{{i}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    requirejs.config({
+        paths: {
+            Vue: 'https://unpkg.com/vue@2.6.12/dist/vue',
+            'vue-loader': 'https://unpkg.com/requirejs-vue@1.1.5/requirejs-vue'
+        }
+    });
+    require(['Vue', 'vue-loader'], function(Vue) {
+        new Vue({
+            data() {
+                return {
+                    columns: 12
+                }
+            }
+        }).$mount('#app');
+    });
+</script>
