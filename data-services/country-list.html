@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/vue@next"></script>
+<script src="browsify-bundle/bundle.js"></script>
+
+<div id="app" class="section">
+    <div class="container">
+        <h1 class="title">country-list@2.2.0</h1>
+        <div class="content">
+            <ol>
+                <li v-for="name in names">
+                    <span>{{name}} - {{getCountryName(name)}}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                names: []
+            }
+        },
+        methods: {
+            getCountryName(code) {
+                return countryList.getName(code);
+            }
+        },
+        created() {
+            this.names = countryList.getNameList();
+        }
+    }).mount('#app');
+</script>

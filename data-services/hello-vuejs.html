@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/vue@next"></script>
+
+<div id="app" class="section">
+    <div class="container">
+        <h1 class="title">Hello VueJS+BulmaCSS</h1>
+        <div class="columns">
+            <div class="column" v-for="i in columns">
+                <div class="notification is-primary">{{i}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                columns: 12
+            }
+        }
+    }).mount('#app');
+</script>
