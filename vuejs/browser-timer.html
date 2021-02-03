@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://unpkg.com/bulma">
+<script src="https://unpkg.com/vue@next"></script>
+
+<!-- 
+    The setInterval() will return timerId that can be cancel with 
+    clearInterval() or clearTimeout(). 
+-->
+<div id="app" class="section">
+    <h1 class="title">Browser Timer</h1>
+
+    <div class="buttons">
+        <button class="button" :disabled="timerId" 
+            @click="startTimer">Start Timer</button>
+        <button class="button" :disabled="!timerId"
+            @click="stopTimer">Stop Timer</button>
+    </div>
+
+    <div class="notification">
+        <p>{{message}}</p>
+    </div>
+</div>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                message: '',
+                timerId: null,
+            }
+        },
+        methods: {
+            stopTimer() {
+                clearInterval(this.timerId);
+                this.message = 'Timer has stopped!';
+                this.timerId = null;
+            },
+            startTimer() {
+                this.message = '' + new Date();
+                this.timerId = setInterval(() => {
+                    this.message = '' + new Date();
+                }, 1000);
+            }
+        },
+        created() {
+            this.startTimer();
+        }
+    }).mount('#app');
+</script>
