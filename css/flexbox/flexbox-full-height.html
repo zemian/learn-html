@@ -1,8 +1,10 @@
 <style>
+    /** The flex-item is full height, but the element is not. */
     .flex {
         border: 1px darkblue solid;
         background-color: lightblue;
         display: flex;
+        height: 100%;
     }
     .flex-item {
         border: 1px darkgreen solid;
@@ -16,6 +18,8 @@
 </style>
 <div class="flex">
     <div class="flex-item">
-        <div class="element">TEST</div>
+        <div class="element">
+            TEST
+        </div>
     </div>
 </div>

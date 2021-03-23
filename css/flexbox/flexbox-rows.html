@@ -1,0 +1,42 @@
+<style>
+    /*
+    The default flex-direction of "row" makes flex-items flow vertically in a flex container.
+
+    To get horizontal flex-items layout, change to column direction:
+    The flex-direction of "column" makes the flex-items flow horizontally in a flex container.
+    */
+    .flex {
+        border: 1px darkblue solid;
+        background-color: lightblue;
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-item {
+        border: 1px darkgreen solid;
+        background-color: lightgreen;
+        flex: 1 1 auto;
+    }
+    .element {
+        border: 1px darkred solid;
+        background-color: lightpink;
+    }
+    .element2 {
+        border: 1px darkgoldenrod solid;
+        background-color: lightyellow;
+    }
+    .element3 {
+        border: 1px darkorange solid;
+        background-color: lightsalmon;
+    }
+</style>
+<div class="flex">
+    <div class="flex-item">
+        <div class="element">TEST</div>
+    </div>
+    <div class="flex-item">
+        <div class="element2">TEST</div>
+    </div>
+    <div class="flex-item">
+        <div class="element3">TEST</div>
+    </div>
+</div>

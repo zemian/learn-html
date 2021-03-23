@@ -3,26 +3,33 @@
         border: 1px darkblue solid;
         background-color: lightblue;
         display: flex;
-        height: 100%;
     }
     .flex-item {
         border: 1px darkgreen solid;
         background-color: lightgreen;
         flex: 1 1 auto;
-
-        /* Make flex item a parent flex to support full height. */
-        display:flex;
     }
     .element {
         border: 1px darkred solid;
         background-color: lightpink;
-        flex: 1 1 auto;
+    }
+    .element2 {
+        border: 1px darkgoldenrod solid;
+        background-color: lightyellow;
+    }
+    .element3 {
+        border: 1px darkorange solid;
+        background-color: lightsalmon;
     }
 </style>
 <div class="flex">
     <div class="flex-item">
-        <div class="element">
-            TEST
-        </div>
+        <div class="element">TEST</div>
+    </div>
+    <div class="flex-item">
+        <div class="element2">TEST</div>
+    </div>
+    <div class="flex-item">
+        <div class="element3">TEST</div>
     </div>
 </div>
