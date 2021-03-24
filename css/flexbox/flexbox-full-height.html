@@ -1,24 +1,42 @@
 <style>
-    /** The flex-item is full height, but the element is not. */
-    .flex {
-        border: 1px darkblue solid;
+    /** The flex-item is full height, but the element is not.
+     * If you to stretch the element, use nested flex. See "flexbox-stretch-element.html"
+     */
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .bg-border-1 {
+        border: 5px darkgreen solid;
+        background-color: lightgreen;
+    }
+    .bg-border-2 {
+        border: 5px darkblue solid;
         background-color: lightblue;
+    }
+    .bg-border-3 {
+        border: 5px darkred solid;
+        background-color: lightpink;
+    }
+    .flex {
         display: flex;
         height: 100%;
     }
     .flex-item {
-        border: 1px darkgreen solid;
-        background-color: lightgreen;
         flex: 1 1 auto;
     }
     .element {
-        border: 1px darkred solid;
-        background-color: lightpink;
     }
 </style>
-<div class="flex">
-    <div class="flex-item">
-        <div class="element">
+<div class="flex bg-border-1">
+    <div class="flex-item bg-border-2">
+        <div class="element bg-border-3">
             TEST
         </div>
     </div>

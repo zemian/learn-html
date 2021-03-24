@@ -38,12 +38,19 @@
     }
     .element {
         flex: 1 1 auto;
+        overflow: auto;
+    }
+    .card {
+        width: 320px;
+        height: 400px;
     }
 </style>
 <div class="flex bg-border-1">
     <div class="flex-item bg-border-2">
         <div class="element bg-border-3">
-            TEST
+            <div class="card bg-border-1">CARD1</div>
+            <div class="card bg-border-1">CARD2</div>
+            <div class="card bg-border-1">CARD3</div>
         </div>
     </div>
 </div>
