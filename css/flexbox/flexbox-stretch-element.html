@@ -3,29 +3,37 @@
      * The flex-item is full height, and element is also stretched to full height.
      * NOTE: The element needs to be a nested flex-item to make this to work.
      */
-    .flex {
-        border: 1px darkblue solid;
+
+    .bg-border-1 {
+        border: 5px darkgreen solid;
+        background-color: lightgreen;
+    }
+    .bg-border-2 {
+        border: 5px darkblue solid;
         background-color: lightblue;
+    }
+    .bg-border-3 {
+        border: 5px darkred solid;
+        background-color: lightpink;
+    }
+
+    .flex {
         display: flex;
         height: 100%;
     }
     .flex-item {
-        border: 1px darkgreen solid;
-        background-color: lightgreen;
         flex: 1 1 auto;
 
         /* Make flex item a parent flex to support stretch of element. */
         display:flex;
     }
     .element {
-        border: 1px darkred solid;
-        background-color: lightpink;
         flex: 1 1 auto;
     }
 </style>
-<div class="flex">
-    <div class="flex-item">
-        <div class="element">
+<div class="flex bg-border-1">
+    <div class="flex-item bg-border-2">
+        <div class="element bg-border-3">
             TEST
         </div>
     </div>
