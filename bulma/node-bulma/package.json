@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "bulma": "^0.8.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "anywhere": "^1.5.0",
     "livereload": "^0.9.1"
   }
